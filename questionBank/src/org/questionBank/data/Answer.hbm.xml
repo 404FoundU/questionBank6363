@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 13, 2016 2:54:40 AM by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="org.questionBank.data.Answer" table="ANSWER" schema="SYSTEM" optimistic-lock="version">
+        <id name="answerId" type="string">
+            <column name="ANSWER_ID" length="7" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="question" class="org.questionBank.data.Question" fetch="select">
+            <column name="QUESTION_ID" length="7" />
+        </many-to-one>
+        <property name="answerText" type="string">
+            <column name="ANSWER_TEXT" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>
