@@ -7,15 +7,10 @@ drop table Course;
 
 create table Person
 (per_id varchar(7),
-name varchar(50),
+first_name varchar(50),
+last_name varchar(50),
 user_name varchar(7),
 password varchar(20),
-apt_no varchar(5),
-city varchar(20),
-state varchar(2),
-zip_code int,
-email varchar(40),
-gender char(1),
 primary key (per_id));
 
 
