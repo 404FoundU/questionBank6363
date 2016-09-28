@@ -6,5 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Oracle7"/>
 	<classpathentry kind="lib" path="lib/logging/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/ejb/javax.ejb.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/QBWeb"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
