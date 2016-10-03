@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Sep 13, 2016 2:54:40 AM by Hibernate Tools 5.1.0.Beta1
+// Generated Oct 3, 2016 12:52:41 AM by Hibernate Tools 5.1.0.Beta1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -19,7 +19,9 @@ import javax.persistence.Table;
 @Table(name = "COURSE", schema = "SYSTEM")
 public class Course implements java.io.Serializable {
 
-	private String courseId;
+	private BigDecimal id;
+	private String courseNumber;
+	private String courseName;
 	private String title;
 	private String deptName;
 	private BigDecimal credit;
@@ -29,12 +31,15 @@ public class Course implements java.io.Serializable {
 	public Course() {
 	}
 
-	public Course(String courseId) {
-		this.courseId = courseId;
+	public Course(BigDecimal id) {
+		this.id = id;
 	}
 
-	public Course(String courseId, String title, String deptName, BigDecimal credit, Set persons, Set questions) {
-		this.courseId = courseId;
+	public Course(BigDecimal id, String courseNumber, String courseName, String title, String deptName,
+			BigDecimal credit, Set persons, Set questions) {
+		this.id = id;
+		this.courseNumber = courseNumber;
+		this.courseName = courseName;
 		this.title = title;
 		this.deptName = deptName;
 		this.credit = credit;
@@ -44,13 +49,31 @@ public class Course implements java.io.Serializable {
 
 	@Id
 
-	@Column(name = "COURSE_ID", unique = true, nullable = false, length = 7)
-	public String getCourseId() {
-		return this.courseId;
+	@Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)
+	public BigDecimal getId() {
+		return this.id;
 	}
 
-	public void setCourseId(String courseId) {
-		this.courseId = courseId;
+	public void setId(BigDecimal id) {
+		this.id = id;
+	}
+
+	@Column(name = "COURSE_NUMBER", length = 10)
+	public String getCourseNumber() {
+		return this.courseNumber;
+	}
+
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
+	}
+
+	@Column(name = "COURSE_NAME", length = 20)
+	public String getCourseName() {
+		return this.courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 
 	@Column(name = "TITLE", length = 50)
@@ -62,7 +85,7 @@ public class Course implements java.io.Serializable {
 		this.title = title;
 	}
 
-	@Column(name = "DEPT_NAME", length = 7)
+	@Column(name = "DEPT_NAME", length = 30)
 	public String getDeptName() {
 		return this.deptName;
 	}

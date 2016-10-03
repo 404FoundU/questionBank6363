@@ -1,6 +1,7 @@
 package org.questionBank.data;
-// Generated Sep 13, 2016 2:54:40 AM by Hibernate Tools 5.1.0.Beta1
+// Generated Oct 3, 2016 12:52:41 AM by Hibernate Tools 5.1.0.Beta1
 
+import java.math.BigDecimal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,20 +9,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Home object for domain model class Question.
- * @see org.questionBank.data.Question
+ * Home object for domain model class Course.
+ * @see org.questionBank.data.Course
  * @author Hibernate Tools
  */
 @Stateless
-public class QuestionHome {
+public class CourseHome {
 
-	private static final Log log = LogFactory.getLog(QuestionHome.class);
+	private static final Log log = LogFactory.getLog(CourseHome.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Question transientInstance) {
-		log.debug("persisting Question instance");
+	public void persist(Course transientInstance) {
+		log.debug("persisting Course instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -31,8 +32,8 @@ public class QuestionHome {
 		}
 	}
 
-	public void remove(Question persistentInstance) {
-		log.debug("removing Question instance");
+	public void remove(Course persistentInstance) {
+		log.debug("removing Course instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -42,10 +43,10 @@ public class QuestionHome {
 		}
 	}
 
-	public Question merge(Question detachedInstance) {
-		log.debug("merging Question instance");
+	public Course merge(Course detachedInstance) {
+		log.debug("merging Course instance");
 		try {
-			Question result = entityManager.merge(detachedInstance);
+			Course result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -54,10 +55,10 @@ public class QuestionHome {
 		}
 	}
 
-	public Question findById(String id) {
-		log.debug("getting Question instance with id: " + id);
+	public Course findById(BigDecimal id) {
+		log.debug("getting Course instance with id: " + id);
 		try {
-			Question instance = entityManager.find(Question.class, id);
+			Course instance = entityManager.find(Course.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

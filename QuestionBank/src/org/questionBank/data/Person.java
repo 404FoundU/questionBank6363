@@ -1,7 +1,6 @@
 package org.questionBank.data;
-// Generated Sep 13, 2016 2:54:40 AM by Hibernate Tools 5.1.0.Beta1
+// Generated Oct 3, 2016 12:52:41 AM by Hibernate Tools 5.1.0.Beta1
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -21,15 +20,10 @@ import javax.persistence.Table;
 public class Person implements java.io.Serializable {
 
 	private String perId;
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String userName;
 	private String password;
-	private String aptNo;
-	private String city;
-	private String state;
-	private BigDecimal zipCode;
-	private String email;
-	private Character gender;
 	private Set courses = new HashSet(0);
 
 	public Person() {
@@ -39,18 +33,12 @@ public class Person implements java.io.Serializable {
 		this.perId = perId;
 	}
 
-	public Person(String perId, String name, String userName, String password, String aptNo, String city, String state,
-			BigDecimal zipCode, String email, Character gender, Set courses) {
+	public Person(String perId, String firstName, String lastName, String userName, String password, Set courses) {
 		this.perId = perId;
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
-		this.aptNo = aptNo;
-		this.city = city;
-		this.state = state;
-		this.zipCode = zipCode;
-		this.email = email;
-		this.gender = gender;
 		this.courses = courses;
 	}
 
@@ -65,13 +53,22 @@ public class Person implements java.io.Serializable {
 		this.perId = perId;
 	}
 
-	@Column(name = "NAME", length = 50)
-	public String getName() {
-		return this.name;
+	@Column(name = "FIRST_NAME", length = 50)
+	public String getFirstName() {
+		return this.firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	@Column(name = "LAST_NAME", length = 50)
+	public String getLastName() {
+		return this.lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	@Column(name = "USER_NAME", length = 7)
@@ -90,60 +87,6 @@ public class Person implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Column(name = "APT_NO", length = 5)
-	public String getAptNo() {
-		return this.aptNo;
-	}
-
-	public void setAptNo(String aptNo) {
-		this.aptNo = aptNo;
-	}
-
-	@Column(name = "CITY", length = 20)
-	public String getCity() {
-		return this.city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	@Column(name = "STATE", length = 2)
-	public String getState() {
-		return this.state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	@Column(name = "ZIP_CODE", precision = 22, scale = 0)
-	public BigDecimal getZipCode() {
-		return this.zipCode;
-	}
-
-	public void setZipCode(BigDecimal zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	@Column(name = "EMAIL", length = 40)
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Column(name = "GENDER", length = 1)
-	public Character getGender() {
-		return this.gender;
-	}
-
-	public void setGender(Character gender) {
-		this.gender = gender;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY)

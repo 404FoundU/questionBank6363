@@ -22,10 +22,11 @@ public class CourseDataUtil {
 	private static BigDecimal MAX_CREDIT = new BigDecimal(5.0);
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
 
-	public Course createCourse(String courseId, String title, String deptName, BigDecimal credit) throws InvalidCourseException {
+	public Course createCourse(String courseNumber, String courseName, String title, String deptName, BigDecimal credit) throws InvalidCourseException {
 		Course course = new Course();
 		validateCourse(title, deptName, credit);
-		course.setCourseId(courseId);
+		course.setCourseNumber(courseNumber);
+		course.setCourseName(courseName);
 		course.setTitle(title);
 		course.setDeptName(deptName);
 		course.setCredit(credit);
@@ -34,18 +35,18 @@ public class CourseDataUtil {
 		return course;
 	}
 	
-	public void deleteCourse(String courseId){
+	public void deleteCourse(BigDecimal id){
 		// TODO: test this
-		Course del = ch.findById(courseId); 
+		Course del = ch.findById(id); 
 		ch.remove(del);
 	}
 	
-	public Course findCourse(String courseId){
+	public Course findCourse(BigDecimal id){
 		// TODO: test this
-		return ch.findById(courseId);
+		return ch.findById(id);
 	}
 	
-	public boolean updateCourse(String courseId){
+	public boolean updateCourse(BigDecimal id){
 		// TODO: implement this
 		return false;
 	}

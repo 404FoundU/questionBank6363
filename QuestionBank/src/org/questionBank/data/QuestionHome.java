@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Sep 13, 2016 2:54:40 AM by Hibernate Tools 5.1.0.Beta1
+// Generated Oct 3, 2016 12:52:41 AM by Hibernate Tools 5.1.0.Beta1
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,20 +8,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Home object for domain model class Person.
- * @see org.questionBank.data.Person
+ * Home object for domain model class Question.
+ * @see org.questionBank.data.Question
  * @author Hibernate Tools
  */
 @Stateless
-public class PersonHome {
+public class QuestionHome {
 
-	private static final Log log = LogFactory.getLog(PersonHome.class);
+	private static final Log log = LogFactory.getLog(QuestionHome.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Person transientInstance) {
-		log.debug("persisting Person instance");
+	public void persist(Question transientInstance) {
+		log.debug("persisting Question instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -31,8 +31,8 @@ public class PersonHome {
 		}
 	}
 
-	public void remove(Person persistentInstance) {
-		log.debug("removing Person instance");
+	public void remove(Question persistentInstance) {
+		log.debug("removing Question instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -42,10 +42,10 @@ public class PersonHome {
 		}
 	}
 
-	public Person merge(Person detachedInstance) {
-		log.debug("merging Person instance");
+	public Question merge(Question detachedInstance) {
+		log.debug("merging Question instance");
 		try {
-			Person result = entityManager.merge(detachedInstance);
+			Question result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -54,10 +54,10 @@ public class PersonHome {
 		}
 	}
 
-	public Person findById(String id) {
-		log.debug("getting Person instance with id: " + id);
+	public Question findById(String id) {
+		log.debug("getting Question instance with id: " + id);
 		try {
-			Person instance = entityManager.find(Person.class, id);
+			Question instance = entityManager.find(Question.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {
