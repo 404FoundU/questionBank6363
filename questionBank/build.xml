@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="buildProject" basedir="." default="main">
+
+	<!-- Source and target java versions  -->
+	<property name="currentdir"   	  value="."/>
+	<property name="deploy.dir"   	  value="build"/>
+	<property name="src.dir"      	  value="src"/>
+	<property name="testsrc.dir"  	  value="test"/>
+	<property name="classes.dir"  	  value="${deploy.dir}/classes"/>
+	<property name="testclasses.dir"  value="${deploy.dir}/test-classes"/>
+	<property name="lib.dir"      	  value="lib"/>
+	<property name="ejb.dir"		  value="${lib.dir}/ejb"/>
+	<property name="testreports.dir"  value="${testsrc.dir}/output"/>
+	<property name="dist.dir"		  value="dist"/>
+	<property name="QuestionBankLib"  value="questionBank"/>
+	<!--
+	<property name="MainClassName"	  value="Startup" />
+	<property name="package"		  value="org.zibran.example.projConfig" />
+	<property name="mainclass" 		  value="${package}.${MainClassName}"/> -->
+	<!-- Target Names -->
+	
+	<!-- Structure Property Definitions -->
+	<path id="project.classpath">
+	    <pathelement path="${classpath}"/>
+	    <pathelement location="${deploy.dir}" />
+	    <pathelement location="${currentdir}" />
+	    <pathelement location="${classes.dir}" />
+	    <pathelement location="${testclasses.dir}" />  
+	       
+	    <fileset dir="${lib.dir}">
+	          <include name="**/*.jar"/>
+	    </fileset>
+	</path>
+	<property name="myclasspath" refid="project.classpath"/>
+	  <echo message="Classpath = ${myclasspath}"/>
+
+	<!-- Target: clean -->
+	<target name="clean">
+	    <delete dir="${deploy.dir}"/>
+	</target>
+	
+	<!-- Target: compile_src -->
+    <target name="compile_src">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includeantruntime="true">
+			<classpath refid="project.classpath"/>
+    	</javac>
+    </target>
+	
+	<!-- Target: compile_tests -->
+	<target name="compile_tests" depends="compile_src">
+		<mkdir dir="${testclasses.dir}"/>
+		<javac srcdir="${testsrc.dir}" destdir="${testclasses.dir}" debug="true" includeantruntime="true">
+			<classpath refid="project.classpath"/>	
+		</javac>
+	</target>
+	
+	<!-- Target: run_tests -->
+	<target name="run_tests" depends="compile_tests" >    
+	    <junit showoutput="true" haltonfailure="no" fork="yes" maxmemory="1024m">
+	    	<formatter type="plain" usefile="false"/>      
+	    	<classpath refid="project.classpath"/>
+			<batchtest fork="yes" todir="${testreports.dir}">
+	    		<fileset dir="${testsrc.dir}">
+	    	    	<include name="**/*Test*.java"/>
+	    	  	</fileset>
+	   		</batchtest>
+	    </junit>
+	    
+	    <echo message="executing junit test DONE!"/>
+	  </target>
+	
+	<!-- Target: jar -->
+	<target depends="compile_src" name="jar">
+		<jar basedir="${classes.dir}" 
+		 excludes="**/*Test*" 
+		 includes="**/*.class" 
+		 jarfile="${dist.dir}/${QuestionBankLib}.jar"/>
+	</target>
+	
+	<!-- Target: run -->
+	<!--<target depends="jar" name="run">
+		<java classname="${mainclass}">
+			<classpath>
+				<pathelement location="${dist.dir}/${MaxHeapLib}.jar"/>
+		    </classpath>
+		</java>
+	</target>-->
+
+    <target name="main" depends="clean, run_tests, jar"/><!-- , run"/>-->
+	
+</project>
