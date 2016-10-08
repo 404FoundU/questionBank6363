@@ -7,6 +7,13 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 public class TestCourseDataUtil {
+	
+	@Test
+	public void testFailBuild(){
+		int one = 1;
+		int two = 2;
+		assertEquals(one,two);
+	}
 
 	@Test
 	public void testValidateCourse(){
