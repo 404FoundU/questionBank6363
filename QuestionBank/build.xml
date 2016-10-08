@@ -15,7 +15,7 @@
 	<property name="QuestionBankLib"  value="questionBank"/>
 	<!--
 	<property name="MainClassName"	  value="Startup" />
-	<property name="package"		  value="org.zibran.example.projConfig" />
+	<property name="package"		  value="org.questionBank.main" />
 	<property name="mainclass" 		  value="${package}.${MainClassName}"/> -->
 	<!-- Target Names -->
 	
@@ -57,7 +57,7 @@
 	
 	<!-- Target: run_tests -->
 	<target name="run_tests" depends="compile_tests" >    
-	    <junit showoutput="true" haltonfailure="no" fork="yes" maxmemory="1024m">
+	    <junit showoutput="true" haltonfailure="no" fork="yes" maxmemory="1024m" failureproperty="test.failed">
 	    	<formatter type="plain" usefile="false"/>      
 	    	<classpath refid="project.classpath"/>
 			<batchtest fork="yes" todir="${testreports.dir}">
@@ -68,6 +68,7 @@
 	    </junit>
 	    
 	    <echo message="executing junit test DONE!"/>
+		<fail message="Test failure detected, check test results." if="test.failed" />
 	  </target>
 	
 	<!-- Target: jar -->
