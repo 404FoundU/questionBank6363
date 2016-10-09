@@ -8,20 +8,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Home object for domain model class Answer.
- * @see org.questionBank.data.Answer
+ * Home object for domain model class Teaches.
+ * @see org.questionBank.data.Teaches
  * @author Hibernate Tools
  */
 @Stateless
-public class AnswerHome {
+public class TeachesHome {
 
-	private static final Log log = LogFactory.getLog(AnswerHome.class);
+	private static final Log log = LogFactory.getLog(TeachesHome.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Answer transientInstance) {
-		log.debug("persisting Answer instance");
+	public void persist(Teaches transientInstance) {
+		log.debug("persisting Teaches instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -31,8 +31,8 @@ public class AnswerHome {
 		}
 	}
 
-	public void remove(Answer persistentInstance) {
-		log.debug("removing Answer instance");
+	public void remove(Teaches persistentInstance) {
+		log.debug("removing Teaches instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -42,10 +42,10 @@ public class AnswerHome {
 		}
 	}
 
-	public Answer merge(Answer detachedInstance) {
-		log.debug("merging Answer instance");
+	public Teaches merge(Teaches detachedInstance) {
+		log.debug("merging Teaches instance");
 		try {
-			Answer result = entityManager.merge(detachedInstance);
+			Teaches result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -54,10 +54,10 @@ public class AnswerHome {
 		}
 	}
 
-	public Answer findById(String id) {
-		log.debug("getting Answer instance with id: " + id);
+	public Teaches findById(TeachesId id) {
+		log.debug("getting Teaches instance with id: " + id);
 		try {
-			Answer instance = entityManager.find(Answer.class, id);
+			Teaches instance = entityManager.find(Teaches.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

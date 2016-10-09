@@ -14,7 +14,7 @@ CREATE TABLE Person(
 );
 
 create table Course(
-  id              number generated always as identity,
+  id              MEDIUMINT NOT NULL AUTO_INCREMENT,
   course_number   varchar(10),
   course_name     varchar(20),
   title           varchar(50),
@@ -25,18 +25,18 @@ create table Course(
 
 create table Teaches
 (per_id varchar(7),
-course_id number,
+course_id MEDIUMINT,
 primary key (per_id, course_id),
-foreign key (per_id) references Person,
-foreign key (course_id) references Course
+foreign key (per_id) references Person(per_id) on delete cascade,
+foreign key (course_id) references Course(id) on delete cascade
 );
 
 create table Question
 (question_id varchar(7),
-course_id number,
+course_id MEDIUMINT,
 chapter varchar(7),
 primary key (question_id),
-foreign key (course_id) references Course
+foreign key (course_id) references Course(id)
 );
 
 create table Answer
@@ -44,6 +44,6 @@ create table Answer
 question_id varchar(7),
 answer_text varchar(200),
 primary key (answer_id),
-foreign key (question_id) references Question
+foreign key (question_id) references Question(question_id)
 );
 

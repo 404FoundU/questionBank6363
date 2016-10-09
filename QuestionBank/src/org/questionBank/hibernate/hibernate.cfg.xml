@@ -4,16 +4,17 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="hibernate.connection.password">Quetzalcuotl1</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
-        <property name="hibernate.connection.schema">SYSTEM</property>
-        <property name="hibernate.connection.username">SYSTEM</property>
    		<!-- JDBC connection pool (use the built-in) -->
     	<property name="hibernate.connection.pool_size">1</property>
     	<!-- SQL dialect -->
-    	<property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+    	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     	<property name="hibernate.show_sql">true</property>
+    	
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/questionBank</property>
+        <!-- <property name="hibernate.connection.schema">SYSTEM</property> -->
+        <property name="hibernate.connection.username">qbank</property>
+        <property name="hibernate.connection.password">qbank12345</property>
     	<!-- Enable Hibernate's automatic session context management -->
    		<property name="hibernate.current_session_context_class">thread</property>
     </session-factory>

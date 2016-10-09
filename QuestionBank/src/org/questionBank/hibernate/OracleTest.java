@@ -2,13 +2,17 @@ package org.questionBank.hibernate;
 
 import java.math.BigDecimal;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+//import org.hibernate.Session;
+//import org.hibernate.SessionFactory;
+//import org.hibernate.cfg.Configuration;
 import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.InvalidCourseException;
 
 public class OracleTest {
+
+	private static final Log log = LogFactory.getLog(OracleTest.class);
 
 	/**
 	 * @param args
@@ -19,15 +23,15 @@ public class OracleTest {
 		String courseName = "Agile Software Engineering";
 		String title = "Agile";
 		String deptName = "Computer Science";
-		BigDecimal credit = new BigDecimal(3);
+		Integer credit = 3;
 		try{
 			courseDAO.createCourse(courseNumber, courseName, title, deptName, credit);
 		}catch(InvalidCourseException ex){
-			System.out.println("Invalid Course: "+ex.getMessage());
-			System.out.println(ex.getStackTrace());
+			log.error("Invalid Course: " + ex.getMessage(), ex);
+			log.debug(ex.getStackTrace());
 		}catch(Exception ex){
-			System.out.println("Reached Exception: " + ex.getMessage());
-			System.out.println(ex.getStackTrace());
+			log.error("Reached Exception: " + ex.getMessage(), ex);
+			log.debug(ex.getStackTrace());
 		}
 //		UserDetails usr = new UserDetails();
 //		usr.setUserId(2);

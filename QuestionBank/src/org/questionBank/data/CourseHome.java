@@ -1,7 +1,6 @@
 package org.questionBank.data;
-// Generated Oct 3, 2016 12:52:41 AM by Hibernate Tools 5.1.0.Beta1
+// Generated Oct 9, 2016 5:29:06 PM by Hibernate Tools 5.2.0.Beta1
 
-import java.math.BigDecimal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -55,7 +54,7 @@ public class CourseHome {
 		}
 	}
 
-	public Course findById(BigDecimal id) {
+	public Course findById(Integer id) {
 		log.debug("getting Course instance with id: " + id);
 		try {
 			Course instance = entityManager.find(Course.class, id);

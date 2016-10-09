@@ -1,6 +1,5 @@
 package org.questionBank.dao;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +17,11 @@ public class CourseDataUtil {
 	private static String TITLE_ERROR = "Course Title value must be at least 3 characters long.";
 	private static int DEPT_NAME_LENGTH = 3;
 	private static String DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
-	private static BigDecimal MIN_CREDIT = new BigDecimal(0.0);
-	private static BigDecimal MAX_CREDIT = new BigDecimal(5.0);
+	private static Integer MIN_CREDIT = 0;
+	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
 
-	public Course createCourse(String courseNumber, String courseName, String title, String deptName, BigDecimal credit) throws InvalidCourseException {
+	public Course createCourse(String courseNumber, String courseName, String title, String deptName, Integer credit) throws InvalidCourseException {
 		Course course = new Course();
 		validateCourse(title, deptName, credit);
 		course.setCourseNumber(courseNumber);
@@ -35,18 +34,18 @@ public class CourseDataUtil {
 		return course;
 	}
 	
-	public void deleteCourse(BigDecimal id){
+	public void deleteCourse(Integer id){
 		// TODO: test this
 		Course del = ch.findById(id); 
 		ch.remove(del);
 	}
 	
-	public Course findCourse(BigDecimal id){
+	public Course findCourse(Integer id){
 		// TODO: test this
 		return ch.findById(id);
 	}
 	
-	public boolean updateCourse(BigDecimal id){
+	public boolean updateCourse(Integer id){
 		// TODO: implement this
 		return false;
 	}
@@ -56,7 +55,7 @@ public class CourseDataUtil {
 		return new ArrayList<Course>();
 	}
 	
-	protected void validateCourse(String title, String deptName, BigDecimal credit) throws InvalidCourseException {
+	protected void validateCourse(String title, String deptName, Integer credit) throws InvalidCourseException {
 		List<String> errors = new ArrayList<String>();
 		if(title == null || title.length() < TITLE_LENGTH)
 			errors.add(TITLE_ERROR);

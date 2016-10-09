@@ -17,9 +17,9 @@ public class TestCourseDataUtil {
 		String badDept1 = "";
 		String badDept2 = "12";
 		String goodDept = "123";
-		BigDecimal badCredit1 = new BigDecimal(-1.0);
-		BigDecimal badCredit2 = new BigDecimal(5.1);
-		BigDecimal goodCredit = new BigDecimal(3.0);
+		Integer badCredit1 = -1;
+		Integer badCredit2 = 6;
+		Integer goodCredit = 3;
 		try{
 			courseDAO.validateCourse(badTitle1, badDept1, badCredit1);
 		}catch(InvalidCourseException ex){
