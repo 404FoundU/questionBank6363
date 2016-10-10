@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 9, 2016 5:29:06 PM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="org.questionBank.data.Teaches" table="Teaches" catalog="questionBank" optimistic-lock="version">
+    <class name="org.questionBank.data.Teaches" table="Teaches" catalog="questionbank" optimistic-lock="version">
         <composite-id name="id" class="org.questionBank.data.TeachesId">
             <key-property name="perId" type="string">
                 <column name="per_id" length="7" />

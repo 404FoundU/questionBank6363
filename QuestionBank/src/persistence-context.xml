@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence-unit name="pu1" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.mysite.restapi.RestletChildApplication</class>
+    <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/questionbank" />
+            <property name="hibernate.connection.username" value="qbank"/>
+            <property name="hibernate.connection.password" value="qbank12345"/>
+            <property name="show_sql" value="true" />
+            <property name="dialect" value="org.hibernate.dialect.MySQLDialect" />
+    </properties>
+</persistence-unit>

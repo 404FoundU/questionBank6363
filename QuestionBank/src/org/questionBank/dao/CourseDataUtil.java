@@ -3,10 +3,14 @@ package org.questionBank.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.CourseHome;
 
 public class CourseDataUtil {
+
+	private static final Logger log = LogManager.getLogger(CourseDataUtil.class);
 	
 	public CourseDataUtil(){ }
 	
@@ -30,8 +34,21 @@ public class CourseDataUtil {
 		course.setDeptName(deptName);
 		course.setCredit(credit);
 		// Save Course to DB
+		log.info("Creating Course");
+		log.debug(describeCourse(course));
 		ch.persist(course);
 		return course;
+	}
+	
+	public String describeCourse(Course course){
+		String str = "Course ["+course.getCourseName()+"]:\r\n";
+		str += "- Id ["+course.getId()+"]\r\n";
+		str += "- Name: ["+course.getCourseName()+"]\r\n";
+		str += "- Number: ["+course.getCourseNumber()+"]\r\n";
+		str += "- Department: ["+course.getDeptName()+"]\r\n";
+		str += "- Title: ["+course.getTitle()+"]\r\n";
+		str += "- Credit: ["+course.getCredit()+"]\r\n";
+		return str;
 	}
 	
 	public void deleteCourse(Integer id){
