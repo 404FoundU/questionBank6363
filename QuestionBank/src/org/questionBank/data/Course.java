@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +16,8 @@ import javax.persistence.Table;
 public class Course implements java.io.Serializable {
 
 	private Integer id;
-	private String courseNumber;
 	private String courseName;
+	private String courseNumber;
 	private String title;
 	private String deptName;
 	private Integer credit;
@@ -25,9 +25,9 @@ public class Course implements java.io.Serializable {
 	public Course() {
 	}
 
-	public Course(String courseNumber, String courseName, String title, String deptName, Integer credit) {
-		this.courseNumber = courseNumber;
+	public Course(String courseName, String courseNumber, String title, String deptName, Integer credit) {
 		this.courseName = courseName;
+		this.courseNumber = courseNumber;
 		this.title = title;
 		this.deptName = deptName;
 		this.credit = credit;
@@ -45,22 +45,22 @@ public class Course implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "course_number", length = 10)
-	public String getCourseNumber() {
-		return this.courseNumber;
-	}
-
-	public void setCourseNumber(String courseNumber) {
-		this.courseNumber = courseNumber;
-	}
-
-	@Column(name = "course_name", length = 20)
+	@Column(name = "course_name", length = 50)
 	public String getCourseName() {
 		return this.courseName;
 	}
 
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
+	}
+
+	@Column(name = "course_number", length = 16)
+	public String getCourseNumber() {
+		return this.courseNumber;
+	}
+
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
 	}
 
 	@Column(name = "title", length = 50)
@@ -72,7 +72,7 @@ public class Course implements java.io.Serializable {
 		this.title = title;
 	}
 
-	@Column(name = "dept_name", length = 30)
+	@Column(name = "dept_name", length = 20)
 	public String getDeptName() {
 		return this.deptName;
 	}

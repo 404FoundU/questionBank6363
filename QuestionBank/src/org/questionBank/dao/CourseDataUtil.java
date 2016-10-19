@@ -41,13 +41,13 @@ public class CourseDataUtil {
 	}
 	
 	public String describeCourse(Course course){
-		String str = "Course ["+course.getCourseName()+"]:\r\n";
-		str += "- Id ["+course.getId()+"]\r\n";
-		str += "- Name: ["+course.getCourseName()+"]\r\n";
-		str += "- Number: ["+course.getCourseNumber()+"]\r\n";
-		str += "- Department: ["+course.getDeptName()+"]\r\n";
-		str += "- Title: ["+course.getTitle()+"]\r\n";
-		str += "- Credit: ["+course.getCredit()+"]\r\n";
+		String str = "Course ["+course.getCourseName()+"]:\r\n"+
+					 "- Id ["+course.getId()+"]\r\n"+
+					 "- Name: ["+course.getCourseName()+"]\r\n"+
+					 "- Number: ["+course.getCourseNumber()+"]\r\n"+
+					 "- Department: ["+course.getDeptName()+"]\r\n"+
+					 "- Title: ["+course.getTitle()+"]\r\n"+
+					 "- Credit: ["+course.getCredit()+"]\r\n";
 		return str;
 	}
 	

@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

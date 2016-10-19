@@ -1,8 +1,10 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,32 +15,28 @@ import javax.persistence.Table;
 @Table(name = "Question", catalog = "questionbank")
 public class Question implements java.io.Serializable {
 
-	private String questionId;
+	private Integer id;
 	private Integer courseId;
 	private String chapter;
 
 	public Question() {
 	}
 
-	public Question(String questionId) {
-		this.questionId = questionId;
-	}
-
-	public Question(String questionId, Integer courseId, String chapter) {
-		this.questionId = questionId;
+	public Question(Integer courseId, String chapter) {
 		this.courseId = courseId;
 		this.chapter = chapter;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "question_id", unique = true, nullable = false, length = 7)
-	public String getQuestionId() {
-		return this.questionId;
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setQuestionId(String questionId) {
-		this.questionId = questionId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Column(name = "course_id")
