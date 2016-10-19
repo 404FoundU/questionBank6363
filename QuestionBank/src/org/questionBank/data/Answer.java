@@ -1,8 +1,10 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,40 +15,36 @@ import javax.persistence.Table;
 @Table(name = "Answer", catalog = "questionbank")
 public class Answer implements java.io.Serializable {
 
-	private String answerId;
-	private String questionId;
+	private Integer id;
+	private Integer questionId;
 	private String answerText;
 
 	public Answer() {
 	}
 
-	public Answer(String answerId) {
-		this.answerId = answerId;
-	}
-
-	public Answer(String answerId, String questionId, String answerText) {
-		this.answerId = answerId;
+	public Answer(Integer questionId, String answerText) {
 		this.questionId = questionId;
 		this.answerText = answerText;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "answer_id", unique = true, nullable = false, length = 7)
-	public String getAnswerId() {
-		return this.answerId;
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setAnswerId(String answerId) {
-		this.answerId = answerId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@Column(name = "question_id", length = 7)
-	public String getQuestionId() {
+	@Column(name = "question_id")
+	public Integer getQuestionId() {
 		return this.questionId;
 	}
 
-	public void setQuestionId(String questionId) {
+	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
 

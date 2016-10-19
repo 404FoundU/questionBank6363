@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,23 +10,23 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class TeachesId implements java.io.Serializable {
 
-	private String perId;
+	private int perId;
 	private int courseId;
 
 	public TeachesId() {
 	}
 
-	public TeachesId(String perId, int courseId) {
+	public TeachesId(int perId, int courseId) {
 		this.perId = perId;
 		this.courseId = courseId;
 	}
 
-	@Column(name = "per_id", nullable = false, length = 7)
-	public String getPerId() {
+	@Column(name = "per_id", nullable = false)
+	public int getPerId() {
 		return this.perId;
 	}
 
-	public void setPerId(String perId) {
+	public void setPerId(int perId) {
 		this.perId = perId;
 	}
 
@@ -48,14 +48,13 @@ public class TeachesId implements java.io.Serializable {
 			return false;
 		TeachesId castOther = (TeachesId) other;
 
-		return ((this.getPerId() == castOther.getPerId()) || (this.getPerId() != null && castOther.getPerId() != null
-				&& this.getPerId().equals(castOther.getPerId()))) && (this.getCourseId() == castOther.getCourseId());
+		return (this.getPerId() == castOther.getPerId()) && (this.getCourseId() == castOther.getCourseId());
 	}
 
 	public int hashCode() {
 		int result = 17;
 
-		result = 37 * result + (getPerId() == null ? 0 : this.getPerId().hashCode());
+		result = 37 * result + this.getPerId();
 		result = 37 * result + this.getCourseId();
 		return result;
 	}

@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -26,8 +26,7 @@ public class Teaches implements java.io.Serializable {
 
 	@EmbeddedId
 
-	@AttributeOverrides({
-			@AttributeOverride(name = "perId", column = @Column(name = "per_id", nullable = false, length = 7)),
+	@AttributeOverrides({ @AttributeOverride(name = "perId", column = @Column(name = "per_id", nullable = false)),
 			@AttributeOverride(name = "courseId", column = @Column(name = "course_id", nullable = false)) })
 	public TeachesId getId() {
 		return this.id;
