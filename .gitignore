@@ -5,3 +5,5 @@ RemoteSystemsTempFiles/
 .recommenders/
 **/.DS_Store
 QuestionBank/applog.txt
+/.settings/
+/.classpath
