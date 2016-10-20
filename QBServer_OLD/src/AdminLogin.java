@@ -12,19 +12,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/teacherlogin")
-public class teacherlogin extends HttpServlet {
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public teacherlogin() {
+	
+    public AdminLogin() {
         super();
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		
@@ -34,15 +37,15 @@ public class teacherlogin extends HttpServlet {
 			ResultSet rs;
 			Class.forName("com.mysql.jdbc.Driver");
 			c=DriverManager.getConnection("jdbc:mysql://localhost:3306/qbms","root","");
-			String Query="SELECT * FROM teacherlogin";
+			String Query="SELECT * FROM adminlogin";
 			ps=c.prepareStatement(Query);
 			rs=ps.executeQuery();
 			
 			while(rs.next()){
 				if(username.equals(rs.getString("UserName"))&& password.equals(rs.getString("Password"))){
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("admindashboard.jsp");
 				}
-				response.sendRedirect("teacherlogin.jsp");
+				response.sendRedirect("adminlogin.jsp");
 			}
 			rs.close();
 			ps.close();
@@ -51,5 +54,6 @@ public class teacherlogin extends HttpServlet {
 		}
 
 	}
+	
 
 }

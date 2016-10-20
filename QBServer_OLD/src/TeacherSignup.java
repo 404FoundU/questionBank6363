@@ -12,41 +12,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/teacherlogin")
-public class teacherlogin extends HttpServlet {
+@WebServlet("/TeacherSignup")
+public class TeacherSignup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public teacherlogin() {
+       
+    public TeacherSignup() {
         super();
+
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String username=request.getParameter("username");
+		String email=request.getParameter("email");
 		String password=request.getParameter("password");
+		String contact=request.getParameter("contact");
+		String gender=request.getParameter("gender");
 		
 		try{
 			Connection c;
 			PreparedStatement ps;
-			ResultSet rs;
 			Class.forName("com.mysql.jdbc.Driver");
 			c=DriverManager.getConnection("jdbc:mysql://localhost:3306/qbms","root","");
-			String Query="SELECT * FROM teacherlogin";
+			String Query="INSERT into tempteacher (UserName, Email, Password, Gender, ContactNo)" 
+			+ "VALUES(? , ? , ? , ? , ?)";
 			ps=c.prepareStatement(Query);
-			rs=ps.executeQuery();
-			
-			while(rs.next()){
-				if(username.equals(rs.getString("UserName"))&& password.equals(rs.getString("Password"))){
-					response.sendRedirect("index.jsp");
-				}
-				response.sendRedirect("teacherlogin.jsp");
-			}
-			rs.close();
+			ps.setString(1, username);
+			ps.setString(2, email);
+			ps.setString(3, password);
+			ps.setString(4, gender);
+			ps.setString(5, contact);
+			ps.executeUpdate();
 			ps.close();
 			c.close();
+			response.sendRedirect("index.jsp");
+			
 		}catch(Exception e){
 		}
 
