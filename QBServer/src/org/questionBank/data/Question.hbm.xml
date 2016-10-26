@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="org.questionBank.data.Question" table="Question" catalog="questionbank" optimistic-lock="version">
+        <id name="questionId" type="string">
+            <column name="question_id" length="7" />
+            <generator class="assigned" />
+        </id>
+        <property name="courseId" type="java.lang.Integer">
+            <column name="course_id" />
+        </property>
+        <property name="chapter" type="string">
+            <column name="chapter" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

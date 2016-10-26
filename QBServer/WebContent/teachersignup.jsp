@@ -43,7 +43,7 @@
               </div>
             </div>
 			 <div class="form-group form-control-material static required">
-                  <input type="email" class="form-control" name= "email" id="exampleInputEmail1" maxlength="255" placeholder="Enter email">
+                  <input type="text" class="form-control" name= "firstname" id="exampleInputEmail1" maxlength="255" placeholder="Enter email">
                 </div>
             <div class="form-group">
               <div class="form-control-material static required">
@@ -57,7 +57,7 @@
             </div>
 			   <div class="form-group">
 			  <div class="form-control-material">
-                <input class="form-control" id="contact" name="contact" type="number" required placeholder="Enter Contact" maxlength="11">
+                <input class="form-control" id="contact" name="lastname" type="text" required placeholder="Enter Contact" maxlength="11">
               </div>
 			  </div>
 			     <div class="form-group">
@@ -75,7 +75,7 @@
     <button name="submit" type="submit">create</button>
     <p class="message">Already registered? <a href="teacherlogin.jsp">Sign In</a></p>
   </form>
-  
+  ${message}
 </div>
 <video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg">
   <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
