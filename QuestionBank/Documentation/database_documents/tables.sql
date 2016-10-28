@@ -17,7 +17,7 @@ create table Course(
   id   MEDIUMINT NOT NULL AUTO_INCREMENT,
   course_name     varchar(50),
   course_number	  varchar(16),
-  title           varchar(50),
+  title           varchar(64),
   dept_name       varchar(20),
   credit          int,
   primary key (id)

@@ -1,19 +1,25 @@
 package org.questionBank.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.CourseHome;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CourseDataUtil {
 
 	private static final Logger log = LogManager.getLogger(CourseDataUtil.class);
 	
 	public CourseDataUtil(){ }
-	
+
+	@Autowired
 	private CourseHome ch = new CourseHome();
 	
 	// Validation
@@ -25,7 +31,7 @@ public class CourseDataUtil {
 	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
 
-	public Course createCourse(String courseNumber, String courseName, String title, String deptName, Integer credit) throws InvalidCourseException {
+	public Course createCourse(String courseName, String courseNumber, String title, String deptName, Integer credit) throws InvalidCourseException {
 		Course course = new Course();
 		validateCourse(title, deptName, credit);
 		course.setCourseNumber(courseNumber);
@@ -70,6 +76,31 @@ public class CourseDataUtil {
 	public List<Course> getCourses(){
 		// TODO: implement this
 		return new ArrayList<Course>();
+		
+	}
+	
+	public List<Map<String,Object>> getDataForAllCourses(){
+		List<Course> courses = ch.getCourses();
+		return getCoursesData(courses);
+	}
+	
+	public List<Map<String,Object>> getCoursesData(List<Course> courses){
+		List<Map<String,Object>> coursesData = new ArrayList<Map<String,Object>>();
+		for(Course course : courses){
+			coursesData.add(mapCourse(course));
+		}
+		return coursesData;
+	}
+	
+	public Map<String,Object> mapCourse(Course course){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id", course.getId());
+		map.put("courseNumber", course.getCourseNumber());
+		map.put("courseName", course.getCourseName());
+		map.put("title", course.getTitle());
+		map.put("deptName", course.getDeptName());
+		map.put("credit", course.getCredit());
+		return map;
 	}
 	
 	protected void validateCourse(String title, String deptName, Integer credit) throws InvalidCourseException {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
    
 
@@ -213,7 +214,7 @@
  ?>
 
                   <div class="panel-footer text-right">
-                    <a href="teachercourseview.php?tid=<?php echo $Login_id?>" class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated>View Courses</a>
+                    <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Courses</a>
                   </div>
                 </div>
               </div>

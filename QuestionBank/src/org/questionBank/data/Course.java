@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 18, 2016 9:47:48 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 22, 2016 8:25:50 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -63,7 +63,7 @@ public class Course implements java.io.Serializable {
 		this.courseNumber = courseNumber;
 	}
 
-	@Column(name = "title", length = 50)
+	@Column(name = "title", length = 64)
 	public String getTitle() {
 		return this.title;
 	}
