@@ -15,10 +15,9 @@ CREATE TABLE Person(
 
 create table Course(
   id   MEDIUMINT NOT NULL AUTO_INCREMENT,
-  course_name     varchar(50),
-  course_number	  varchar(16),
-  title           varchar(64),
-  dept_name       varchar(20),
+  course_name     varchar(64),
+  course_number	  varchar(4),
+  dept_name       varchar(8),
   credit          int,
   primary key (id)
 );

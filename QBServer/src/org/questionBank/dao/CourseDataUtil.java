@@ -36,7 +36,6 @@ public class CourseDataUtil {
 		validateCourse(title, deptName, credit);
 		course.setCourseNumber(courseNumber);
 		course.setCourseName(courseName);
-		course.setTitle(title);
 		course.setDeptName(deptName);
 		course.setCredit(credit);
 		// Save Course to DB
@@ -52,7 +51,6 @@ public class CourseDataUtil {
 		str += "- Name: ["+course.getCourseName()+"]\r\n";
 		str += "- Number: ["+course.getCourseNumber()+"]\r\n";
 		str += "- Department: ["+course.getDeptName()+"]\r\n";
-		str += "- Title: ["+course.getTitle()+"]\r\n";
 		str += "- Credit: ["+course.getCredit()+"]\r\n";
 		return str;
 	}
@@ -97,7 +95,6 @@ public class CourseDataUtil {
 		map.put("id", course.getId());
 		map.put("courseNumber", course.getCourseNumber());
 		map.put("courseName", course.getCourseName());
-		map.put("title", course.getTitle());
 		map.put("deptName", course.getDeptName());
 		map.put("credit", course.getCredit());
 		return map;
