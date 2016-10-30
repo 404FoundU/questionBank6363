@@ -1,8 +1,10 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 30, 2016 1:32:51 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,15 +15,12 @@ import javax.persistence.Table;
 @Table(name = "Person", catalog = "questionbank")
 public class Person implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	
-	private String perId;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String userName;
 	private String password;
+	private String perId;
 
 	public Person() {
 	}
@@ -30,22 +29,24 @@ public class Person implements java.io.Serializable {
 		this.perId = perId;
 	}
 
-	public Person(String perId, String firstName, String lastName, String userName, String password) {
-		this.perId = perId;
+	public Person(String firstName, String lastName, String userName, String password, String perId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+		this.perId = perId;
 	}
 
 	@Id
-	@Column(name = "per_id", unique = true, nullable = false, length = 7)
-	public String getPerId() {
-		return this.perId;
+	@GeneratedValue(strategy = IDENTITY)
+
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setPerId(String perId) {
-		this.perId = perId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Column(name = "first_name", length = 50)
@@ -66,7 +67,7 @@ public class Person implements java.io.Serializable {
 		this.lastName = lastName;
 	}
 
-	@Column(name = "user_name", length = 7)
+	@Column(name = "user_name", length = 20)
 	public String getUserName() {
 		return this.userName;
 	}
@@ -82,6 +83,15 @@ public class Person implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Column(name = "per_id", nullable = false, length = 7)
+	public String getPerId() {
+		return this.perId;
+	}
+
+	public void setPerId(String perId) {
+		this.perId = perId;
 	}
 
 }
