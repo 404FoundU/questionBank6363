@@ -1,11 +1,11 @@
 delete from Course;
 
-INSERT INTO Course (course_name, course_number, title, dept_name, credit) 
-VALUES ('Test 1', 'TST1000', 'Test Course 1 Title', 'Test', 3),
-	   ('Test 2', 'TST2003', 'Test Course 2 Title', 'Test', 3),
-	   ('Test 3', 'TST3500', 'Test Course 3 Title', 'Test', 1),
-	   ('Intro', 'CSCI1000', 'Intro to Computer Science', 'Computer Science', 3),
-	   ('Pattern Recognition', 'CSCI6635', 'Theory & Computer Applications for Pattern Recognition', 'Computer Science', 3),
-	   ('Data Structures', 'CSCI2025', 'Data Structures and Applications', 'Computer Science', 3),
-	   ('Calculus 1', 'MATH2114', null, 'Math', 3),
-	   ('Calculus 2', 'MATH2124', null, 'Math', 3);
+INSERT INTO Course (course_name, course_number, dept_name, credit) 
+VALUES ('Test Course 1 Title', '1000', 'TEST', 3),
+	   ('Test Course 2 Title', '2003', 'TEST', 3),
+	   ('Test Course 3 Title', '3500', 'TEST', 1),
+	   ('Intro to Computer Science', '1000', 'CSCI', 3),
+	   ('Theory & Computer Applications for Pattern Recognition', '6635', 'CSCI', 3),
+	   ('Data Structures and Applications', '2025', 'CSCI', 3),
+	   ('Calculus 1', '2114', 'MATH', 3),
+	   ('Calculus 2', '2124', 'MATH', 3);

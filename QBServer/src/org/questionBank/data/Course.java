@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 30, 2016 1:32:51 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 30, 2016 3:13:59 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,17 +18,15 @@ public class Course implements java.io.Serializable {
 	private Integer id;
 	private String courseName;
 	private String courseNumber;
-	private String title;
 	private String deptName;
 	private Integer credit;
 
 	public Course() {
 	}
 
-	public Course(String courseName, String courseNumber, String title, String deptName, Integer credit) {
+	public Course(String courseName, String courseNumber, String deptName, Integer credit) {
 		this.courseName = courseName;
 		this.courseNumber = courseNumber;
-		this.title = title;
 		this.deptName = deptName;
 		this.credit = credit;
 	}
@@ -45,7 +43,7 @@ public class Course implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "course_name", length = 50)
+	@Column(name = "course_name", length = 64)
 	public String getCourseName() {
 		return this.courseName;
 	}
@@ -54,7 +52,7 @@ public class Course implements java.io.Serializable {
 		this.courseName = courseName;
 	}
 
-	@Column(name = "course_number", length = 16)
+	@Column(name = "course_number", length = 4)
 	public String getCourseNumber() {
 		return this.courseNumber;
 	}
@@ -63,16 +61,7 @@ public class Course implements java.io.Serializable {
 		this.courseNumber = courseNumber;
 	}
 
-	@Column(name = "title", length = 64)
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	@Column(name = "dept_name", length = 20)
+	@Column(name = "dept_name", length = 8)
 	public String getDeptName() {
 		return this.deptName;
 	}

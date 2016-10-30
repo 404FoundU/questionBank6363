@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 30, 2016 1:32:51 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 30, 2016 3:13:59 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,21 +20,15 @@ public class Person implements java.io.Serializable {
 	private String lastName;
 	private String userName;
 	private String password;
-	private String perId;
 
 	public Person() {
 	}
 
-	public Person(String perId) {
-		this.perId = perId;
-	}
-
-	public Person(String firstName, String lastName, String userName, String password, String perId) {
+	public Person(String firstName, String lastName, String userName, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
-		this.perId = perId;
 	}
 
 	@Id
@@ -83,15 +77,6 @@ public class Person implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Column(name = "per_id", nullable = false, length = 7)
-	public String getPerId() {
-		return this.perId;
-	}
-
-	public void setPerId(String perId) {
-		this.perId = perId;
 	}
 
 }
