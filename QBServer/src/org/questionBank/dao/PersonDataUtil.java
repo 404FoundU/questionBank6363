@@ -62,7 +62,6 @@ public class PersonDataUtil {
 		if(people != null && !people.isEmpty())
 			throw new UserAlreadyExistException("User name not available");
 		person=new Person();
-		person.setPerId(userName);
 		person.setFirstName(firstName);
 		person.setLastName(lastName);
 		person.setPassword(password);
