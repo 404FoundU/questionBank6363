@@ -43,7 +43,7 @@
 										<div class="form">
 
     										<div class="form-group">
-     											<div class="form-control-material">
+     											<div class="form-control-material static required">
       												<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required >
  												</div>
     										</div>
