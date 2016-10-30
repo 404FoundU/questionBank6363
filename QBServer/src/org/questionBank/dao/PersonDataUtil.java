@@ -1,7 +1,11 @@
 package org.questionBank.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.questionBank.data.Course;
 import org.questionBank.data.Person;
 import org.questionBank.data.PersonHome;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +31,8 @@ public class PersonDataUtil {
 	}
 	public boolean teacherLogin(String userName,String password) throws InvalidCredentialException{
 		validateUserCredential(userName,password);
-		Person person=ph.findByuserName(userName);
-		if(person==null){
-			throw new InvalidCredentialException("invalid username");
-		}
+		Person person=ph.findByUserName(userName);
+		
 		if(person.getPassword().equals(password)){
 			return true;
 		}else{
@@ -56,8 +58,8 @@ public class PersonDataUtil {
 	public Person createPerson( String userName, String password, String firstName, String rpassword, String lastName) throws InvalidCredentialException, UserAlreadyExistException {
 		Person person=null;
 		validateUserCredential(userName, password , rpassword);
-		person=ph.findByuserName(userName);
-		if(person!=null)
+		List<Person> people=ph.findUsersByUserName(userName);
+		if(people != null && !people.isEmpty())
 			throw new UserAlreadyExistException("User name not available");
 		person=new Person();
 		person.setPerId(userName);

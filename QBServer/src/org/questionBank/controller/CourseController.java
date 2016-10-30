@@ -55,7 +55,7 @@ public class CourseController {
 	
 	// Show
 	@RequestMapping(value="/ShowCourse/{courseId}",method=RequestMethod.GET)
-	public ModelAndView showCourse(@PathVariable("courseId") Integer courseId){
+	public ModelAndView showCourse(@PathVariable("courseId") int courseId){
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/ShowCourse");
 		Course c = courseDAO.findCourse(courseId);
@@ -65,7 +65,7 @@ public class CourseController {
 	
 	// Edit
 	@RequestMapping(value="/EditCourse/{courseId}",method=RequestMethod.GET)
-	public ModelAndView editCourse(@PathVariable("courseId") Integer courseId){
+	public ModelAndView editCourse(@PathVariable("courseId") int courseId){
 		ModelAndView mve = new ModelAndView("views/courses/EditCourse");
 		Course c = courseDAO.findCourse(courseId);
 		mve.addObject("course",c);

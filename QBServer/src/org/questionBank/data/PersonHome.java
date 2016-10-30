@@ -1,14 +1,15 @@
 package org.questionBank.data;
 // Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 
-import javax.ejb.Stateless;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
+import org.questionBank.dao.InvalidCredentialException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -73,16 +74,35 @@ public class PersonHome {
 			throw re;
 		}
 	}
-	@Transactional
-	public Person findByuserName(String userName) {
-		log.debug("getting Person instance with id: " + userName);
-		try {
-			Person instance = transactionManager.find(Person.class, userName);
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
+	
+	public List<Person> findUsersByUserName(String userName){
+		String sql = "select p from Person p where userName = '" + userName + "'";
+		TypedQuery<Person> q = transactionManager.createQuery(sql, Person.class);
+		List<Person> results = q.getResultList();
+		return results;
 	}
+
+	public Person findByUserName(String userName) throws InvalidCredentialException {
+		List<Person> people = findUsersByUserName(userName);
+		if(people==null || people.isEmpty()){
+			throw new InvalidCredentialException("invalid username");
+		}
+		if(people.size() > 1){
+			throw new InvalidCredentialException("multiple users found");
+		}
+		Person person  = people.get(0);
+		return person;
+	}
+//	@Transactional
+//	public Person findByuserName(String userName) {
+//		log.debug("getting Person instance with id: " + userName);
+//		try {
+//			Person instance = transactionManager.find(Person.class, userName);
+//			log.debug("get successful");
+//			return instance;
+//		} catch (RuntimeException re) {
+//			log.error("get failed", re);
+//			throw re;
+//		}
+//	}
 }
