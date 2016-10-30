@@ -23,10 +23,10 @@ public class CourseDataUtil {
 	private CourseHome ch = new CourseHome();
 	
 	// Validation
-	private static int TITLE_LENGTH = 3;
-	private static String TITLE_ERROR = "Course Title value must be at least 3 characters long.";
-	private static int DEPT_NAME_LENGTH = 3;
-	private static String DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
+	private static int MIN_DEPT_NAME_LENGTH = 2;
+	private static int MAX_DEPT_NAME_LENGTH = 8;
+	private static String MIN_DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
+	private static String MAX_DEPT_NAME_ERROR = "Course Department Name value must be at most 8 characters long.";
 	private static Integer MIN_CREDIT = 0;
 	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
@@ -102,10 +102,10 @@ public class CourseDataUtil {
 	
 	protected void validateCourse(String title, String deptName, Integer credit) throws InvalidCourseException {
 		List<String> errors = new ArrayList<String>();
-		if(title == null || title.length() < TITLE_LENGTH)
-			errors.add(TITLE_ERROR);
-		if(deptName == null || deptName.length() < DEPT_NAME_LENGTH)
-			errors.add(DEPT_NAME_ERROR);
+		if(deptName == null || deptName.length() < MIN_DEPT_NAME_LENGTH)
+			errors.add(MIN_DEPT_NAME_ERROR);
+		if(deptName.length() < MAX_DEPT_NAME_LENGTH)
+			errors.add(MAX_DEPT_NAME_ERROR);
 		if(MIN_CREDIT.compareTo(credit) > 0 || MAX_CREDIT.compareTo(credit) < 0)
 			errors.add(CREDIT_ERROR);
 		if(!errors.isEmpty()){

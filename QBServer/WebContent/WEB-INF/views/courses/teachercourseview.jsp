@@ -55,7 +55,6 @@
 												<tr>
 													<th>Course</th>
 													<th>Number</th>
-													<th>Title</th>
 													<th>Department</th>
 													<th>Credits</th>
 													<th></th>
@@ -64,7 +63,6 @@
     												<tr>
       													<td><c:out value="${item.courseName}" /></td>
       													<td><c:out value="${item.courseNumber}" /></td>
-      													<td><c:out value="${item.title}" /></td>
       													<td><c:out value="${item.deptName}" /></td>
       													<td><c:out value="${item.credit}" /></td>
       													<td>
