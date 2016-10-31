@@ -49,7 +49,7 @@
 	   <h1 class="bold">Team Charlie</span></h1>
 	   <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/chris.jpg" alt="Christian" width="85" height="85"><strong>Christian Amadeo Levi</strong><br>504-452-6940<br><a href="mailto:calevi@my.uno.edu">calevi@my.uno.edu</a>
+                     <p><img src="images/chris.jpeg" alt="Christian" width="85" height="85"><strong>Christian Amadeo Levi</strong><br>504-452-6940<br><a href="mailto:calevi@my.uno.edu">calevi@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Technical Lead, ABC Company</p>
@@ -65,7 +65,7 @@
        </div>
        <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/sefak.jpg" alt="Sefak" width="85" height="85"><strong>Sefak Kahriman</strong><br>504-434-9997<br><a href="mailto:skahrima@my.uno.edu">skahrima@my.uno.edu</a>
+                     <p><img src="images/sefak.jpeg" alt="Sefak" width="85" height="85"><strong>Sefak Kahriman</strong><br>504-434-9997<br><a href="mailto:skahrima@my.uno.edu">skahrima@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Software Developer, XYZ Company</p>
