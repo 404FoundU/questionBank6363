@@ -7,7 +7,6 @@ import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.InvalidCourseException;
 import org.questionBank.data.Course;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +39,10 @@ public class CourseController {
 
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.POST)
 	public ModelAndView createCourse(@RequestParam String courseName, @RequestParam String courseNumber,
-			@RequestParam String title, @RequestParam String deptName, @RequestParam Integer credit){
+									 @RequestParam String deptName, @RequestParam Integer credit){
 		ModelAndView mve =  null;
 		try {
-			Course newCourse = courseDAO.createCourse(courseName, courseNumber, title, deptName, credit);
+			Course newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
 			mve=new ModelAndView("redirect:teacherdashboard.jsp");
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {
@@ -54,21 +53,43 @@ public class CourseController {
 	}
 	
 	// Show
-	@RequestMapping(value="/ShowCourse/{courseId}",method=RequestMethod.GET)
-	public ModelAndView showCourse(@PathVariable("courseId") int courseId){
+	@RequestMapping(value="/ShowCourse",method=RequestMethod.GET)
+	public ModelAndView showCourse(@RequestParam("id") int id){
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/ShowCourse");
-		Course c = courseDAO.findCourse(courseId);
+		Course c = courseDAO.findCourse(id);
 		mve.addObject("course",c);
 		return mve;
 	}
 	
 	// Edit
-	@RequestMapping(value="/EditCourse/{courseId}",method=RequestMethod.GET)
-	public ModelAndView editCourse(@PathVariable("courseId") int courseId){
-		ModelAndView mve = new ModelAndView("views/courses/EditCourse");
-		Course c = courseDAO.findCourse(courseId);
+	@RequestMapping(value="/EditCourse",method=RequestMethod.GET)
+	public ModelAndView editCourse(@RequestParam("id") int id){
+		ModelAndView mve = null;
+		mve = new ModelAndView("views/courses/EditCourse");
+		Course c = courseDAO.findCourse(id);
+		try{
+			courseDAO.validateCourse(c);
+		}catch(InvalidCourseException ex){
+			mve.addObject("errors", courseDAO.courseErrors(c));
+		}
 		mve.addObject("course",c);
+		return mve;
+	}
+
+	@RequestMapping(value="/UpdateCourse",method=RequestMethod.POST)
+	public ModelAndView updateCourse(@RequestParam Integer id, @RequestParam String courseName, 
+									 @RequestParam String courseNumber,@RequestParam String deptName, 
+									 @RequestParam Integer credit){
+		ModelAndView mve =  null;
+		try {
+			courseDAO.updateCourse(id, courseName, courseNumber, deptName, credit);
+			Course newCourse = courseDAO.findCourse(id);
+			mve=new ModelAndView("redirect:ShowCourse?id="+id);
+			mve.addObject("course", newCourse);
+		} catch (InvalidCourseException e) {
+			mve=new ModelAndView("redirect:EditCourse?id="+id);
+		}
 		return mve;
 	}
 	

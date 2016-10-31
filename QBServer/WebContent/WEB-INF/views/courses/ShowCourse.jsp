@@ -43,32 +43,40 @@
 										<div class="form">
 
     										<div class="form-group">
+    											<div>
+    												<label><strong>Course Name</strong></label>
+    											</div>
      											<div class="form-control-material">
-      												<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required >
+     												</label><label>${course.courseName}</label>
  												</div>
     										</div>
    
-   											<div class="form-group form-control-material static required">
-    											<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number">
-   											</div>
-                       
-   											<div class="form-group form-control-material static required">
-    											<input type="text" class="form-control" name= "title" id="title" maxlength="64" placeholder="Enter Title">
-   											</div>
-   
-   											<div class="form-group form-control-material static required">
-    											<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department">
+   											<div class="form-group">
+   												<div>
+    												<label><strong>Course Dept/Number</strong></label>
+   												</div>
+   												<div class="form-group form-control-material static required">
+     												<label>${course.deptName}-${course.courseNumber}</label>
+   												</div>
    											</div>
    
-   											<div class="form-group form-control-material static required">
-												<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+   											<div class="form-group">
+   												<div>
+    												<label><strong>Credits</strong></label>
+   												</div>
+   												<div class="form-control-material static required">
+     												<label>${course.credit}</label>
+     											</div>
    											</div>
 
  										</div>
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >Cancel</a>
+                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
+                  					<a href="<c:url value="EditCourse">
+      											<c:param name="id" value="${course.id}" />
+      										</c:url>">Edit</a>
                     			</div>
                   			</div>
         				</div>

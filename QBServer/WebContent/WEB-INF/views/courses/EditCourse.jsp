@@ -47,38 +47,42 @@
                 				
                   					<div class="panel-heading">
 										<div class="form">
-
+	
+    										<span class="error">
+  												<c:forEach items="${errors}" var="error">
+  													<c:out value="* ${error}" /><br />
+  												</c:forEach>
+  											</span>
    											<form action="UpdateCourse" method="post">
+   												<input type="hidden" name="id" value="${course.id}">
     											<div class="form-group">
      												<div class="form-control-material">
-      													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required >
+      													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required value="${course.courseName}">
  													</div>
     											</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number">
-   												</div>
-                       
-   												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "title" id="title" maxlength="64" placeholder="Enter Title">
+    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number" value="${course.courseNumber}">
    												</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department">
+    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}">
    												</div>
    
    												<div class="form-group form-control-material static required">
-													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="${course.credit}" >
    												</div>
  
-   												<button name="submit" type="submit">create</button>
-  												<p class="message"></p>
+   												<button name="submit" type="submit">Update Course</button>
   											</form>
  										</div>
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >Cancel</a>
+                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
+                  					<a href="<c:url value="ShowCourse">
+      											<c:param name="id" value="${course.id}" />
+      										</c:url>">Show</a>
                     			</div>
                   			</div>
         				</div>
