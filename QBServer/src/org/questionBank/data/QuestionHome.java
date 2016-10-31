@@ -1,25 +1,39 @@
 package org.questionBank.data;
 // Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 
-import javax.ejb.Stateless;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Home object for domain model class Question.
  * @see org.questionBank.data.Question
  * @author Hibernate Tools
  */
-@Stateless
+
+@Service
+@Transactional
 public class QuestionHome {
 
 	private static final Log log = LogFactory.getLog(QuestionHome.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public List<Question> getQuestionsForCourse(Integer courseId){
+		TypedQuery<Question> q = entityManager.createQuery("select q from Question q where courseId="+courseId, Question.class);
+		List<Question> results = q.getResultList(); 
+		return results;
+	}
 
+	@Transactional
 	public void persist(Question transientInstance) {
 		log.debug("persisting Question instance");
 		try {
@@ -31,6 +45,7 @@ public class QuestionHome {
 		}
 	}
 
+	@Transactional
 	public void remove(Question persistentInstance) {
 		log.debug("removing Question instance");
 		try {
@@ -42,6 +57,7 @@ public class QuestionHome {
 		}
 	}
 
+	@Transactional
 	public Question merge(Question detachedInstance) {
 		log.debug("merging Question instance");
 		try {
@@ -54,7 +70,7 @@ public class QuestionHome {
 		}
 	}
 
-	public Question findById(String id) {
+	public Question findById(Integer id) {
 		log.debug("getting Question instance with id: " + id);
 		try {
 			Question instance = entityManager.find(Question.class, id);

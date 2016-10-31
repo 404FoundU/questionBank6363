@@ -61,18 +61,18 @@
     											</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number" value="${course.courseNumber}" required>
+    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}" required>
    												</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}" required>
+    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number" value="${course.courseNumber}" required>
    												</div>
    
    												<div class="form-group form-control-material static required">
 													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  value="${course.credit}" required >
    												</div>
  
-   												<button name="submit" type="submit">create</button>
+   												<button name="submit" type="submit">Create</button>
   												<p class="message"></p>
   											</form>
  										</div>

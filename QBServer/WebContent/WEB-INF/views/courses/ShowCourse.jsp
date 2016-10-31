@@ -13,7 +13,7 @@
     
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 		
-		<title>Add New Course</title>
+		<title>Show Course</title>
 	</head>
 	<body>  
 		<div class="container">
@@ -47,7 +47,7 @@
     												<label><strong>Course Name</strong></label>
     											</div>
      											<div class="form-control-material static required">
-     												</label><label>${course.courseName}</label>
+     												<label>${course.courseName}</label>
  												</div>
     										</div>
    
@@ -69,6 +69,44 @@
      											</div>
    											</div>
 
+											<div class="form-group">
+												<div>
+													<label><strong>Questions</strong></label>
+												</div>
+												<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
+													href="<c:url value="/CourseAddQuestion">
+															<c:param name="courseId" value="${course.id}" />
+														  </c:url>" >+</a>
+												
+												
+                				<!-- COURSE QUESTIONS -->
+                  					<div class="panel-heading">
+                    					<div class="table-list-content">
+											<table width="100%">
+												<tr>
+													<th width="20%">Chapter</th>
+													<th width="63%">Question</th>
+													<th width="17%"></th>
+												</tr>
+  												<c:forEach items="${questions}" var="item">
+    												<tr>
+      													<td><c:out value="${item.chapter}" /></td>
+      													<td><c:out value="${item.question}" /></td>
+      													<td>
+      														<a href="<c:url value="/ShowQuestion">
+      																	<c:param name="id" value="${item.id}" />
+      																</c:url>">Show</a>&nbsp&nbsp|&nbsp
+      														<a href="<c:url value="/EditQuestion"> 
+      																	<c:param name="id" value="${item.id}" />
+      																</c:url>">Edit</a>
+      													</td>
+    												</tr>
+  												</c:forEach>
+											</table>
+                    					</div>
+                  					</div>
+												
+											</div>
  										</div>
                   					</div>
                   				</div>

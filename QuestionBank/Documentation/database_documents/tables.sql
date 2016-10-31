@@ -33,6 +33,7 @@ foreign key (course_id) references Course(id) on delete cascade
 create table Question(
 id MEDIUMINT NOT NULL AUTO_INCREMENT,
 course_id MEDIUMINT,
+question varchar(256),
 chapter varchar(7),
 primary key (id),
 foreign key (course_id) references Course(id)
@@ -41,7 +42,7 @@ foreign key (course_id) references Course(id)
 create table Answer
 (id MEDIUMINT NOT NULL AUTO_INCREMENT,
 question_id MEDIUMINT,
-answer_text varchar(200),
+answer_text varchar(256),
 primary key (id),
 foreign key (question_id) references Question(id)
 );

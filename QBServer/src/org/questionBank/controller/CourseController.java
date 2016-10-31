@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.InvalidCourseException;
+import org.questionBank.dao.QuestionDataUtil;
 import org.questionBank.data.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ public class CourseController {
 	
 	@Autowired
 	CourseDataUtil courseDAO;
+	@Autowired
+	QuestionDataUtil questionDAO;
 
 	// List
 	@RequestMapping(value="/TeacherCourseView",method=RequestMethod.GET)
@@ -52,7 +55,7 @@ public class CourseController {
 		ModelAndView mve =  null;
 		try {
 			Course newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
-			mve=new ModelAndView("redirect:teacherdashboard.jsp");
+			mve=new ModelAndView("redirect:ShowCourse?id="+newCourse.getId());
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {
 			mve=new ModelAndView("redirect:TeacherAddCourse");
@@ -60,7 +63,6 @@ public class CourseController {
 			mve.addObject("courseNumber", courseNumber);
 			mve.addObject("deptName", deptName);
 			mve.addObject("credit", credit);
-//			mve.addObject("errors", e.getMessage());
 		}
 		return mve;
 	}
@@ -71,7 +73,9 @@ public class CourseController {
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/ShowCourse");
 		Course c = courseDAO.findCourse(id);
+		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c.getId());
 		mve.addObject("course",c);
+		mve.addObject("questions",questions);
 		return mve;
 	}
 	
