@@ -45,13 +45,48 @@
    <div id="banner" class="section-padding">
 	<div class="container">
 	 <div class="row">
-	  <div class="jumbotron">
-	   <h1 class="small">Welcome To <span class="bold">QBMS</span></h1>
-	   <p class="big">Question Bank Management System</p>
-	   <!--   <a href="adminlogin.jsp" class="btn btn-banner">Admin Sign In<i class="fa fa-send"></i></a> -->
-	   <a href="teacherlogin.jsp" class="btn btn-banner">Sign In<i class="fa fa-send"></i></a>
-       <a href="teachersignup.jsp" class="btn btn-banner">Sign Up<i class="fa fa-send"></i></a>
-	  </div>
+	  <div class="jumbotron white">
+	   <h1 class="bold">Team Charlie</span></h1>
+	   <div class="FSColContainer">
+                  <div class="FSfirstCol">
+                     <p><img src="images/chris.jpg" alt="Christian" width="85" height="85"><strong>Christian Amadeo Levi</strong><br>504-452-6940<br><a href="mailto:calevi@my.uno.edu">calevi@my.uno.edu</a>
+                  </div>
+                  <div class="FSthirdCol">
+                     <p>Technical Lead, ABC Company</p>
+                  </div>
+       </div>
+       <div class="FSColContainer">
+                  <div class="FSfirstCol">
+                     <p><img src="images/Raj.jpg" alt="Rajkiran" width="85" height="85"><strong>Raj Kiran Reddy Gunna</strong><br>580-665-7777<br><a href="mailto:rgunna@my.uno.edu">rgunna@my.uno.edu</a>
+                  </div>
+                  <div class="FSthirdCol">
+                     <p>Graduate Professional Assistant, Hotel, Restaurant, Tourism Adm, UNO.</p>
+                  </div>
+       </div>
+       <div class="FSColContainer">
+                  <div class="FSfirstCol">
+                     <p><img src="images/sefak.jpg" alt="Sefak" width="85" height="85"><strong>Sefak Kahriman</strong><br>504-434-9997<br><a href="mailto:skahrima@my.uno.edu">skahrima@my.uno.edu</a>
+                  </div>
+                  <div class="FSthirdCol">
+                     <p>Software Developer, XYZ Company</p>
+                  </div>
+       </div>
+              <div class="FSColContainer">
+                  <div class="FSfirstCol">
+                     <p><img src="images/Jo.jpg" alt="Jyothi" width="85" height="85"><strong>Shiva Jyothi Angala</strong><br>504-541-7721<br><a href="mailto:skahrima@my.uno.edu">sangala@my.uno.edu</a>
+                  </div>
+                  <div class="FSthirdCol">
+                     <p>Graduate Professional Assistant - MANGCollege of LA, Educ & Hum Dev, UNO.</p>
+                  </div>
+       </div>
+              <div class="FSColContainer">
+                  <div class="FSfirstCol">
+                     <p><img src="images/Unni.jpg" alt="Unni" width="85" height="85"><strong>Sefak Kahriman</strong><br>504-450-8052<br><a href="mailto:uradhakr@my.uno.edu">uradhakr@my.uno.edu</a>
+                  </div>
+                  <div class="FSthirdCol">
+                     <p>Graduate Professional Assistant - MANG, University Marketing, UNO.</p>
+                  </div>
+       </div></div>
 	 </div>
 	</div>
    </div>

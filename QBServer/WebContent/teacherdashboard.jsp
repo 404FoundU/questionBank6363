@@ -1,70 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
    
 
 <html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
-
-<head>
+ <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Welcome</title>
-
   
+  <title>Welcome</title>
+ 
   <link href="TeacherDashboardFiles/all.css" rel="stylesheet">
-
   <link href="TeacherDashboardFiles/app.css" rel="stylesheet">
+ </head>
 
-
-</head>
-
-<body>
+ <body>
 
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
+   <!-- Fixed navbar -->
+   <div class="navbar navbar-size-large navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+     
+     <div class="navbar-header">
+      <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-ellipsis-v"></i></a>
+     
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+      
+      <div class="navbar-brand navbar-brand-primary navbar-brand-logo navbar-nav-padding-left">
+       QBMS Dashboard<a class="svg" href="index.jsp">
+        <img style="margin-top:7px;" alt="" src="AdminDashboardFiles/logo.png" >
+       </a>
+      </div>
+     </div>
 
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-size-large navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-ellipsis-v"></i></a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="navbar-brand navbar-brand-primary navbar-brand-logo navbar-nav-padding-left">
-               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="svg" href="index.jsp">
-              <img style="margin-top:7px;" alt="" src="AdminDashboardFiles/logo.png" >
-            </a>
-          </div>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-nav">
-          <ul class="nav navbar-nav">
+     <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="main-nav">
+       <ul class="nav navbar-nav">
            
-          </ul>
-          <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
-            <!-- Teacher -->
-             <li >
-              <a >
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="badge badge-primary">Teacher</span>
-              </a>
+       </ul>
+       <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
+        <!-- Teacher -->
+         <li >
+          <a>
+           <i class="fa fa-user" aria-hidden="true"></i>
+            <span class="badge badge-primary">Teacher</span>
+          </a>
             
-            </li>
+         </li>
             <!-- // Teacher -->
             <!-- User -->
-            <li class="dropdown">
-                <li><a href="teacherlogin.jsp">Logout</a></li>
+         <li class="dropdown">
+           <li><a href="teacherlogin.jsp">Logout</a></li>
               </ul>
-            </li>
         </div>
         <!-- /.navbar-collapse -->
 
@@ -78,25 +74,26 @@
         <div class="sidebar-block">
           <div class="profile">
             <a href="#">
-              <img src="admin.jpg" alt="people" class="img-circle width-80" />
+              <img src="../AdminDashboardFiles/logo.png" alt="people" class="img-circle width-80" />
             </a>
             <h4 class="text-display-1 margin-none"><?php echo $login_session; ?></h4>
           </div>
         </div>
 
         <ul class="sidebar-menu">
-          <li class="active"><a href="teacherdashboard.php"><i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
+          <li class="active"> <a href="teacherdashboard.jsp" /> <i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
           <li class="hasSubmenu">
-            <a href="#course-menu"><i class="fa fa-book"></i><span>Courses</span></a>
+            <a href="<c:url value="/TeacherCourseView"/>" ><i class="fa fa-book"></i><span>Courses</span></a>
             <ul id="course-menu">
-          		<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-				<button name="courseview" type="submit" value=" Course View " class="btn btn-inverse"><span>My Course</span></button></form></li>
+          		<li><form action=" " method="post"> <input type="hidden"  name="tid" value= ""/>
+				<button name="courseview" type="submit" value=" Course View " href="ShowCourse.jsp" class="btn btn-inverse"><span>My Courses</span></button></form></li>
              	<li><form action="" method="post"> <input type="hidden"  name="tid" value=""/>
-				<button name="uploadlecture" type="submit" value=" Assign Leacture " class="btn btn-inverse"><span>Upload Lecture</span></form></li>   
+				<button name="uploadlecture" type="submit" value=" Assign Leacture " class="btn btn-inverse"><span>Upload Questions</span></form></li>   
              	<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-				<button name="viewlectureofcourse" type="submit" value=" Lecture View " class="btn btn-inverse">View Lecture</span></form></li>           			  
+				<button name="viewlectureofcourse" type="submit" value=" Lecture View " class="btn btn-inverse">View Questions</span></form></li>           			  
        		</ul>
           </li>
+          <!--  
     <li class="hasSubmenu">
             <a href="#student-menu"><i class="fa fa-user"></i><span>Students</span></a>
             <ul id="student-menu">
@@ -154,7 +151,7 @@
              
             </ul>
           </li>
-		    
+		    -->
           <li><a  href="logoutt.php" class="fa fa-sign-out"></i><span>Logout</span></a></li>
       </div>
     </div>
