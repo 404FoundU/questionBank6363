@@ -37,7 +37,7 @@
       
       <div class="navbar-brand navbar-brand-primary navbar-brand-logo navbar-nav-padding-left">
        QBMS Dashboard<a class="svg" href="index.jsp">
-        <img style="margin-top:7px;" alt="" src="AdminDashboardFiles/logo.png" >
+        <img style="margin-top:7px;" alt="" src="TeacherDashboardFiles/logo.png" >
        </a>
       </div>
      </div>
@@ -74,7 +74,7 @@
         <div class="sidebar-block">
           <div class="profile">
             <a href="#">
-              <img src="../AdminDashboardFiles/logo.png" alt="people" class="img-circle width-80" />
+              <img src="../TeacherDashboardFiles/logo.png" alt="people" class="img-circle width-80" />
             </a>
             <h4 class="text-display-1 margin-none"><?php echo $login_session; ?></h4>
           </div>
@@ -86,11 +86,11 @@
             <a href="<c:url value="/TeacherCourseView"/>" ><i class="fa fa-book"></i><span>Courses</span></a>
             <ul id="course-menu">
           		<li><form action=" " method="post"> <input type="hidden"  name="tid" value= ""/>
-				<button name="courseview" type="submit" value=" Course View " href="ShowCourse.jsp" class="btn btn-inverse"><span>My Courses</span></button></form></li>
+				<button name="courseview" type="submit" value=" Course View " href="<c:url value="/TeacherCourseView" />" " class="btn btn-inverse"><span>My Courses</span></button></form></li>
              	<li><form action="" method="post"> <input type="hidden"  name="tid" value=""/>
-				<button name="uploadlecture" type="submit" value=" Assign Leacture " class="btn btn-inverse"><span>Upload Questions</span></form></li>   
+				<button name="uploadlecture" type="submit" value=" Assign Leacture " href="AddQuestion" class="btn btn-inverse"><span>Upload Questions</span></form></li>   
              	<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-				<button name="viewlectureofcourse" type="submit" value=" Lecture View " class="btn btn-inverse">View Questions</span></form></li>           			  
+				<button name="viewlectureofcourse" type="submit" value=" Lecture View " href="ShowQuestion" class="btn btn-inverse">View Questions</span></form></li>           			  
        		</ul>
           </li>
           <!--  
@@ -152,7 +152,8 @@
             </ul>
           </li>
 		    -->
-          <li><a  href="logoutt.php" class="fa fa-sign-out"></i><span>Logout</span></a></li>
+		    
+          <li><a  href="teacherlogin.jsp" class="fa fa-sign-out"></i><span>Logout</span></a></li>
       </div>
     </div>
 
@@ -188,7 +189,7 @@
                 <div class="panel panel-default paper-shadow" data-z="0.5">
                   <div class="panel-heading">
                     <h4 class="text-headline margin-none">All Courses</h4>
-                    <p class="text-subhead text-light">Uploded courses</p>
+                    <p class="text-subhead text-light">Upload courses</p>
                   </div>
 			<?php
  				  $row_count=1;
@@ -199,7 +200,7 @@
                   <ul class="list-group">
                     <li class="list-group-item media v-middle">
                       <div class="media-body">
-			<a href="teachercourseview.php?tid=<?php echo $Login_id?>" class="text-subhead list-group-link"><?php echo $row['course_name'] ?></a>
+			<a href="teachercourseview.jsp?tid=<?php echo $Login_id?>" class="text-subhead list-group-link"><?php echo $row['course_name'] ?></a>
                       </div>
      
                   </ul>
@@ -220,8 +221,8 @@
                <div class="item col-xs-12 col-lg-6">
                 <div class="panel panel-default paper-shadow" data-z="0.5">
                   <div class="panel-heading">
-                    <h4 class="text-headline margin-none">Quizzes</h4>
-                    <p class="text-subhead text-light">Recently Uploaded Quiz </p>
+                    <h4 class="text-headline margin-none">All Questions</h4>
+                    <p class="text-subhead text-light">Upload questions </p>
                   </div>
 				  <?php
 				  $row_count=1;
@@ -252,7 +253,7 @@
 	  
  ?>
                   <div class="panel-footer">
-                    <a href="quizcourseview.php?tid=<?php echo $Login_id?>" class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > Check History</a>
+                    <a href="quizcourseview.php?tid=<?php echo $Login_id?>" class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > View Questions</a>
                   </div>
                 </div>
               </div>
@@ -266,7 +267,7 @@
 			
                 </div>
               </div>
-			  
+		 	<!--    
      <div class="item col-xs-12 col-lg-6" style ="background-color: white;">
 	 	   <h4 class="text-headline margin-none">Forum Activity</h4>
 		   
@@ -300,8 +301,9 @@
 			  		  
                 </ul>		
               </div>
-			  
+		-->	  
         </div>
+        
         <!-- /st-content-inner -->
 
       </div>
