@@ -1,12 +1,14 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
+import java.util.List;
 
+// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 /**
  * Home object for domain model class Question.
  * @see org.questionBank.data.Question
@@ -14,12 +16,9 @@ import org.apache.commons.logging.LogFactory;
  */
 @Stateless
 public class QuestionHome {
-
 	private static final Log log = LogFactory.getLog(QuestionHome.class);
-
 	@PersistenceContext
 	private EntityManager entityManager;
-
 	public void persist(Question transientInstance) {
 		log.debug("persisting Question instance");
 		try {
@@ -30,7 +29,6 @@ public class QuestionHome {
 			throw re;
 		}
 	}
-
 	public void remove(Question persistentInstance) {
 		log.debug("removing Question instance");
 		try {
@@ -41,7 +39,6 @@ public class QuestionHome {
 			throw re;
 		}
 	}
-
 	public Question merge(Question detachedInstance) {
 		log.debug("merging Question instance");
 		try {
@@ -53,8 +50,7 @@ public class QuestionHome {
 			throw re;
 		}
 	}
-
-	public Question findById(String id) {
+	public Question findById(int id) {
 		log.debug("getting Question instance with id: " + id);
 		try {
 			Question instance = entityManager.find(Question.class, id);
@@ -64,5 +60,11 @@ public class QuestionHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public List<Question> getQuestions(){
+		TypedQuery<Question> q = entityManager.createQuery("select q from Question a", Question.class);
+		List<Question> results = q.getResultList(); 
+		return results;
 	}
 }

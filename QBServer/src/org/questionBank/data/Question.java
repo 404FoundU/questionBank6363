@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 30, 2016 1:32:51 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 30, 2016 4:26:32 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +18,7 @@ public class Question implements java.io.Serializable {
 	private Integer id;
 	private Integer courseId;
 	private String chapter;
+	private String questionText;
 	private String questionId;
 
 	public Question() {
@@ -27,9 +28,10 @@ public class Question implements java.io.Serializable {
 		this.questionId = questionId;
 	}
 
-	public Question(Integer courseId, String chapter, String questionId) {
+	public Question(Integer courseId, String chapter, String questionText, String questionId) {
 		this.courseId = courseId;
 		this.chapter = chapter;
+		this.questionText = questionText;
 		this.questionId = questionId;
 	}
 
@@ -61,6 +63,15 @@ public class Question implements java.io.Serializable {
 
 	public void setChapter(String chapter) {
 		this.chapter = chapter;
+	}
+
+	@Column(name = "question_text", length = 256)
+	public String getQuestionText() {
+		return this.questionText;
+	}
+
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
 	}
 
 	@Column(name = "question_id", nullable = false, length = 7)
