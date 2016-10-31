@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PersonController {
 	@Autowired
 	PersonDataUtil personDataUtil;
-	@RequestMapping(value="/TeacherSignup",method=RequestMethod.POST)
+	@RequestMapping(value="TeacherSignup",method=RequestMethod.POST)
 	public ModelAndView createPerson(@RequestParam("username") String userName,@RequestParam String password,@RequestParam("firstname") String firstName,@RequestParam String rpassword,@RequestParam("lastname") String lastName){
 		ModelAndView modelAndView =  null;
 		try {
@@ -28,7 +28,7 @@ public class PersonController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/teacherlogin",method=RequestMethod.POST)
+	@RequestMapping(value="teacherlogin",method=RequestMethod.POST)
 	public ModelAndView teacherLogin(@RequestParam String username,@RequestParam String password){
 		ModelAndView modelAndView =null; 
 		try {
@@ -40,7 +40,7 @@ public class PersonController {
 		}
 		return modelAndView;
 	}
-	@RequestMapping(value="/AdminLogin",method=RequestMethod.POST)
+	@RequestMapping(value="AdminLogin",method=RequestMethod.POST)
 	public ModelAndView adminLogin(@RequestParam String username,@RequestParam String password){
 		ModelAndView modelAndView =null; 
 		try {

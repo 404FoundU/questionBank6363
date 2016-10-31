@@ -46,7 +46,7 @@
     											<div>
     												<label><strong>Course Name</strong></label>
     											</div>
-     											<div class="form-control-material">
+     											<div class="form-control-material static required">
      												</label><label>${course.courseName}</label>
  												</div>
     										</div>
