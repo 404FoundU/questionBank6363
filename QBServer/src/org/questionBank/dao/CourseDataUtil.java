@@ -23,21 +23,28 @@ public class CourseDataUtil {
 	private CourseHome ch = new CourseHome();
 	
 	// Validation
-	private static int MIN_DEPT_NAME_LENGTH = 2;
+	private static int MIN_DEPT_NAME_LENGTH = 3;
 	private static int MAX_DEPT_NAME_LENGTH = 8;
 	private static String MIN_DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
 	private static String MAX_DEPT_NAME_ERROR = "Course Department Name value must be at most 8 characters long.";
 	private static Integer MIN_CREDIT = 0;
 	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
+	private static int MIN_COURSE_NAME_LENGTH = 2;
+	private static int MAX_COURSE_NAME_LENGTH = 64;
+	private static String MIN_COURSE_NAME_ERROR = "Course Name value must be at least 2 characters long.";
+	private static String MAX_COURSE_NAME_ERROR = "Course Name value must be at most 64 characters long.";
+	private static int MIN_COURSE_NUMBER_LENGTH = 3;
+	private static int MAX_COURSE_NUMBER_LENGTH = 4;
+	private static String COURSE_NUMBER_ERROR = "Course Number value must be 3 or 4 digits long";
 
-	public Course createCourse(String courseName, String courseNumber, String title, String deptName, Integer credit) throws InvalidCourseException {
+	public Course createCourse(String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException {
 		Course course = new Course();
-		validateCourse(title, deptName, credit);
 		course.setCourseNumber(courseNumber);
 		course.setCourseName(courseName);
 		course.setDeptName(deptName);
 		course.setCredit(credit);
+		validateCourse(course);
 		// Save Course to DB
 		log.info("Creating Course");
 		log.debug(describeCourse(course));
@@ -66,9 +73,23 @@ public class CourseDataUtil {
 		return ch.findById(id);
 	}
 	
-	public boolean updateCourse(Integer id){
+	public boolean updateCourse(Integer id, String courseName, String courseNumber, String deptName, 
+								Integer credit) throws InvalidCourseException {
 		// TODO: implement this
-		return false;
+		try{
+			Course course = findCourse(id);
+			course.setCourseName(courseName);
+			course.setCourseNumber(courseNumber);
+			course.setDeptName(deptName);
+			course.setCredit(credit);
+			validateCourse(course);
+			ch.merge(course);
+			return true;
+		}catch(RuntimeException re){
+			List<String> err = new ArrayList<String>();
+			err.add(re.getMessage());
+			throw new InvalidCourseException(err);
+		}
 	}
 	
 	public List<Course> getCourses(){
@@ -100,14 +121,30 @@ public class CourseDataUtil {
 		return map;
 	}
 	
-	protected void validateCourse(String title, String deptName, Integer credit) throws InvalidCourseException {
+	public List<String> courseErrors(Course course) {
+		return getCourseErrors(course);
+	}
+	
+	private List<String> getCourseErrors(Course course){
 		List<String> errors = new ArrayList<String>();
-		if(deptName == null || deptName.length() < MIN_DEPT_NAME_LENGTH)
+		if(course.getDeptName() == null || course.getDeptName().length() < MIN_DEPT_NAME_LENGTH)
 			errors.add(MIN_DEPT_NAME_ERROR);
-		if(deptName.length() < MAX_DEPT_NAME_LENGTH)
+		if(course.getDeptName().length() > MAX_DEPT_NAME_LENGTH)
 			errors.add(MAX_DEPT_NAME_ERROR);
-		if(MIN_CREDIT.compareTo(credit) > 0 || MAX_CREDIT.compareTo(credit) < 0)
+		if(course.getCourseName() == null || course.getCourseName().length() < MIN_COURSE_NAME_LENGTH)
+			errors.add(MIN_COURSE_NAME_ERROR);
+		if(course.getCourseName().length() > MAX_COURSE_NAME_LENGTH)
+			errors.add(MAX_COURSE_NAME_ERROR);
+		if(course.getCourseNumber() == null || course.getCourseNumber().length() < MIN_COURSE_NUMBER_LENGTH || 
+				course.getCourseNumber().length() > MAX_COURSE_NUMBER_LENGTH)
+			errors.add(COURSE_NUMBER_ERROR);
+		if(MIN_CREDIT.compareTo(course.getCredit()) > 0 || MAX_CREDIT.compareTo(course.getCredit()) < 0)
 			errors.add(CREDIT_ERROR);
+		return errors;
+	}
+	
+	public void validateCourse(Course course) throws InvalidCourseException {
+		List<String> errors = getCourseErrors(course);
 		if(!errors.isEmpty()){
 			throw new InvalidCourseException(errors);
 		}

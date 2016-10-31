@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -19,7 +19,7 @@
 
      	<!-- <link rel="stylesheet" href="AdminFiles/stylesss.css"> -->
 		
-		<title>Edit Course</title>
+		<title>Show Question</title>
 	</head>
 	<body>  
 		<div class="container">
@@ -37,7 +37,7 @@
         		<div class="st-content-inner padding-none">
           			<div class="container-fluid">
             			<div class="page-section">
-              				<h1 class="text-display-1">Course</h1>
+              				<h1 class="text-display-1">New Question</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
@@ -47,42 +47,51 @@
                 				
                   					<div class="panel-heading">
 										<div class="form">
-	
     										<span class="error">
   												<c:forEach items="${errors}" var="error">
   													<c:out value="* ${error}" /><br />
   												</c:forEach>
   											</span>
-   											<form action="UpdateCourse" method="post">
-   												<input type="hidden" name="id" value="${course.id}">
-    											<div class="form-group">
-     												<div class="form-control-material">
-      													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required value="${course.courseName}">
+
+   											<form action="CourseAddQuestion" method="post">
+   												<div class="form-group">
+    												<div>
+    													<label><strong>Course ID</strong></label>
+    												</div>
+     												<div class="form-control-material static required">
+     													<label>${question.courseId}</label>
+ 													</div>
+   												</div>
+     											<div class="form-group">
+    												<div>
+    													<label><strong>Chapter</strong></label>
+    												</div>
+     												<div class="form-control-material static required">
+     													<label>${question.chapter}</label>
  													</div>
     											</div>
    
-   												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}">
-   												</div>
-   
-   												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number" value="${course.courseNumber}">
-   												</div>
-   
-   												<div class="form-group form-control-material static required">
-													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="${course.credit}" >
+   												<div class="form-group">
+    												<div>
+    													<label><strong>Question</strong></label>
+    												</div>
+     												<div class="form-control-material static required">
+     													<label>${question.question}</label>
+ 													</div>
    												</div>
  
-   												<button name="submit" type="submit">Update Course</button>
+  												<p class="message"></p>
   											</form>
  										</div>
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
                   					<a href="<c:url value="ShowCourse">
-      											<c:param name="id" value="${course.id}" />
-      										</c:url>">Show</a>
+      											<c:param name="id" value="${question.courseId}" />
+      										</c:url>">Course</a>&nbsp&nbsp|&nbsp
+                  					<a href="<c:url value="EditQuestion">
+      											<c:param name="id" value="${question.id}" />
+      										</c:url>">Edit</a>
                     			</div>
                   			</div>
         				</div>

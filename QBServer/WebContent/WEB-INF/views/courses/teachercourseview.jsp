@@ -66,7 +66,12 @@
       													<td><c:out value="${item.deptName}" /></td>
       													<td><c:out value="${item.credit}" /></td>
       													<td>
-      														<a href="<c:url value="/ShowCourse/${item.id}" />" >Show</a>&nbsp&nbsp&nbsp<a href="<c:url value="/EditCourse/${item.id}" />" >Edit</a>
+      														<a href="<c:url value="/ShowCourse">
+      																	<c:param name="id" value="${item.id}" />
+      																</c:url>">Show</a>&nbsp&nbsp|&nbsp
+      														<a href="<c:url value="/EditCourse"> 
+      																	<c:param name="id" value="${item.id}" />
+      																</c:url>">Edit</a>
       													</td>
     												</tr>
   												</c:forEach>

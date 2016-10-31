@@ -74,7 +74,7 @@ public class CourseDataUtil {
 		List<String> errors = new ArrayList<String>();
 		if(deptName == null || deptName.length() < MIN_DEPT_NAME_LENGTH)
 			errors.add(MIN_DEPT_NAME_ERROR);
-		if(deptName.length() < MAX_DEPT_NAME_LENGTH)
+		if(deptName.length() > MAX_DEPT_NAME_LENGTH)
 			errors.add(MAX_DEPT_NAME_ERROR);
 		if(MIN_CREDIT.compareTo(credit) > 0 || MAX_CREDIT.compareTo(credit) < 0)
 			errors.add(CREDIT_ERROR);
