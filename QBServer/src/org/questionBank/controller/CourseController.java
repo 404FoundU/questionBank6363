@@ -31,9 +31,18 @@ public class CourseController {
 
 	// Create
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.GET)
-	public ModelAndView addCoursesView(){
+	public ModelAndView addCoursesView(@RequestParam(required=false) String courseName, @RequestParam(required=false) String courseNumber,
+			 @RequestParam(required=false) String deptName, @RequestParam(required=false) Integer credit){
 		ModelAndView mve =  null;
+		Course c = null;
+		if(courseName != null || courseNumber != null || deptName != null || credit != null){
+			c = new Course(courseName, courseNumber, deptName, credit);
+		}
 		mve = new ModelAndView("views/courses/AddCourse");
+		if(c != null){
+			mve.addObject("course", c);
+			mve.addObject("errors", courseDAO.courseErrors(c));
+		}
 		return mve;
 	}
 
@@ -47,7 +56,11 @@ public class CourseController {
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {
 			mve=new ModelAndView("redirect:TeacherAddCourse");
-			mve.addObject("message", e.getMessage());
+			mve.addObject("courseName", courseName);
+			mve.addObject("courseNumber", courseNumber);
+			mve.addObject("deptName", deptName);
+			mve.addObject("credit", credit);
+//			mve.addObject("errors", e.getMessage());
 		}
 		return mve;
 	}

@@ -47,28 +47,29 @@
                 				
                   					<div class="panel-heading">
 										<div class="form">
+    										<span class="error">
+  												<c:forEach items="${errors}" var="error">
+  													<c:out value="* ${error}" /><br />
+  												</c:forEach>
+  											</span>
 
    											<form action="TeacherAddCourse" method="post">
     											<div class="form-group">
-     												<div class="form-control-material">
-      													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required >
+     												<div class="form-control-material static required">
+      													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" value="${course.courseName}" required >
  													</div>
     											</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number">
-   												</div>
-                       
-   												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "title" id="title" maxlength="64" placeholder="Enter Title">
+    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number" value="${course.courseNumber}" required>
    												</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department">
+    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}" required>
    												</div>
    
    												<div class="form-group form-control-material static required">
-													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  value="${course.credit}" required >
    												</div>
  
    												<button name="submit" type="submit">create</button>
