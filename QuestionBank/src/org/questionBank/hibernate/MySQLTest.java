@@ -19,14 +19,12 @@ public class MySQLTest {
 		Session session = sessionFactory.openSession();
 		
 		Course course = new Course();
-		String courseNumber = "CSCI-6363";
+		String courseNumber = "6363";
 		String courseName = "Agile Software Engineering";
-		String title = "Agile";
-		String deptName = "Computer Science";
+		String deptName = "CSCI";
 		Integer credit = 3;
 		course.setCourseName(courseName);
 		course.setCourseNumber(courseNumber);
-		course.setTitle(title);
 		course.setDeptName(deptName);
 		course.setCredit(credit);
 		

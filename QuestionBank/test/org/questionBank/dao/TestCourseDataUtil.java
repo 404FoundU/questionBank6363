@@ -21,18 +21,10 @@ public class TestCourseDataUtil {
 		try{
 			courseDAO.validateCourse(badTitle1, badDept1, badCredit1);
 		}catch(InvalidCourseException ex){
-			assertEquals(3, ex.getErrors().size());
+			assertEquals(2, ex.getErrors().size());
 			assertEquals(ex.getMessage(), "Errors creating Course:\r\n"+
-											 "* Course Title value must be at least 3 characters long.\r\n"+
 											 "* Course Department Name value must be at least 3 characters long.\r\n"+
 											 "* Course Credit value must be between 0.0 and 5.0.");
-		}
-		try{
-			courseDAO.validateCourse(badTitle2, goodDept, goodCredit);
-		}catch(InvalidCourseException ex){
-			assertEquals(1, ex.getErrors().size());
-			assertEquals(ex.getMessage(), "Errors creating Course:\r\n"+
-											 "* Course Title value must be at least 3 characters long.");
 		}
 		try{
 			courseDAO.validateCourse(goodTitle, badDept2, goodCredit);

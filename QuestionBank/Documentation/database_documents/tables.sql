@@ -15,10 +15,9 @@ CREATE TABLE Person(
 
 create table Course(
   id   MEDIUMINT NOT NULL AUTO_INCREMENT,
-  course_name     varchar(50),
-  course_number	  varchar(16),
-  title           varchar(64),
-  dept_name       varchar(20),
+  course_name     varchar(64),
+  course_number	  varchar(4),
+  dept_name       varchar(8),
   credit          int,
   primary key (id)
 );
@@ -34,6 +33,7 @@ foreign key (course_id) references Course(id) on delete cascade
 create table Question(
 id MEDIUMINT NOT NULL AUTO_INCREMENT,
 course_id MEDIUMINT,
+question varchar(256),
 chapter varchar(7),
 question_text varchar(256),
 primary key (id),

@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 30, 2016 4:26:32 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 31, 2016 1:15:23 AM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,22 +17,17 @@ public class Question implements java.io.Serializable {
 
 	private Integer id;
 	private Integer courseId;
+	private String question;
 	private String chapter;
-	private String questionText;
-	private String questionId;
 
 	public Question() {
 	}
 
-	public Question(String questionId) {
-		this.questionId = questionId;
-	}
 
-	public Question(Integer courseId, String chapter, String questionText, String questionId) {
+	public Question(Integer courseId, String question, String chapter) {
 		this.courseId = courseId;
+		this.question = question;
 		this.chapter = chapter;
-		this.questionText = questionText;
-		this.questionId = questionId;
 	}
 
 	@Id
@@ -56,6 +51,15 @@ public class Question implements java.io.Serializable {
 		this.courseId = courseId;
 	}
 
+	@Column(name = "question", length = 256)
+	public String getQuestion() {
+		return this.question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
 	@Column(name = "chapter", length = 7)
 	public String getChapter() {
 		return this.chapter;
@@ -63,24 +67,6 @@ public class Question implements java.io.Serializable {
 
 	public void setChapter(String chapter) {
 		this.chapter = chapter;
-	}
-
-	@Column(name = "question_text", length = 256)
-	public String getQuestionText() {
-		return this.questionText;
-	}
-
-	public void setQuestionText(String questionText) {
-		this.questionText = questionText;
-	}
-
-	@Column(name = "question_id", nullable = false, length = 7)
-	public String getQuestionId() {
-		return this.questionId;
-	}
-
-	public void setQuestionId(String questionId) {
-		this.questionId = questionId;
 	}
 
 }

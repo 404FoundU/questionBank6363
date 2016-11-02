@@ -13,7 +13,7 @@
     
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 		
-		<title>Add New Course</title>
+		<title>Show Course</title>
 	</head>
 	<body>  
 		<div class="container">
@@ -43,32 +43,78 @@
 										<div class="form">
 
     										<div class="form-group">
-     											<div class="form-control-material">
-      												<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" required >
+    											<div>
+    												<label><strong>Course Name</strong></label>
+    											</div>
+     											<div class="form-control-material static required">
+     												<label>${course.courseName}</label>
  												</div>
     										</div>
    
-   											<div class="form-group form-control-material static required">
-    											<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number">
-   											</div>
-                       
-   											<div class="form-group form-control-material static required">
-    											<input type="text" class="form-control" name= "title" id="title" maxlength="64" placeholder="Enter Title">
-   											</div>
-   
-   											<div class="form-group form-control-material static required">
-    											<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department">
+   											<div class="form-group">
+   												<div>
+    												<label><strong>Course Dept/Number</strong></label>
+   												</div>
+   												<div class="form-group form-control-material static required">
+     												<label>${course.deptName}-${course.courseNumber}</label>
+   												</div>
    											</div>
    
-   											<div class="form-group form-control-material static required">
-												<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+   											<div class="form-group">
+   												<div>
+    												<label><strong>Credits</strong></label>
+   												</div>
+   												<div class="form-control-material static required">
+     												<label>${course.credit}</label>
+     											</div>
    											</div>
 
+											<div class="form-group">
+												<div>
+													<label><strong>Questions</strong></label>
+												</div>
+												<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
+													href="<c:url value="/CourseAddQuestion">
+															<c:param name="courseId" value="${course.id}" />
+														  </c:url>" >+</a>
+												
+												
+                				<!-- COURSE QUESTIONS -->
+                  					<div class="panel-heading">
+                    					<div class="table-list-content">
+											<table width="100%">
+												<tr>
+													<th width="20%">Chapter</th>
+													<th width="63%">Question</th>
+													<th width="17%"></th>
+												</tr>
+  												<c:forEach items="${questions}" var="item">
+    												<tr>
+      													<td><c:out value="${item.chapter}" /></td>
+      													<td><c:out value="${item.question}" /></td>
+      													<td>
+      														<a href="<c:url value="/ShowQuestion">
+      																	<c:param name="id" value="${item.id}" />
+      																</c:url>">Show</a>&nbsp&nbsp|&nbsp
+      														<a href="<c:url value="/EditQuestion"> 
+      																	<c:param name="id" value="${item.id}" />
+      																</c:url>">Edit</a>
+      													</td>
+    												</tr>
+  												</c:forEach>
+											</table>
+                    					</div>
+                  					</div>
+												
+											</div>
  										</div>
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >Cancel</a>
+                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
+                  					<a href="<c:url value="EditCourse">
+      											<c:param name="id" value="${course.id}" />
+      										</c:url>">Edit</a>
                     			</div>
                   			</div>
         				</div>

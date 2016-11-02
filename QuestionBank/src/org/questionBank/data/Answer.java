@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Oct 22, 2016 8:25:50 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Oct 31, 2016 1:15:23 AM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class Answer implements java.io.Serializable {
 		this.questionId = questionId;
 	}
 
-	@Column(name = "answer_text", length = 200)
+	@Column(name = "answer_text", length = 256)
 	public String getAnswerText() {
 		return this.answerText;
 	}

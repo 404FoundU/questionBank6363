@@ -23,22 +23,28 @@ public class CourseDataUtil {
 	private CourseHome ch = new CourseHome();
 	
 	// Validation
-	private static int TITLE_LENGTH = 3;
-	private static String TITLE_ERROR = "Course Title value must be at least 3 characters long.";
-	private static int DEPT_NAME_LENGTH = 3;
-	private static String DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
+	private static int MIN_DEPT_NAME_LENGTH = 3;
+	private static int MAX_DEPT_NAME_LENGTH = 8;
+	private static String MIN_DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
+	private static String MAX_DEPT_NAME_ERROR = "Course Department Name value must be at most 8 characters long.";
 	private static Integer MIN_CREDIT = 0;
 	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
+	private static int MIN_COURSE_NAME_LENGTH = 2;
+	private static int MAX_COURSE_NAME_LENGTH = 64;
+	private static String MIN_COURSE_NAME_ERROR = "Course Name value must be at least 2 characters long.";
+	private static String MAX_COURSE_NAME_ERROR = "Course Name value must be at most 64 characters long.";
+	private static int MIN_COURSE_NUMBER_LENGTH = 3;
+	private static int MAX_COURSE_NUMBER_LENGTH = 4;
+	private static String COURSE_NUMBER_ERROR = "Course Number value must be 3 or 4 digits long";
 
-	public Course createCourse(String courseName, String courseNumber, String title, String deptName, Integer credit) throws InvalidCourseException {
+	public Course createCourse(String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException {
 		Course course = new Course();
-		validateCourse(title, deptName, credit);
 		course.setCourseNumber(courseNumber);
 		course.setCourseName(courseName);
-		course.setTitle(title);
 		course.setDeptName(deptName);
 		course.setCredit(credit);
+		validateCourse(course);
 		// Save Course to DB
 		log.info("Creating Course");
 		log.debug(describeCourse(course));
@@ -52,7 +58,6 @@ public class CourseDataUtil {
 		str += "- Name: ["+course.getCourseName()+"]\r\n";
 		str += "- Number: ["+course.getCourseNumber()+"]\r\n";
 		str += "- Department: ["+course.getDeptName()+"]\r\n";
-		str += "- Title: ["+course.getTitle()+"]\r\n";
 		str += "- Credit: ["+course.getCredit()+"]\r\n";
 		return str;
 	}
@@ -68,9 +73,23 @@ public class CourseDataUtil {
 		return ch.findById(id);
 	}
 	
-	public boolean updateCourse(Integer id){
+	public boolean updateCourse(Integer id, String courseName, String courseNumber, String deptName, 
+								Integer credit) throws InvalidCourseException {
 		// TODO: implement this
-		return false;
+		try{
+			Course course = findCourse(id);
+			course.setCourseName(courseName);
+			course.setCourseNumber(courseNumber);
+			course.setDeptName(deptName);
+			course.setCredit(credit);
+			validateCourse(course);
+			ch.merge(course);
+			return true;
+		}catch(RuntimeException re){
+			List<String> err = new ArrayList<String>();
+			err.add(re.getMessage());
+			throw new InvalidCourseException(err);
+		}
 	}
 	
 	public List<Course> getCourses(){
@@ -97,20 +116,35 @@ public class CourseDataUtil {
 		map.put("id", course.getId());
 		map.put("courseNumber", course.getCourseNumber());
 		map.put("courseName", course.getCourseName());
-		map.put("title", course.getTitle());
 		map.put("deptName", course.getDeptName());
 		map.put("credit", course.getCredit());
 		return map;
 	}
 	
-	protected void validateCourse(String title, String deptName, Integer credit) throws InvalidCourseException {
+	public List<String> courseErrors(Course course) {
+		return getCourseErrors(course);
+	}
+	
+	private List<String> getCourseErrors(Course course){
 		List<String> errors = new ArrayList<String>();
-		if(title == null || title.length() < TITLE_LENGTH)
-			errors.add(TITLE_ERROR);
-		if(deptName == null || deptName.length() < DEPT_NAME_LENGTH)
-			errors.add(DEPT_NAME_ERROR);
-		if(MIN_CREDIT.compareTo(credit) > 0 || MAX_CREDIT.compareTo(credit) < 0)
+		if(course.getDeptName() == null || course.getDeptName().length() < MIN_DEPT_NAME_LENGTH)
+			errors.add(MIN_DEPT_NAME_ERROR);
+		if(course.getDeptName().length() > MAX_DEPT_NAME_LENGTH)
+			errors.add(MAX_DEPT_NAME_ERROR);
+		if(course.getCourseName() == null || course.getCourseName().length() < MIN_COURSE_NAME_LENGTH)
+			errors.add(MIN_COURSE_NAME_ERROR);
+		if(course.getCourseName().length() > MAX_COURSE_NAME_LENGTH)
+			errors.add(MAX_COURSE_NAME_ERROR);
+		if(course.getCourseNumber() == null || course.getCourseNumber().length() < MIN_COURSE_NUMBER_LENGTH || 
+				course.getCourseNumber().length() > MAX_COURSE_NUMBER_LENGTH)
+			errors.add(COURSE_NUMBER_ERROR);
+		if(MIN_CREDIT.compareTo(course.getCredit()) > 0 || MAX_CREDIT.compareTo(course.getCredit()) < 0)
 			errors.add(CREDIT_ERROR);
+		return errors;
+	}
+	
+	public void validateCourse(Course course) throws InvalidCourseException {
+		List<String> errors = getCourseErrors(course);
 		if(!errors.isEmpty()){
 			throw new InvalidCourseException(errors);
 		}
