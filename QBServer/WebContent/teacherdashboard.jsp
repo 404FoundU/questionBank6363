@@ -254,6 +254,7 @@
  ?>
                   <div class="panel-footer">
                     <a href="quizcourseview.php?tid=<?php echo $Login_id?>" class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > View Questions</a>
+<<<<<<< HEAD
                   </div>
                 </div>
               </div>
@@ -304,6 +305,8 @@
 
                   <div class="panel-footer text-right">
                     <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Courses</a>
+=======
+>>>>>>> d8071510a1621a79370bd56ae835a9576de52a08
                   </div>
                 </div>
               </div>
