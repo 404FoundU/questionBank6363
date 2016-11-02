@@ -259,6 +259,76 @@
                   </div>
                 </div>
               </div>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              <div class="item col-xs-12 col-lg-6">
+                <div class="panel panel-default paper-shadow" data-z="0.5">
+                  <div class="panel-heading">
+                    <h4 class="text-headline margin-none">All Questions</h4>
+                    <p class="text-subhead text-light">Uploded Questions</p>
+                  </div>
+			<?php
+ 				  $row_count=1;
+
+ while ($row = mysql_fetch_array($result)) {
+            if($row_count<=3){
+  ?>
+                  <ul class="list-group">
+                    <li class="list-group-item media v-middle">
+                      <div class="media-body">
+			<a href="teachercourseview.php?tid=<?php echo $Login_id?>" class="text-subhead list-group-link"><?php echo $row['course_name'] ?></a>
+                      </div>
+     
+                  </ul>
+				  	       <?php
+	  }
+	  
+	  $row_count++;
+				   }
+ ?>
+
+                  <div class="panel-footer text-right">
+                    <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Courses</a>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
 			  						            
 	   
                       </tbody>
