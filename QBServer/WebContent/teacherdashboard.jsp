@@ -18,6 +18,12 @@
  </head>
 
  <body>
+ <%
+ if(session.getAttribute("name")==null){%>
+	 <c:redirect url="teacherlogin.jsp" />
+<%
+ }
+ %>
 
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
@@ -52,14 +58,14 @@
          <li >
           <a>
            <i class="fa fa-user" aria-hidden="true"></i>
-            <span class="badge badge-primary">Teacher</span>
+            <span class="badge badge-primary"><%=session.getAttribute("name")%></span>
           </a>
             
          </li>
             <!-- // Teacher -->
             <!-- User -->
          <li class="dropdown">
-           <li><a href="teacherlogin.jsp">Logout</a></li>
+           <li><a href="teachersignout">Logout</a></li>
               </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -153,7 +159,7 @@
           </li>
 		    -->
 		    
-          <li><a  href="teacherlogin.jsp" class="fa fa-sign-out"></i><span>Logout</span></a></li>
+          <li><a  href="teachersignout" class="fa fa-sign-out"></i><span>Logout</span></a></li>
       </div>
     </div>
 
