@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="../../../SideNavigation.jsp"/>
 
-<html>
+<html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<!-- <meta charset="UTF-8"> -->
+    	<meta charset="UTF-8">
     
   		<link href="TeacherDashboardFiles/all.css" rel="stylesheet">
 
@@ -22,12 +23,8 @@
 		<title>Show Question</title>
 	</head>
 	<body>  
-		<div class="container">
-  			<div class="info">
-  
-	    		<h1>QBMS</h1><span>Question Bank Management System</span> 
-  			</div>
-		</div>
+	
+	
 		
    		<!-- content push wrapper -->
     	<div class="st-pusher" id="content">
@@ -36,6 +33,12 @@
         		<!-- extra div for emulating position:fixed of the menu -->
         		<div class="st-content-inner padding-none">
           			<div class="container-fluid">
+            				<div class="container">
+			<div class="info">
+  
+	    		<h1>QBMS</h1><span>Question Bank Management System</span> 
+  			</div>
+		</div>
             			<div class="page-section">
               				<h1 class="text-display-1">New Question</h1>
             			</div>
