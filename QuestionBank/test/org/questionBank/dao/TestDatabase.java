@@ -1,4 +1,4 @@
-package org.questionBank.dao;
+/*package org.questionBank.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -51,3 +51,4 @@ public class TestDatabase {
 	}
 
 }
+*/
