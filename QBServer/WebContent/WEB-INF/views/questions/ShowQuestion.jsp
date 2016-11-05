@@ -40,7 +40,7 @@
   			</div>
 		</div>
             			<div class="page-section">
-              				<h1 class="text-display-1">New Question</h1>
+              				<h1 class="text-display-1">Question</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">

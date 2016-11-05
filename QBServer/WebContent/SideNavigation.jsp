@@ -79,25 +79,25 @@
       <ul class="sidebar-menu">
        <li class="active"> <a href="teacherdashboard.jsp"> <i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
         <li class="hasSubmenu"> 
-         <a href="<c:url value="/TeacherCourseView"/>" ><i class="fa fa-book"></i><span>Courses</span></a>
+         <a href="<c:url value="/TeacherAddCourse" />" ><i class="fa fa-book"></i><span>Add Course</span></a>
          <ul id="course-menu">
-          <li><form action=" " method="post"> <input type="hidden"  name="tid" value= ""/>
-		   <button name="courseview" type="submit" value="Course View" class="btn btn-inverse"><span>View Courses</span></button></form></li>
+      	
+	   <button name="courseview" type="submit" value="Course View" class="btn btn-inverse" onclick="window.location.href='TeacherCourseView'"><span>View All Courses</span></button></form></li>
              	
-          <li><form action="" method="post"> <input type="hidden"  name="tid" value=""/>
+          <!--  <li><form action="" method="post"> <input type="hidden"  name="tid" value=""/>
 		   <button name="uploadlecture" type="submit" value=" Assign Leacture " href="AddCourse.jsp" class="btn btn-inverse"><span>Add Courses</span></form></li>   
              	
           <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-		   <button name="viewlectureofcourse" type="submit" value=" Lecture View " href="ShowQuestion" class="btn btn-inverse">Edit Courses</span></form></li>           			  
+		   <button name="viewlectureofcourse" type="submit" value=" Lecture View " href="ShowQuestion" class="btn btn-inverse">Edit Courses</span></form></li>  -->          			  
        	 </ul>
         </li>
        
         <li class="hasSubmenu">
-         <a href="<c:url value="/TeacherCourseView"/>"><i class="fa fa-edit"></i><span>Questions</span></a>         
+         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question</span></a>         
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="chosecourseforquiz" type="submit" value="chosecourseforquiz" class="btn btn-inverse"><span>View Questions</span></button></form></li>  	
-		
+            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><span>View All Questions</span></button></form></li>  	
+		<!-- 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
             <button name="quizdownload" type="submit" value="quizdownload" class="btn btn-inverse"><span>Upload Questions</span></button></form></li> 
 		
@@ -119,7 +119,7 @@
             <button name="quizhistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Download Answers</span></button></form></li>  	
  		  </ul>
         </li>
-        
+        -->
         <li><a  href="index.jsp" class="fa fa-sign-out"><span>Logout</span></a></li>
        </ul>
       </div>
