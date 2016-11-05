@@ -1,4 +1,4 @@
-/*package org.questionBank.dao;
+package org.questionBank.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class TestDatabase {
 
 		
 	
-		//Connecting to database;
+		/*//Connecting to database;
 		Connection conn = null;
 		
 		String url = "jdbc:mysql://localhost:3306/";
@@ -47,8 +47,7 @@ public class TestDatabase {
 			if(conn!=null){
 				conn = null;
 			}
-		}
+		}*/
 	}
 
 }
-*/
