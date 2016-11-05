@@ -31,6 +31,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/TeacherSignup</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/teachersignout</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- Course View Mappings -->
 	<servlet-mapping>

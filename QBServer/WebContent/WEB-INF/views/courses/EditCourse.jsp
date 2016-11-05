@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="../../../SideNavigation.jsp"/>
 
 <html>
 	<head>
@@ -22,13 +23,7 @@
 		<title>Edit Course</title>
 	</head>
 	<body>  
-		<div class="container">
-  			<div class="info">
-  
-	    		<h1>QBMS</h1><span>Question Bank Management System</span> 
-  			</div>
-		</div>
-		
+			
    		<!-- content push wrapper -->
     	<div class="st-pusher" id="content">
       		<!-- this is the wrapper for the content -->
@@ -36,6 +31,13 @@
         		<!-- extra div for emulating position:fixed of the menu -->
         		<div class="st-content-inner padding-none">
           			<div class="container-fluid">
+        <div class="container">
+  			<div class="info">
+  
+	    		<h1>QBMS</h1><span>Question Bank Management System</span> 
+  			</div>
+		</div>
+	
             			<div class="page-section">
               				<h1 class="text-display-1">Course</h1>
             			</div>
