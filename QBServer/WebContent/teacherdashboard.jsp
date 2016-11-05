@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="SideNavigation.jsp"/> 
-
 <html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
  <head>
   <title>Welcome</title>
   <link href="TeacherDashboardFiles/all.css" rel="stylesheet">
   <link href="TeacherDashboardFiles/app.css" rel="stylesheet">
  </head>
-
  <body>
   <!-- sidebar effects OUTSIDE of st-pusher: -->
   <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
@@ -25,7 +23,6 @@
        <div class="page-section">
         <h1 class="text-display-1">Dashboard</h1>
        </div>
-
        <div class="row" data-toggle="isotope">
         
         <div class="item col-xs-12 col-lg-6">
@@ -46,7 +43,6 @@
              <h4 class="text-headline margin-none">All Questions</h4>
              <p class="text-subhead text-light">Upload questions </p>
             </div>
-
             <div class="panel-footer text-right">
              <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Questions</a>
             </div>
@@ -62,7 +58,6 @@
 			
 		<!--  	<?php
  				  $row_count=1;
-
  while ($row = mysql_fetch_array($result)) {
             if($row_count<=3){
   ?>
@@ -81,7 +76,6 @@
 	................ 			   }
  ?> -->
 			   
-
                
 		<!--  		  <?php
 				  $row_count=1;
@@ -135,7 +129,6 @@
                      <div class="media-right">
                         <div class="width-60 text-right">
 					                          <td><?php echo $date ?></td>
-
                           
                         </div>
                       </div>
@@ -148,19 +141,13 @@
 		-->	  
             
         <!-- /st-content-inner -->
-
             <!-- /st-content-inner -->
-
       <!-- /st-content -->
-
     
     <!-- /st-pusher -->
-
-
     <!-- Footer -->
     
     <footer class="footer">
       <strong>QBMS</strong>  &copy; Copyright 2016
     </footer>
     <!-- // Footer -->
-

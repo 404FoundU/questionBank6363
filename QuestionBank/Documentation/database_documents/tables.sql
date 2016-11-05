@@ -35,6 +35,7 @@ id MEDIUMINT NOT NULL AUTO_INCREMENT,
 course_id MEDIUMINT,
 question varchar(256),
 chapter varchar(7),
+question_text varchar(256),
 primary key (id),
 foreign key (course_id) references Course(id)
 );

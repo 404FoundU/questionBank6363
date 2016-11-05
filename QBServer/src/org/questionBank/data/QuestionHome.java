@@ -1,8 +1,6 @@
 package org.questionBank.data;
-// Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
-
 import java.util.List;
-
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -21,9 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class QuestionHome {
-
 	private static final Log log = LogFactory.getLog(QuestionHome.class);
-
 	@PersistenceContext
 	private EntityManager entityManager;
 	
@@ -80,5 +76,11 @@ public class QuestionHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public List<Question> getQuestions(){
+		TypedQuery<Question> q = entityManager.createQuery("select q from Question a", Question.class);
+		List<Question> results = q.getResultList(); 
+		return results;
 	}
 }

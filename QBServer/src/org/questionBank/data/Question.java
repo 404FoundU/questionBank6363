@@ -23,6 +23,7 @@ public class Question implements java.io.Serializable {
 	public Question() {
 	}
 
+
 	public Question(Integer courseId, String question, String chapter) {
 		this.courseId = courseId;
 		this.question = question;
