@@ -17,4 +17,6 @@
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
 <fullyQualifiedTypeName name="org.hibernate.Session"/>
 <fullyQualifiedTypeName name="org.questionBank.data.Course"/>
+<fullyQualifiedTypeName name="org.questionBank.data.Question"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
 </qualifiedTypeNameHistroy>
