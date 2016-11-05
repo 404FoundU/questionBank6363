@@ -81,7 +81,7 @@
        </div>
               <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/Unni.jpg" alt="Unni" width="85" height="85"><strong>Sefak Kahriman</strong><br>504-450-8052<br><a href="mailto:uradhakr@my.uno.edu">uradhakr@my.uno.edu</a>
+                     <p><img src="images/Unni.jpg" alt="Unni" width="85" height="85"><strong>Unnikrishnan Radhakrishna Pillai</strong><br>504-450-8052<br><a href="mailto:uradhakr@my.uno.edu">uradhakr@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Graduate Professional Assistant - MANG, University Marketing, UNO.</p>

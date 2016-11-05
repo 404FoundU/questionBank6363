@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   
-  <title>Navigation</title>
+  <title>QBMS</title>
  
   <link href="TeacherDashboardFiles/all.css" rel="stylesheet">
   <link href="TeacherDashboardFiles/app.css" rel="stylesheet">
@@ -78,7 +78,8 @@
         
       <ul class="sidebar-menu">
        <li class="active"> <a href="teacherdashboard.jsp"> <i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
-        <li class="hasSubmenu"> <a href="<c:url value="/TeacherCourseView"/>" ><i class="fa fa-book"></i><span>Courses</span></a>
+        <li class="hasSubmenu"> 
+         <a href="<c:url value="/TeacherCourseView"/>" ><i class="fa fa-book"></i><span>Courses</span></a>
          <ul id="course-menu">
           <li><form action=" " method="post"> <input type="hidden"  name="tid" value= ""/>
 		   <button name="courseview" type="submit" value="Course View" class="btn btn-inverse"><span>View Courses</span></button></form></li>
@@ -92,7 +93,7 @@
         </li>
        
         <li class="hasSubmenu">
-         <a href="#quiz-menu"><i class="fa fa-edit"></i><span>Questions</span></a>         
+         <a href="<c:url value="/TeacherCourseView"/>"><i class="fa fa-edit"></i><span>Questions</span></a>         
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
             <button name="chosecourseforquiz" type="submit" value="chosecourseforquiz" class="btn btn-inverse"><span>View Questions</span></button></form></li>  	

@@ -27,14 +27,40 @@
        </div>
 
        <div class="row" data-toggle="isotope">
+        
         <div class="item col-xs-12 col-lg-6">
          <div class="panel panel-default paper-shadow" data-z="0.5">
           <div class="panel-heading">
            <h4 class="text-headline margin-none">All Courses</h4>
-            <p class="text-subhead text-light">Upload courses</p>
+           <p class="text-subhead text-light">Upload courses</p>
           </div>
+	      <div class="panel-footer">
+           <a  data-animated href="<c:url value="/TeacherCourseView" />"class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > View Courses</a>
+          </div>
+         </div>
+        </div>
+          
+          <div class="item col-xs-12 col-lg-6">
+           <div class="panel panel-default paper-shadow" data-z="0.5">
+            <div class="panel-heading">
+             <h4 class="text-headline margin-none">All Questions</h4>
+             <p class="text-subhead text-light">Upload questions </p>
+            </div>
+
+            <div class="panel-footer text-right">
+             <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Questions</a>
+            </div>
+           </div>
+          </div>
+          
+        
+         </div>
+        </div>
+       </div>
+	  </div>
+     </div>
 			
-			<?php
+		<!--  	<?php
  				  $row_count=1;
 
  while ($row = mysql_fetch_array($result)) {
@@ -51,23 +77,13 @@
 	  }
 	  
 	  $row_count++;
-				   }
- ?>
-
-                  <div class="panel-footer text-right">
-                    <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Courses</a>
-                  </div>
-                </div>
-              </div>
+	
+	................ 			   }
+ ?> -->
 			   
 
-               <div class="item col-xs-12 col-lg-6">
-                <div class="panel panel-default paper-shadow" data-z="0.5">
-                  <div class="panel-heading">
-                    <h4 class="text-headline margin-none">All Questions</h4>
-                    <p class="text-subhead text-light">Upload questions </p>
-                  </div>
-				  <?php
+               
+		<!--  		  <?php
 				  $row_count=1;
 				   while ($row = mysql_fetch_array($result1)) {
       if($row_count<=3){
@@ -94,19 +110,8 @@
 				   }
 	  
 	  
- ?>
-                  <div class="panel-footer">
-                    <a href="WEB-INF/views/questions/ShowQuestion.jsp" class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > View Questions</a>
-                  </div>
-                </div>
-              </div>
-			  						            
-	   
-                  </div>
-			
-                </div>
-              </div>
-		 	<!--    
+ ?>-->
+   	 	<!--    
      <div class="item col-xs-12 col-lg-6" style ="background-color: white;">
 	 	   <h4 class="text-headline margin-none">Forum Activity</h4>
 		   
@@ -141,12 +146,10 @@
                 </ul>		
               </div>
 		-->	  
-        </div>
-        
+            
         <!-- /st-content-inner -->
 
-      </div>
-        <!-- /st-content-inner -->
+            <!-- /st-content-inner -->
 
       <!-- /st-content -->
 
