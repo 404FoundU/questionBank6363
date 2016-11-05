@@ -13,7 +13,7 @@
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>-->
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <!-- <link rel="stylesheet" href="AdminFiles/stylesss.css"> -->
-  <title>Add New Course</title>
+  <title>Add Answer</title>
    </head>
 	<body>  
 	
@@ -32,7 +32,7 @@
 		</div>
 		
             			<div class="page-section">
-              				<h1 class="text-display-1">New Course</h1>
+              				<h1 class="text-display-1">Answer</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
