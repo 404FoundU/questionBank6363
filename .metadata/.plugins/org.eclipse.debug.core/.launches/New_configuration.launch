@@ -12,9 +12,9 @@
 <listEntry value="org.hibernate.tools.hbm2ddl"/>
 <listEntry value="org.hibernate.tools.query"/>
 </listAttribute>
-<booleanAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2cfgxml" value="true"/>
+<booleanAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2cfgxml" value="false"/>
 <stringAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2cfgxml.extension_id" value="org.hibernate.tools.hbm2cfgxml"/>
-<booleanAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2dao" value="true"/>
+<booleanAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2dao" value="false"/>
 <stringAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2dao.extension_id" value="org.hibernate.tools.hbm2dao"/>
 <booleanAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2ddl" value="false"/>
 <stringAttribute key="org.hibernate.tools.exporters.org.hibernate.tools.hbm2ddl.extension_id" value="org.hibernate.tools.hbm2ddl"/>

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.StringJoiner"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="org.questionBank.data.CourseHome"/>
-<fullyQualifiedTypeName name="org.questionBank.dao.CourseDataUtil"/>
 <fullyQualifiedTypeName name="java.math.BigDecimal"/>
-<fullyQualifiedTypeName name="org.questionBank.dao.InvalidCourseException"/>
 <fullyQualifiedTypeName name="org.jboss.logging.Logger"/>
 <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
 <fullyQualifiedTypeName name="org.apache.log4j.LogManager"/>
@@ -16,5 +11,23 @@
 <fullyQualifiedTypeName name="org.hibernate.cfg.Configuration"/>
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
 <fullyQualifiedTypeName name="org.hibernate.Session"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletConfig"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="org.questionBank.dao.CourseDataUtil"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
+<fullyQualifiedTypeName name="org.questionBank.dao.InvalidCourseException"/>
 <fullyQualifiedTypeName name="org.questionBank.data.Course"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+<fullyQualifiedTypeName name="org.questionBank.data.CourseHome"/>
+<fullyQualifiedTypeName name="org.questionBank.data.Question"/>
+<fullyQualifiedTypeName name="org.questionBank.data.QuestionHome"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="org.questionBank.dao.InvalidQuestionException"/>
+<fullyQualifiedTypeName name="org.questionBank.dao.QuestionDataUtil"/>
 </qualifiedTypeNameHistroy>
