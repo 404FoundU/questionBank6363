@@ -48,7 +48,7 @@
    <div class="container">
 	<div class="row">
 	 <div class="jumbotron">
-	  <h1 class="small">Welcome To <span class="bold">QBMS</span></h1>
+	  <h1 class="small">Welcome To <span class="bold">QBMS CHECK </span></h1>
 	  <p class="big">Question Bank Management System</p>
 	   <!--   <a href="adminlogin.jsp" class="btn btn-banner">Admin Sign In<i class="fa fa-send"></i></a> -->
 	  <a href="teacherlogin.jsp" class="btn btn-banner">Sign In<i class="fa fa-send"></i></a>

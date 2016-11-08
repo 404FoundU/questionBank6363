@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
 		<item value="" key="selection"/>
+=======
+		<item value="resultTeaches" key="selection"/>
+>>>>>>> 9b629d54a1c113b69b2435060135ae2f9c1d169e
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="{testclasses"/>
 			<item value="{classes"/>
 			<item value="message"/>
@@ -16,15 +21,33 @@
 			<item value="error"/>
 			<item value="Creating Course"/>
 			<item value="package"/>
+=======
+			<item value="resultPerson"/>
+			<item value="result"/>
+			<item value="a3"/>
+			<item value="a2"/>
+			<item value="a1"/>
+			<item value="Answer"/>
+			<item value="c3"/>
+			<item value="c2"/>
+>>>>>>> 9b629d54a1c113b69b2435060135ae2f9c1d169e
 		</list>
 		<list key="replacehistory">
+			<item value="resultTeaches"/>
+			<item value="resultAnswer"/>
+			<item value="resultPerson"/>
+			<item value="t3"/>
+			<item value="Teaches"/>
+			<item value="a3"/>
+			<item value="a2"/>
+			<item value="a1"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="290" key="DIALOG_WIDTH"/>
-		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText-Regular" key="DIALOG_FONT_NAME"/>
 		<item value="409" key="DIALOG_HEIGHT"/>
-		<item value="949" key="DIALOG_X_ORIGIN"/>
+		<item value="580" key="DIALOG_X_ORIGIN"/>
 		<item value="71" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

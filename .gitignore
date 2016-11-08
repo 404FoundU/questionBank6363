@@ -1,9 +1,9 @@
 QuestionBank/build/
 QuestionBank/dist/
 RemoteSystemsTempFiles/
-.metadata/
 .recommenders/
 **/.DS_Store
 QuestionBank/applog.txt
 /.settings/
 /.classpath
+.metadata/
