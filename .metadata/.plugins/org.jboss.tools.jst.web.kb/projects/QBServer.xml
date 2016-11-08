@@ -138,18 +138,16 @@
   <path value="/Users/christianlevi/Desktop/schoolwork/courses/AgileSoftwareEngineering/Project/questionBank6363/QBServer/WebContent/WEB-INF/lib/jasper.jar"/>
  </paths>
  <validation>
-  <core validator-id="jsf-verification"/>
-  <core validator-id="jboss.cdi.core"/>
   <el>
    <linked-el length="23" name="%0" offset="2422" path="%1"/>
    <linked-el length="20" name="%0" offset="1765" path="%2"/>
    <linked-el length="22" name="%0" offset="2477" path="%3"/>
    <linked-el length="13" name="%4" offset="2621" path="%5"/>
    <linked-el length="19" name="%6" offset="2835" path="%5"/>
-   <linked-el length="17" name="%6" offset="2898" path="%5"/>
    <linked-el length="126" name="%6" offset="3493" path="%2"/>
-   <linked-el length="125" name="%6" offset="3153" path="%5"/>
+   <linked-el length="17" name="%6" offset="2898" path="%5"/>
    <linked-el length="19" name="%6" offset="3414" path="%2"/>
+   <linked-el length="125" name="%6" offset="3153" path="%5"/>
    <linked-el length="23" name="%6" offset="2768" path="%5"/>
    <linked-el length="21" name="%6" offset="2703" path="%5"/>
    <linked-el length="124" name="%6" offset="2975" path="%5"/>
@@ -186,8 +184,8 @@
    <linked-el length="24" name="%16" offset="3036" path="%3"/>
    <linked-el length="22" name="%16" offset="2109" path="%2"/>
    <linked-el length="25" name="%16" offset="3000" path="%1"/>
-   <linked-el length="23" name="%17" offset="2768" path="%5"/>
-   <linked-el length="18" name="%18" offset="3352" path="%2"/>
+   <linked-el length="18" name="%17" offset="3352" path="%2"/>
+   <linked-el length="23" name="%18" offset="2768" path="%5"/>
    <linked-el length="19" name="%19" offset="2804" path="%8"/>
    <linked-el length="22" name="%19" offset="2741" path="%10"/>
    <linked-el length="22" name="%19" offset="2806" path="%9"/>
@@ -204,8 +202,8 @@
    <linked-el length="18" name="%23" offset="2090" path="%2"/>
    <linked-el length="20" name="%23" offset="2766" path="%3"/>
    <linked-el length="23" name="%24" offset="3217" path="%9"/>
-   <linked-el length="23" name="%24" offset="3152" path="%10"/>
    <linked-el length="20" name="%24" offset="3116" path="%8"/>
+   <linked-el length="23" name="%24" offset="3152" path="%10"/>
    <linked-el length="19" name="%25" offset="3333" path="%1"/>
    <linked-el length="19" name="%25" offset="3359" path="%3"/>
    <linked-el length="20" name="%25" offset="1765" path="%2"/>
@@ -227,8 +225,8 @@
    <linked-el length="117" name="%26" offset="3586" path="%8"/>
    <linked-el length="117" name="%26" offset="3769" path="%9"/>
    <linked-el length="16" name="%26" offset="2224" path="%9"/>
-   <linked-el length="140" name="%27" offset="3515" path="%10"/>
    <linked-el length="20" name="%27" offset="2495" path="%8"/>
+   <linked-el length="140" name="%27" offset="3515" path="%10"/>
    <linked-el length="23" name="%27" offset="2481" path="%9"/>
    <linked-el length="121" name="%27" offset="3406" path="%8"/>
    <linked-el length="121" name="%27" offset="3589" path="%9"/>
@@ -248,7 +246,7 @@
   <alias path="error" value="%14"/>
   <alias path="item.credit" value="%15"/>
   <alias path="course.courseNumber" value="%16"/>
-  <alias path="item.courseNumber" value="%17"/>
+  <alias path="item.courseNumber" value="%18"/>
   <alias path="question.chapter" value="%19"/>
   <alias path="course.id" value="%20"/>
   <alias path="item.deptName" value="%21"/>
@@ -269,7 +267,7 @@
   <alias path="item.question" value="%13"/>
   <alias
    path="/QBServer/WebContent/WEB-INF/views/questions/ShowQuestion.jsp" value="%8"/>
-  <alias path="item.chapter" value="%18"/>
+  <alias path="item.chapter" value="%17"/>
   <alias path="item.id" value="%22"/>
   <alias path="question.question" value="%24"/>
   <alias
