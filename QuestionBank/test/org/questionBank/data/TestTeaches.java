@@ -1,4 +1,4 @@
-package org.questionBank.dao;
+package org.questionBank.data;
 
 import org.junit.Test;
 

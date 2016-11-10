@@ -1,67 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="buildProject" basedir="." default="main">
+<project name="buildProject" basedir=".." default="main">
 
 	<!-- Source and target java versions  -->
-	<property name="currentdir"   	  value="."/>
-	<property name="deploy.dir"   	  value="build"/>
-	<property name="src.dir"      	  value="src"/>
-	<property name="testsrc.dir"  	  value="test"/>
-	<property name="classes.dir"  	  value="${deploy.dir}/classes"/>
-	<property name="testclasses.dir"  value="${deploy.dir}/test-classes"/>
-	<property name="lib.dir"      	  value="lib"/>
-	<property name="ejb.dir"		  value="${lib.dir}/ejb"/>
-	<property name="testreports.dir"  value="${testsrc.dir}/output"/>
-	<property name="dist.dir"		  value="dist"/>
-	<property name="QuestionBankLib"  value="questionBank"/>
-	<!--
-	<property name="MainClassName"	  value="Startup" />
+	<!--<property name="QBdeploy.dir"   		value="${qBank.dir}/build"/>-->
+	<property name="currentdir"   	  		value="${basedir}"/>
+	<!-- QuestionBank -->
+	<property name="qBank.dir"		  		value="QuestionBank"/>
+	<property name="QBdeploy.dir"   		value="${qBank.dir}/build"/>
+	<property name="QBsrc.dir"      	  	value="${qBank.dir}/src"/>
+	<property name="QBtestsrc.dir"  	  	value="${qBank.dir}/test"/>
+	<property name="QBclasses.dir"  	  	value="${QBdeploy.dir}/classes"/>
+	<property name="QBtestclasses.dir"  	value="${QBdeploy.dir}/test-classes"/>
+	<property name="QBlib.dir"      	  	value="${qBank.dir}/lib"/>
+	<property name="QBejb.dir"		  		value="${qBank.dir}/${QBlib.dir}/ejb"/>
+	<property name="QBtestreports.dir"  	value="${qBank.dir}/${QBtestsrc.dir}/output"/>
+	<property name="QBdist.dir"		  		value="${qBank.dir}/dist"/>
+	<property name="QuestionBankLib"  		value="questionBank"/>
+	<!-- QBServer -->
+	<property name="QBsvr.dir"				value="QBServer" />
+	<property name="QBsvrdeploy.dir"   		value="${QBsvr.dir}/build"/>
+	<property name="QBsvrsrc.dir"		value="${QBsvr.dir}/src" />
+	<property name="QBsvrtestsrc.dir"		value="${QBsvr.dir}/test" />
+	<property name="QBsvrlib.dir"      	  	value="${QBsvr.dir}/WebContent/WEB-INF/lib"/>
+	<property name="QBsvrclasses.dir"  	  	value="${QBsvrdeploy.dir}/classes"/>
+	<property name="QBsvrtestclasses.dir"  	value="${QBsvrdeploy.dir}/test-classes"/>
+	<!--<property name="MainClassName"	  value="Startup" />
 	<property name="package"		  value="org.questionBank.main" />
 	<property name="mainclass" 		  value="${package}.${MainClassName}"/> -->
-	<!-- Target Names -->
+	
+	
+	<!-- QuestionBank Target Names -->
 	
 	<!-- Structure Property Definitions -->
-	<path id="project.classpath">
+	<path id="QuestionBank.project.classpath">
 	    <pathelement path="${classpath}"/>
-	    <pathelement location="${deploy.dir}" />
-	    <pathelement location="${currentdir}" />
-	    <pathelement location="${classes.dir}" />
-	    <pathelement location="${testclasses.dir}" />  
+	    <pathelement location="${QBdeploy.dir}" />
+	    <pathelement location="${QBcurrentdir}" />
+	    <pathelement location="${QBclasses.dir}" />
+	    <pathelement location="${QBtestclasses.dir}" />  
 	       
-	    <fileset dir="${lib.dir}">
+	    <fileset dir="${QBlib.dir}">
 	          <include name="**/*.jar"/>
 	    </fileset>
 	</path>
-	<property name="myclasspath" refid="project.classpath"/>
-	  <echo message="Classpath = ${myclasspath}"/>
+	<property name="myQuestionBankClasspath" refid="QuestionBank.project.classpath"/>
+	<echo message="Classpath = ${myQuestionBankClasspath}"/>
 
 	<!-- Target: clean -->
-	<target name="clean">
-	    <delete dir="${deploy.dir}"/>
+	<target name="clean_question_bank">
+	    <delete dir="${QBdeploy.dir}"/>
 	</target>
 	
 	<!-- Target: compile_src -->
-    <target name="compile_src">
-        <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includeantruntime="true">
-			<classpath refid="project.classpath"/>
+    <target name="compile_question_bank_src">
+        <mkdir dir="${QBclasses.dir}"/>
+        <javac srcdir="${QBsrc.dir}" destdir="${QBclasses.dir}" debug="true" includeantruntime="true">
+			<classpath refid="QuestionBank.project.classpath"/>
     	</javac>
     </target>
 	
 	<!-- Target: compile_tests -->
-	<target name="compile_tests" depends="compile_src">
-		<mkdir dir="${testclasses.dir}"/>
-		<javac srcdir="${testsrc.dir}" destdir="${testclasses.dir}" debug="true" includeantruntime="true">
-			<classpath refid="project.classpath"/>	
+	<target name="compile_question_bank_tests" depends="compile_question_bank_src">
+		<mkdir dir="${QBtestclasses.dir}"/>
+		<javac srcdir="${QBtestsrc.dir}" destdir="${QBtestclasses.dir}" debug="true" includeantruntime="true">
+			<classpath refid="QuestionBank.project.classpath"/>	
 		</javac>
 	</target>
 	
 	<!-- Target: run_tests -->
-	<target name="run_tests" depends="compile_tests" >    
+	<target name="run_question_bank_tests" depends="compile_question_bank_tests" >    
 	    <junit showoutput="true" haltonfailure="no" fork="yes" maxmemory="1024m" failureproperty="test.failed">
 	    	<formatter type="plain" usefile="false"/>      
-	    	<classpath refid="project.classpath"/>
-			<batchtest fork="yes" todir="${testreports.dir}">
-	    		<fileset dir="${testsrc.dir}">
+	    	<classpath refid="QuestionBank.project.classpath"/>
+			<batchtest fork="yes" todir="${QBtestreports.dir}">
+	    		<fileset dir="${QBtestsrc.dir}">
 	    	    	<include name="**/*Test*.java"/>
 	    	  	</fileset>
 	   		</batchtest>
@@ -72,11 +84,11 @@
 	  </target>
 	
 	<!-- Target: jar -->
-	<target depends="compile_src" name="jar">
-		<jar basedir="${classes.dir}" 
+	<target depends="compile_question_bank_src" name="question_bank_jar">
+		<jar basedir="${QBclasses.dir}" 
 		 excludes="**/*Test*" 
 		 includes="**/*.class" 
-		 jarfile="${dist.dir}/${QuestionBankLib}.jar"/>
+		 jarfile="${QBdist.dir}/${QuestionBankLib}.jar"/>
 	</target>
 	
 	<!-- Target: run -->
@@ -87,7 +99,46 @@
 		    </classpath>
 		</java>
 	</target>-->
+	
+	<!-- QBServer Target Names -->
+	
+	<!-- Structure Property Definitions -->
+	<path id="QBServer.project.classpath">
+	    <!--<pathelement path="${classpath}"/>-->
+	    <pathelement location="${QBsvrdeploy.dir}" />
+	    <pathelement location="${QBsvrcurrentdir}" />
+	    <pathelement location="${QBsvrclasses.dir}" />
+	    <pathelement location="${QBsvrtestclasses.dir}" />  
+	       
+	    <fileset dir="${QBsvrlib.dir}">
+	          <include name="*.jar"/>
+	    </fileset>
+	</path>
+	<property name="myQBServerClasspath" refid="QBServer.project.classpath"/>
+	<echo message="Classpath = ${myQBServerClasspath}"/>
 
-    <target name="main" depends="clean, run_tests, jar"/><!-- , run"/>-->
+	<!-- Target: clean_qb_svr -->
+	<target name="clean_qb_svr">
+	    <delete dir="${QBsvrdeploy.dir}"/>
+	</target>
+	
+	<!-- Target: compile_qb_svr_src -->
+    <target name="compile_qb_svr_src">
+        <mkdir dir="${QBsvrclasses.dir}"/>
+        <javac srcdir="${QBsvrsrc.dir}" destdir="${QBsvrclasses.dir}" debug="true" includeantruntime="true">
+			<classpath refid="QBServer.project.classpath"/>
+    	</javac>
+    </target>
+	
+	<!-- Target: compile_tests -->
+	<target name="compile_qb_svr_tests" depends="compile_qb_svr_src">
+		<mkdir dir="${QBsvrtestclasses.dir}"/>
+		<javac srcdir="${QBsvrtestsrc.dir}" destdir="${QBsvrtestclasses.dir}" debug="true" includeantruntime="true">
+			<classpath refid="QBServer.project.classpath"/>	
+		</javac>
+	</target>
+	
+
+    <target name="main" depends="clean_question_bank, run_question_bank_tests, question_bank_jar, clean_qb_svr, compile_qb_svr_src"/><!-- , run"/>-->
 	
 </project>

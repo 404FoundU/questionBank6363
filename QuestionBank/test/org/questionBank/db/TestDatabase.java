@@ -1,4 +1,4 @@
-package org.questionBank.dao;
+package org.questionBank.db;
 
 import static org.junit.Assert.*;
 
