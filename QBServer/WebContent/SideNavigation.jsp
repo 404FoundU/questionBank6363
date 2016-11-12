@@ -10,7 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <title>QBMS</title>
  
   <link href="TeacherDashboardFiles/all.css" rel="stylesheet">
@@ -78,7 +80,19 @@
         
       <ul class="sidebar-menu">
        <li class="active"> <a href="teacherdashboard.jsp"> <i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
-        <li class="hasSubmenu"> 
+       
+       
+       <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Course Menu</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+ <li class="hasSubmenu"> 
          <a href="<c:url value="/TeacherAddCourse" />" ><i class="fa fa-book"></i><span>Add Course</span></a>
          <ul id="course-menu">
       	
@@ -91,8 +105,20 @@
 		   <button name="viewlectureofcourse" type="submit" value=" Lecture View " href="ShowQuestion" class="btn btn-inverse">Edit Courses</span></form></li>  -->          			  
        	 </ul>
         </li>
-       
-        <li class="hasSubmenu">
+
+</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Questions Menu</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+
+    <li class="hasSubmenu">
          <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question</span></a>         
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
@@ -120,8 +146,22 @@
  		  </ul>
         </li>
         -->
-        <li><a  href="index.jsp" class="fa fa-sign-out"><span>Logout</span></a></li>
+        
        </ul>
+       </li>
+
+</div>
+      </div>
+    </div>
+    
+   <li><a  href="index.jsp" class="fa fa-sign-out"><span>Logout</span></a></li>
+  </div>
+       
+       
+       
+       
+       
+    
       </div>
     </div>
           <!-- 
