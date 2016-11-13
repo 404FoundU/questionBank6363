@@ -1,4 +1,0 @@
-browser-choice=1
-browsers=<?xml version\="1.0" encoding\="UTF-8"?>\n<web-browsers current\="0">\n<system/>\n<external location\="/." name\="BrowserSim"/>\n</web-browsers>
-eclipse.preferences.version=1
-internalWebBrowserHistory=http\://localhost\:8080/QBServer/WebContent/WEB-INF/index.jsp|*|http\://localhost\:8080/QBServer/WebContent/index.jsp|*|http\://localhost\:8080/QBServer/WebContent/WEB-INF/|*|http\://localhost\:8080/QBServer/WebContent/WEB-INF/admindashboard.jsp|*|http\://localhost\:8080/QBServer/WebContent/WEB-INF/admindashboard|*|http\://localhost\:8080/QBServer/|*|

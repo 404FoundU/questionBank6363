@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;QBServer&apos; to &apos;QBServer_OLD&apos;" description="Rename resource &apos;QBServer&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/QBServer" name="QBServer_OLD" stamp="1476928404248" updateReferences="true"/>&#x0A;<refactoring comment="Delete resource &apos;QBServer_OLD&apos;" deleteContents="false" description="Delete resource &apos;QBServer_OLD&apos;" element1="/QBServer_OLD" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1476930570411"/>
-</session>

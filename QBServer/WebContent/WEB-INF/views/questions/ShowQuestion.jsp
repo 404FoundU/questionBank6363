@@ -20,7 +20,7 @@
 
      	<!-- <link rel="stylesheet" href="AdminFiles/stylesss.css"> -->
 		
-		<title>Show Question</title>
+		<title>Show Question and Answer</title>
 	</head>
 	<body>  
 	
@@ -40,7 +40,7 @@
   			</div>
 		</div>
             			<div class="page-section">
-              				<h1 class="text-display-1">Question</h1>
+              				<h1 class="text-display-1">Question and Answer</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
@@ -80,6 +80,15 @@
     												</div>
      												<div class="form-control-material static required">
      													<label>${question.question}</label>
+ 													</div>
+   												</div>
+
+   												<div class="form-group">
+    												<div>
+    													<label><strong>Answer</strong></label>
+    												</div>
+     												<div class="form-control-material static required">
+     													<label>${answer.answerText}</label>
  													</div>
    												</div>
  

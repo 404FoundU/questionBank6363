@@ -6,6 +6,8 @@ import java.util.Map;
 import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.InvalidCourseException;
 import org.questionBank.dao.QuestionDataUtil;
+import org.questionBank.dao.AnswerDataUtil;
+import org.questionBank.data.Answer;
 import org.questionBank.data.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ public class CourseController {
 	CourseDataUtil courseDAO;
 	@Autowired
 	QuestionDataUtil questionDAO;
+	@Autowired
+	AnswerDataUtil answerDAO;
 
 	// List
 	@RequestMapping(value="/TeacherCourseView",method=RequestMethod.GET)
@@ -73,7 +77,36 @@ public class CourseController {
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/ShowCourse");
 		Course c = courseDAO.findCourse(id);
+		
 		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c.getId());
+		for(Map<String,Object> question : questions)
+		{
+			Object qid = question.get("id");
+			if(qid != null && (qid instanceof Integer) )
+			{
+				int questionId = (Integer)qid;
+				List<Answer> answers = answerDAO.findAnswersByQuestionId(questionId);
+				if(answers.isEmpty())
+				{
+					question.put("answer", "");
+				}
+				else if(answers.size() > 1)
+				{ 
+					question.put("answer", "Multiple Answers");
+				}
+				else
+				{ 
+					Answer a = answers.get(0);
+					question.put("answer", a.getAnswerText());
+				}
+			}
+   			    
+			
+				
+			
+		}
+		
+		
 		mve.addObject("course",c);
 		mve.addObject("questions",questions);
 		return mve;
