@@ -1,18 +1,20 @@
 package org.questionBank.data;
 // Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Home object for domain model class Teaches.
  * @see org.questionBank.data.Teaches
  * @author Hibernate Tools
  */
-@Stateless
+@Service
+@Transactional
 public class TeachesHome {
 
 	private static final Log log = LogFactory.getLog(TeachesHome.class);
@@ -20,6 +22,7 @@ public class TeachesHome {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@Transactional
 	public void persist(Teaches transientInstance) {
 		log.debug("persisting Teaches instance");
 		try {
@@ -31,6 +34,7 @@ public class TeachesHome {
 		}
 	}
 
+	@Transactional
 	public void remove(Teaches persistentInstance) {
 		log.debug("removing Teaches instance");
 		try {
@@ -42,6 +46,7 @@ public class TeachesHome {
 		}
 	}
 
+	@Transactional
 	public Teaches merge(Teaches detachedInstance) {
 		log.debug("merging Teaches instance");
 		try {

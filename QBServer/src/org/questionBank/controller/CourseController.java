@@ -3,6 +3,9 @@ package org.questionBank.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.InvalidCourseException;
 import org.questionBank.dao.QuestionDataUtil;
@@ -50,11 +53,19 @@ public class CourseController {
 	}
 
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.POST)
-	public ModelAndView createCourse(@RequestParam String courseName, @RequestParam String courseNumber,
+	public ModelAndView createCourse(HttpServletRequest request, @RequestParam String courseName, @RequestParam String courseNumber,
 									 @RequestParam String deptName, @RequestParam Integer credit){
 		ModelAndView mve =  null;
 		try {
-			Course newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
+			HttpSession s = request.getSession();
+			Object uid = s.getAttribute("userId");
+			Course newCourse;
+			if(uid != null){
+				Integer userId = (Integer) uid;
+				newCourse = courseDAO.createCourseForTeacher(userId, courseName, courseNumber, deptName, credit);
+			}else{
+				newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
+			}
 			mve=new ModelAndView("redirect:ShowCourse?id="+newCourse.getId());
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {

@@ -2,10 +2,12 @@ package org.questionBank.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.questionBank.dao.InvalidCredentialException;
 import org.questionBank.dao.PersonDataUtil;
 import org.questionBank.dao.UserAlreadyExistException;
+import org.questionBank.data.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,8 +37,12 @@ public class PersonController {
 	public ModelAndView teacherLogin(HttpServletRequest request,@RequestParam String username,@RequestParam String password){
 		ModelAndView modelAndView =null; 
 		try {
-			personDataUtil.teacherLogin(username, password);
-			request.getSession().setAttribute("name", username);
+			Person p = personDataUtil.teacherLogin(username, password);
+			HttpSession session = request.getSession();
+			session.setAttribute("name", p.getUserName());
+			session.setAttribute("userId", p.getId());
+			session.setAttribute("firstName", p.getFirstName());
+			session.setAttribute("lastName", p.getLastName());
 			modelAndView=new ModelAndView("redirect:teacherdashboard.jsp");
 		} catch (InvalidCredentialException e) {
 			modelAndView=new ModelAndView("redirect:teacherlogin.jsp");

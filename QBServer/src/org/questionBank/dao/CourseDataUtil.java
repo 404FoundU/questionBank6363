@@ -9,6 +9,9 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.CourseHome;
+import org.questionBank.data.Teaches;
+import org.questionBank.data.TeachesHome;
+import org.questionBank.data.TeachesId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +24,8 @@ public class CourseDataUtil {
 
 	@Autowired
 	private CourseHome ch = new CourseHome();
+	@Autowired
+	private TeachesHome th = new TeachesHome();
 	
 	// Validation
 	private static int MIN_DEPT_NAME_LENGTH = 3;
@@ -37,18 +42,40 @@ public class CourseDataUtil {
 	private static int MIN_COURSE_NUMBER_LENGTH = 3;
 	private static int MAX_COURSE_NUMBER_LENGTH = 4;
 	private static String COURSE_NUMBER_ERROR = "Course Number value must be 3 or 4 digits long";
-
-	public Course createCourse(String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException {
+	
+	public Course populateCourse(String courseName, String courseNumber, String deptName, Integer credit){
 		Course course = new Course();
 		course.setCourseNumber(courseNumber);
 		course.setCourseName(courseName);
 		course.setDeptName(deptName);
 		course.setCredit(credit);
+		return course;
+	}
+
+	public Teaches assignTeacherToCourse(Integer userId, Integer courseId){
+		TeachesId tid = new TeachesId(userId, courseId);
+		Teaches teaches = new Teaches();
+		teaches.setId(tid);
+		return teaches;
+	}
+	
+	public Course createCourse(String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException {
+		Course course = populateCourse(courseName, courseNumber, deptName, credit);
 		validateCourse(course);
 		// Save Course to DB
 		log.info("Creating Course");
 		log.debug(describeCourse(course));
 		ch.persist(course);
+		return course;
+	}
+	
+	public Course createCourseForTeacher(Integer userId, String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException {
+		Course course = createCourse(courseName, courseNumber, deptName, credit);
+		Teaches teaches = assignTeacherToCourse(userId, course.getId());
+		// Save Teaches join to DB
+		log.info("Creating Teaches Association");
+		log.debug(describeTeaches(teaches));
+		th.persist(teaches);
 		return course;
 	}
 	
@@ -59,6 +86,14 @@ public class CourseDataUtil {
 		str += "- Number: ["+course.getCourseNumber()+"]\r\n";
 		str += "- Department: ["+course.getDeptName()+"]\r\n";
 		str += "- Credit: ["+course.getCredit()+"]\r\n";
+		return str;
+	}
+	
+	public String describeTeaches(Teaches teaches){
+		TeachesId tid = teaches.getId();
+		String str = "Teaches :\r\n";
+		str += "- Person Id: ["+tid.getPerId()+"]\r\n";
+		str += "- Course Id: ["+tid.getCourseId()+"]\r\n";
 		return str;
 	}
 	
