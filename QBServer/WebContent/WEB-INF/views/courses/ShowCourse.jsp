@@ -71,7 +71,7 @@
 
 											<div class="form-group">
 												<div>
-													<label><strong>Questions</strong></label>
+													<label><strong>Add Questions and Answers to this course</strong></label>
 												</div>
 												<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
 													href="<c:url value="/CourseAddQuestion">
@@ -84,20 +84,22 @@
                     					<div class="table-list-content">
 											<table width="100%">
 												<tr>
-													<th width="20%">Chapter</th>
-													<th width="63%">Question</th>
-													<th width="17%"></th>
+													<th width="8%">Chapter</th>
+													<th width="23%">Question</th>
+													<th width="23%">Answer</th>
+													<th width="7%"></th>
 												</tr>
-  												<c:forEach items="${questions}" var="item">
-    												<tr>
-      													<td><c:out value="${item.chapter}" /></td>
-      													<td><c:out value="${item.question}" /></td>
+  												<c:forEach items="${questions}" var="question">
+  												<tr>
+      													<td><c:out value="${question.chapter}" /></td>
+      													<td><c:out value="${question.question}" /></td>
+      								 				    <td><c:out value="${question.answer}" /></td> 
       													<td>
       														<a href="<c:url value="/ShowQuestion">
-      																	<c:param name="id" value="${item.id}" />
+      																	<c:param name="id" value="${question.id}" />
       																</c:url>">Show</a>&nbsp&nbsp|&nbsp
       														<a href="<c:url value="/EditQuestion"> 
-      																	<c:param name="id" value="${item.id}" />
+      																	<c:param name="id" value="${question.id}" />
       																</c:url>">Edit</a>
       													</td>
     												</tr>

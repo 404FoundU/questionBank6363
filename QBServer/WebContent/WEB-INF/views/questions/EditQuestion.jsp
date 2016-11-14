@@ -20,7 +20,7 @@
 
      	<!-- <link rel="stylesheet" href="AdminFiles/stylesss.css"> -->
 		
-		<title>Edit Question</title>
+		<title>Edit Question and Answer</title>
 	</head>
 	<body>  
 		
@@ -39,7 +39,7 @@
 		</div>
 	
             			<div class="page-section">
-              				<h1 class="text-display-1">Question</h1>
+              				<h1 class="text-display-1">Question and Answer</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
@@ -73,8 +73,14 @@
     													<input type="text" class="form-control" name="question" id="question" maxlength="256" placeholder="Question" value="${question.question}" required>
     												</div>
    												</div>
+
+   												<div class="form-group">
+   													<div class="form-control-material static required">
+    													<input type="text" class="form-control" name="answer" id="answer" maxlength="256" placeholder="Answer" value="${answer.answer}" required>
+    												</div>
+   												</div>
  
-   												<button name="submit" type="submit">Update Question</button>
+   												<button name="submit" type="submit">Update Question and Answer</button>
   												<p class="message"></p>
   											</form>
  										</div>
