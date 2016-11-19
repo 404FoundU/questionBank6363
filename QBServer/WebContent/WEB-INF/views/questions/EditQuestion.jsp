@@ -57,6 +57,7 @@
 
    											<form action="UpdateQuestion" method="post">
    												<input type="hidden" name="id" value="${question.id}">
+   												<input type="hidden" name="answerId" value="${answer.id}">
    												<div class="form-group">
    													<div class="form-control-material static required">
       													<input type="text" class="form-control" name="courseId" id="courseId" maxlength="50" placeholder="Course" value="${question.courseId}" required >
@@ -76,7 +77,7 @@
 
    												<div class="form-group">
    													<div class="form-control-material static required">
-    													<input type="text" class="form-control" name="answer" id="answer" maxlength="256" placeholder="Answer" value="${answer.answer}" required>
+    													<input type="text" class="form-control" name="answerText" id="answerText" maxlength="256" placeholder="Answer" value="${answer.answerText}" required>
     												</div>
    												</div>
  

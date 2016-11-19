@@ -96,30 +96,42 @@ public class QuestionController {
 	
 	// Edit
 	@RequestMapping(value="/EditQuestion",method=RequestMethod.GET)
-	public ModelAndView editQuestion(@RequestParam("id") int id){
+	public ModelAndView editQuestion(@RequestParam("id") int id,@RequestParam("answerId") int answerId){
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/questions/EditQuestion");
 		Question q = questionDAO.findQuestion(id);
+		Answer a = answerDAO.findAnswer(answerId);
 		try{
 			questionDAO.validateQuestion(q);
+			answerDAO.validateAnswer(a);
 		}catch(InvalidQuestionException ex){
 			mve.addObject("errors", questionDAO.questionErrors(q));
 		}
+		catch(InvalidAnswerException ex){
+			mve.addObject("errors", answerDAO.answerErrors(a));
+		}
 		mve.addObject("question",q);
+		mve.addObject("answer",a);
 		return mve;
 	}
 
 	@RequestMapping(value="/UpdateQuestion",method=RequestMethod.POST)
 	public ModelAndView updateQuestion(@RequestParam Integer id, @RequestParam(required=false) Integer courseId, 
-			@RequestParam(required=false) String question, @RequestParam(required=false) String chapter){
+			@RequestParam(required=false) String question, @RequestParam(required=false) String chapter, @RequestParam(required=false) Integer answerId, @RequestParam(required=false) String answerText){
 		ModelAndView mve =  null;
 		try {
 			questionDAO.updateQuestion(id, courseId, question, chapter);
+			answerDAO.updateAnswer(answerId, answerText);
 			Question newQuestion = questionDAO.findQuestion(id);
+			Answer newAnswer = answerDAO.findAnswer(answerId);
 			mve=new ModelAndView("redirect:ShowQuestion?id="+id);
 			mve.addObject("question", newQuestion);
+			mve.addObject("answer", newAnswer);
 		} catch (InvalidQuestionException e) {
-			mve=new ModelAndView("redirect:EditQuestion?id="+id);
+			mve=new ModelAndView("redirect:EditQuestion?id="+id+"&answerId="+answerId);
+		}
+		catch (InvalidAnswerException ex) {
+			mve=new ModelAndView("redirect:EditQuestion?id="+id+"&answerId="+answerId);
 		}
 		return mve;
 	}

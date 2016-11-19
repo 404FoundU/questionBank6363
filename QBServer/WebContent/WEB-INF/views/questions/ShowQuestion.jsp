@@ -103,6 +103,7 @@
       										</c:url>">Course</a>&nbsp&nbsp|&nbsp
                   					<a href="<c:url value="EditQuestion">
       											<c:param name="id" value="${question.id}" />
+      											<c:param name="answerId" value="${answer.id}"/>
       										</c:url>">Edit</a>
                     			</div>
                   			</div>

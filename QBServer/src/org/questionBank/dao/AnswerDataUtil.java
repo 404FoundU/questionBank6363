@@ -74,9 +74,9 @@ public void deleteAnswer(Integer id){
 	}
 	
 
-	public boolean updateAnswer(Integer id,String answerText) throws InvalidAnswerException {
+	public boolean updateAnswer(Integer answerId,String answerText) throws InvalidAnswerException {
 		try{
-			Answer a = findAnswer(id);
+			Answer a = findAnswer(answerId);
 //			a.setQuestionId(questionId);
 			a.setAnswerText(answerText);
 	//		a.setId(id);
@@ -88,7 +88,23 @@ public void deleteAnswer(Integer id){
 			err.add(re.getMessage());
 			throw new InvalidAnswerException(err);
 		}
-	}
+	} 
+	
+/*	public boolean updateQuestion(Integer id, Integer courseId, String question, String chapter) throws InvalidQuestionException {
+		try{
+			Question q = findQuestion(id);
+			q.setCourseId(courseId);
+			q.setQuestion(question);
+			q.setChapter(chapter);
+			validateQuestion(q);
+			qh.merge(q);
+			return true;
+		}catch(RuntimeException re){
+			List<String> err = new ArrayList<String>();
+			err.add(re.getMessage());
+			throw new InvalidQuestionException(err);
+		}
+	} */
 	
 	public List<Answer> getAnswer(){
 		// TODO: implement this
