@@ -125,6 +125,7 @@ public class CourseController {
 				{ 
 					Answer a = answers.get(0);
 					question.put("answer", a.getAnswerText());
+					question.put("answerId", a.getId());
 				}
 			}
 		}

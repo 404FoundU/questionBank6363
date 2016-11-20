@@ -100,7 +100,8 @@
       																</c:url>">Show</a>&nbsp&nbsp|&nbsp
       														<a href="<c:url value="/EditQuestion"> 
       																	<c:param name="id" value="${question.id}" />
-      																</c:url>">Edit</a>
+      																	<c:param name="answerId" value="${question.answerId}"/>  
+      																	</c:url>">Edit</a>
       													</td>
     												</tr>
   												</c:forEach>
