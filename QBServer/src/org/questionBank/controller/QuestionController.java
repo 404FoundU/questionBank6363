@@ -1,16 +1,16 @@
 package org.questionBank.controller;
 
-import org.questionBank.dao.InvalidQuestionException;
 import org.questionBank.dao.QuestionDataUtil;
+import org.questionBank.data.Answer;
+import org.questionBank.data.Course;
 import org.questionBank.data.Question;
-
-import org.questionBank.dao.InvalidAnswerException;
+import org.questionBank.exception.InvalidAnswerException;
+import org.questionBank.exception.InvalidQuestionException;
 
 import java.util.List;
 
 import org.questionBank.dao.AnswerDataUtil;
-import org.questionBank.data.Answer;
-
+import org.questionBank.dao.CourseDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,14 +25,16 @@ public class QuestionController {
 	QuestionDataUtil questionDAO;
 	@Autowired
 	AnswerDataUtil answerDAO;
+	@Autowired
+	CourseDataUtil courseDAO;
 
 	// Create
 	@RequestMapping(value="/CourseAddQuestion",method=RequestMethod.GET)
 	public ModelAndView addQuestionView(@RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
 										@RequestParam(required=false) String chapter){
 		ModelAndView mve =  null;
-		Question q = null;
-		q = new Question(courseId, question, chapter);
+		Course course = courseDAO.findCourse(courseId);
+		Question q = questionDAO.populateQuestion(course, question, chapter);
 		mve = new ModelAndView("views/questions/AddQuestion");
 		mve.addObject("question", q);
 		if(question != null || chapter != null){
@@ -47,8 +49,9 @@ public class QuestionController {
 										@RequestParam(required=false) String chapter,@RequestParam(required=false) String answerText){
 		ModelAndView mve =  null;
 		try {
-			Question newQuestion = questionDAO.createQuestion(courseId, question, chapter);
-			Answer newAnswer = answerDAO.createAnswer(newQuestion.getId(),answerText);
+			Course course = courseDAO.findCourse(courseId);
+			Question newQuestion = questionDAO.createQuestion(course, question, chapter);
+			Answer newAnswer = answerDAO.createAnswer(newQuestion,answerText);
 			mve=new ModelAndView("redirect:ShowQuestion?id="+newQuestion.getId());
 			mve.addObject("question", newQuestion);
 			mve.addObject("answer",newAnswer);
@@ -114,7 +117,8 @@ public class QuestionController {
 			@RequestParam(required=false) String question, @RequestParam(required=false) String chapter){
 		ModelAndView mve =  null;
 		try {
-			questionDAO.updateQuestion(id, courseId, question, chapter);
+			Course course = courseDAO.findCourse(courseId);
+			questionDAO.updateQuestion(id, course, question, chapter);
 			Question newQuestion = questionDAO.findQuestion(id);
 			mve=new ModelAndView("redirect:ShowQuestion?id="+id);
 			mve.addObject("question", newQuestion);

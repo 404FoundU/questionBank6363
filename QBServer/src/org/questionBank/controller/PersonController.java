@@ -4,10 +4,10 @@ package org.questionBank.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.questionBank.dao.InvalidCredentialException;
 import org.questionBank.dao.PersonDataUtil;
-import org.questionBank.dao.UserAlreadyExistException;
 import org.questionBank.data.Person;
+import org.questionBank.exception.InvalidCredentialException;
+import org.questionBank.exception.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class PersonController {
+	
 	@Autowired
 	PersonDataUtil personDataUtil;
+
 	@RequestMapping(value="TeacherSignup",method=RequestMethod.POST)
 	public ModelAndView createPerson(HttpServletRequest request,@RequestParam("username") String userName,@RequestParam String password,@RequestParam("firstname") String firstName,@RequestParam String rpassword,@RequestParam("lastname") String lastName){
 		ModelAndView modelAndView =  null;
@@ -33,9 +35,9 @@ public class PersonController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="teacherlogin",method=RequestMethod.POST)
+	@RequestMapping(value="/teacherlogin",method=RequestMethod.POST)
 	public ModelAndView teacherLogin(HttpServletRequest request,@RequestParam String username,@RequestParam String password){
-		ModelAndView modelAndView =null; 
+		ModelAndView modelAndView = null; 
 		try {
 			Person p = personDataUtil.teacherLogin(username, password);
 			HttpSession session = request.getSession();
@@ -50,6 +52,7 @@ public class PersonController {
 		}
 		return modelAndView;
 	}
+	
 	@RequestMapping("teachersignout")
 	public ModelAndView teachersignout(HttpServletRequest request){
 		ModelAndView modelAndView =null; 
@@ -63,6 +66,7 @@ public class PersonController {
 		}
 		return modelAndView;
 	}
+	
 	@RequestMapping(value="AdminLogin",method=RequestMethod.POST)
 	public ModelAndView adminLogin(HttpServletRequest request,@RequestParam String username,@RequestParam String password){
 		ModelAndView modelAndView =null; 
