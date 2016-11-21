@@ -68,7 +68,7 @@
    												</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="16" placeholder="Course Number" value="${course.courseNumber}">
+    												<input type="text" class="form-control" name= "courseNumber" id="courseNumber" maxlength="8" placeholder="Course Number" value="${course.courseNumber}">
    												</div>
    
    												<div class="form-group form-control-material static required">
