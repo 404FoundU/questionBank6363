@@ -114,12 +114,6 @@
 </div>
       </div>
     </div>
-    
-    
-    
-    
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -134,99 +128,16 @@
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
             <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Questions</span></button></form></li>  	
-		<!-- 
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizdownload" type="submit" value="quizdownload" class="btn btn-inverse"><span>Upload Questions</span></button></form></li> 
-		
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizhistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Download Questions</span></button></form></li>  	
- 		  </ul>
-        </li>
-        
-        <li class="hasSubmenu">
-         <a href="#forum-menu"><i class="fa fa-file-text-o"></i><span>Answers</span></a>
-          <ul id="forum-menu">
-           <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="chosecourseforquiz" type="submit" value="chosecourseforquiz" class="btn btn-inverse"><span>View Answers</span></button></form></li>  	
-		
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizdownload" type="submit" value="quizdownload" class="btn btn-inverse"><span>Upload Answers</span></button></form></li> 
-		
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizhistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Download Answers</span></button></form></li>  	
- 		  </ul>
-        </li>
-        -->
-        
        </ul>
        </li>
-
 </div>
-       
-
       </div>
       
     </div>
     <li class="active" style="margin-left: 18px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
-   
   </div>
-       
-       
-       
-       
-       
-    
       </div>
     </div>
-          <!-- 
-    <li class="hasSubmenu">
-            <a href="#student-menu"><i class="fa fa-user"></i><span>Students</span></a>
-            <ul id="student-menu">
-          <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="studentview" type="submit" value=" student View " class="btn btn-inverse"><span>Students View</span></button></form></li>          			  
-       </ul>
-          </li>
-          -->
-          
-          
-            <!--
-		    <li class="hasSubmenu">
-            <a href="#assignment-menu"><i class="md md-assignment"></i><span>Assignment</span></a>         
-			<ul id="assignment-menu">
-		<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="assignmentchosecourse" type="submit" value="chosecourseforquiz" class="btn btn-inverse"><span>Upload Assignment</span></button></form></li>  	
-			<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="assignmenthistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Assignment History</span></button></form></li>  				
-			 </ul>
-          </li>
-		  <li class="hasSubmenu">
-            <a href="#activity-menu"><i class="fa fa-bar-chart-o"></i><span>Student Activities</span></a>
-            <ul id="activity-menu">
-		
-              <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="LA" type="submit" value="lectureActivity" class="btn btn-inverse"><span>Lecture Activities</span></button></form> </li>      
-  <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="CA" type="submit" value="courseactivity" class="btn btn-inverse"><span>Course Activities</span></button></form> </li>      
-<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="CG" type="submit" value="coursegraph" class="btn btn-inverse"><span>Course Graph</span></button></form> </li>      
-            </ul>
-          </li> 
-
-		
-              <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="formhome" type="submit" value="form" class="btn btn-inverse"><span>Forum Home</span></button></form> </li>      
-  
-            </ul>
-          </li>
-          <li class="hasSubmenu">
-            <a href="#account-menu"><i class="fa fa-user"></i><span>Account</span></a>
-            <ul id="account-menu">
-           <li><form action="" method="post">
-<button name="editprofile" type="submit" value="editprofile" class="btn btn-inverse"><span>Edit Profile</span></button></form></li>
-             
-            </ul>
-          </li>
-		    
-		    -->
+         
 		    
           
