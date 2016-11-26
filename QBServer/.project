@@ -3,6 +3,7 @@
 	<name>QBServer</name>
 	<comment></comment>
 	<projects>
+		<project>QuestionBank</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

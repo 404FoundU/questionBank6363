@@ -3,12 +3,15 @@ package org.questionBank.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.questionBank.dao.CourseDataUtil;
-import org.questionBank.dao.InvalidCourseException;
 import org.questionBank.dao.QuestionDataUtil;
-import org.questionBank.dao.AnswerDataUtil;
 import org.questionBank.data.Answer;
 import org.questionBank.data.Course;
+import org.questionBank.dao.AnswerDataUtil;
+import org.questionBank.exception.InvalidCourseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,10 +31,28 @@ public class CourseController {
 
 	// List
 	@RequestMapping(value="/TeacherCourseView",method=RequestMethod.GET)
-	public ModelAndView listCourses(){
+	public ModelAndView listCourses(HttpServletRequest request){
+		ModelAndView mve =  null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			Integer userId = (Integer) uid;
+			List<Map<String,Object>> courses = courseDAO.getDataForTeacherCourses(userId);
+			mve = new ModelAndView("views/courses/teachercourseview");
+			mve.addObject("courses", courses);
+			return mve;
+		}else{
+			mve = new ModelAndView("index");
+			mve.addObject("message", "Invalid User ID for Session");
+			return mve;
+		}
+	}
+	
+	@RequestMapping(value="/AdminCourseView",method=RequestMethod.GET)
+	public ModelAndView listAllCourses(){
 		ModelAndView mve =  null;
 		List<Map<String,Object>> courses = courseDAO.getDataForAllCourses();
-		mve = new ModelAndView("views/courses/teachercourseview");
+		mve = new ModelAndView("views/courses/admincourseview");
 		mve.addObject("courses", courses);
 		return mve;
 	}
@@ -43,7 +64,7 @@ public class CourseController {
 		ModelAndView mve =  null;
 		Course c = null;
 		if(courseName != null || courseNumber != null || deptName != null || credit != null){
-			c = new Course(courseName, courseNumber, deptName, credit);
+			c = courseDAO.populateCourse(courseName, courseNumber, deptName, credit);
 		}
 		mve = new ModelAndView("views/courses/AddCourse");
 		if(c != null){
@@ -54,19 +75,25 @@ public class CourseController {
 	}
 
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.POST)
-	public ModelAndView createCourse(@RequestParam String courseName, @RequestParam String courseNumber,
+	public ModelAndView createCourse(HttpServletRequest request, @RequestParam String courseName, @RequestParam String courseNumber,
 									 @RequestParam String deptName, @RequestParam Integer credit){
 		ModelAndView mve =  null;
 		try {
-			Course newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
+			HttpSession s = request.getSession();
+			Object uid = s.getAttribute("userId");
+			Course newCourse;
+//			if(uid != null){
+//				Integer userId = (Integer) uid;
+//				newCourse = courseDAO.createCourseForTeacher(userId, courseName, courseNumber, deptName, credit);
+//			}else{
+				newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
+//			}
 			mve=new ModelAndView("redirect:ShowCourse?id="+newCourse.getId());
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {
-			mve=new ModelAndView("redirect:TeacherAddCourse");
-			mve.addObject("courseName", courseName);
-			mve.addObject("courseNumber", courseNumber);
-			mve.addObject("deptName", deptName);
-			mve.addObject("credit", credit);
+			mve= refreshTeacherAddCourse(courseName, courseNumber, deptName, credit);
+//		} catch (InvalidTeachesException e){
+//			mve= refreshTeacherAddCourse(courseName, courseNumber, deptName, credit);
 		}
 		return mve;
 	}
@@ -101,10 +128,6 @@ public class CourseController {
 					question.put("answerId", a.getId());
 				}
 			}
-   			    
-			
-				
-			
 		}
 		
 		
@@ -141,6 +164,15 @@ public class CourseController {
 		} catch (InvalidCourseException e) {
 			mve=new ModelAndView("redirect:EditCourse?id="+id);
 		}
+		return mve;
+	}
+	
+	private ModelAndView refreshTeacherAddCourse(String courseName, String courseNumber, String deptName, Integer credit){
+		ModelAndView mve=new ModelAndView("redirect:TeacherAddCourse");
+		mve.addObject("courseName", courseName);
+		mve.addObject("courseNumber", courseNumber);
+		mve.addObject("deptName", deptName);
+		mve.addObject("credit", credit);
 		return mve;
 	}
 	

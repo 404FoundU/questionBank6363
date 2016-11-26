@@ -4,11 +4,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
 import org.questionBank.data.Course;
+import org.questionBank.data.Person;
+import org.questionBank.data.Question;
 
 /**
  * Tests for {@Course}.
@@ -28,20 +32,22 @@ public class TestCourse {
 	 */
 	@Before
 	 public void setUp(){
-	  this.c1 = new Course("Calculus", "100","math",3);
-	  this.c2 = new Course("Agile", "6363","csci",2);
-	  this.c3 = new Course("DataBase", "5225","csci",1);
-	  c1.setId(1);
-	  c2.setId(2);
-	  c3.setId(3);
+		Set<Person> people = new HashSet<Person>(10);
+		Set<Question> questions = new HashSet<Question>(10);
+		this.c1 = new Course("Calculus", "100","math",3, people, questions);
+		this.c2 = new Course("Agile", "6363","csci",2, people, questions);
+		this.c3 = new Course("DataBase", "5225","csci",1, people, questions);
+		c1.setId(1);
+		c2.setId(2);
+		c3.setId(3);
 
 	 }
 	 
 	 @Test
 	 public void getId(){
-		 assertEquals(new Integer(1),c1.getId());
-		 assertEquals(new Integer(2),c2.getId());
-		 assertEquals(new Integer(3),c3.getId());
+		 assertEquals(new Integer(1), c1.getId());
+		 assertEquals(new Integer(2), c2.getId());
+		 assertEquals(new Integer(3), c3.getId());
 	
 	 }
 	

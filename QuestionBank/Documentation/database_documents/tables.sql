@@ -1,50 +1,55 @@
-drop table Answer;
-drop table Question;
-drop table Teaches;
-drop table Person;
-drop table Course;
+drop table if exists `answer`; 
+drop table if exists `question`;
+drop table if exists `teaches`;
+drop table if exists `person`;
+drop table if exists `course`;
 
-CREATE TABLE Person(
-  id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  first_name varchar(50),
-  last_name varchar(50),
-  user_name varchar(20),
+CREATE TABLE `person`(
+  `id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50),
+  `last_name` varchar(50),
+  `user_name` varchar(20),
   password varchar(20),
-  primary key (id)
-);
+  primary key (`id`)
+) ENGINE=InnoDB;
 
-create table Course(
-  id   MEDIUMINT NOT NULL AUTO_INCREMENT,
-  course_name     varchar(64),
-  course_number	  varchar(8),
-  dept_name       varchar(8),
-  credit          int,
-  primary key (id)
-);
 
-create table Teaches(
-per_id MEDIUMINT,
-course_id MEDIUMINT,
-primary key (per_id, course_id),
-foreign key (per_id) references Person(id) on delete cascade,
-foreign key (course_id) references Course(id) on delete cascade
-);
+create table `course`(
+  `id`   MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `course_name`     varchar(64),
+  `course_number`	  varchar(8),
+  `dept_name`       varchar(8),
+  `credit`          int,
+  primary key (`id`)
+) ENGINE=InnoDB;
 
-create table Question(
-id MEDIUMINT NOT NULL AUTO_INCREMENT,
-course_id MEDIUMINT,
-question varchar(256),
-chapter varchar(7),
-question_text varchar(256),
-primary key (id),
-foreign key (course_id) references Course(id)
-);
+create table `teaches`(
+	`person_id` MEDIUMINT,
+	`course_id` MEDIUMINT,
+	primary key (`person_id`, `course_id`),
+	constraint `fk_teaches_person_id` foreign key (`person_id`) 
+		references `person`(`id`),
+	constraint `fk_teaches_course_id` foreign key (`course_id`) 
+		references `course`(`id`)
+) ENGINE=InnoDB;
 
-create table Answer
-(id MEDIUMINT NOT NULL AUTO_INCREMENT,
-question_id MEDIUMINT,
-answer_text varchar(256),
-primary key (id),
-foreign key (question_id) references Question(id)
-);
+
+create table `question`(
+	`id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+	`course_id` MEDIUMINT,
+	`question` varchar(256),
+	`chapter` varchar(7),
+	primary key (`id`),
+	constraint `fk_question_course_id` foreign key (`course_id`) 
+		references `course`(`id`)
+) ENGINE=InnoDB;
+
+create table `answer`(
+	`id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+	`question_id` MEDIUMINT,
+	`answer_text` varchar(256),
+	primary key (id),
+	constraint `fk_answer_question_id` foreign key (`question_id`) 
+		references `question`(`id`)
+) ENGINE=InnoDB;
 

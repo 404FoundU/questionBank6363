@@ -58,7 +58,7 @@
        <!--<ul class="nav navbar-nav"> </ul> -->
        
        <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
-        <li><a><i class="fa fa-user" aria-hidden="true"></i><span class="badge badge-primary"><%=session.getAttribute("name")%></span></a></li>
+        <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary"><%=session.getAttribute("name")%></span></a></li>
         <li><a href="index.jsp">Logout</a></li>
        </ul>
 
@@ -74,29 +74,34 @@
       
       <div class="sidebar-block">
        <div class="profile">
-        <a class="svg"><img style="margin-top:5px;margin-right:35px;" alt="" src="AdminDashboardFiles/logo.PNG" ></a>          
+        <a class="svg"><img style="margin-top: -19px; margin-right: 34px; width: 118%; margin-left: -17px;
+    margin-bottom: -15px;" alt="" src="AdminDashboardFiles/qbmslogo.jpg" ></a>          
        </div>
       </div>
         
       <ul class="sidebar-menu">
        <li class="active"> <a href="teacherdashboard.jsp"> <i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
-       
-       
        <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
+     
+
+
+
+    
+    
+    <div class="panel panel-default" style="margin-bottom:-5px;">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Course Menu</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><i class="fa fa-file-o"></i>Course Menu</a>
         </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
+      </div>	
+      <div id="collapse2" class="panel-collapse collapse ">
         <div class="panel-body">
 
  <li class="hasSubmenu"> 
          <a href="<c:url value="/TeacherAddCourse" />" ><i class="fa fa-book"></i><span>Add Course</span></a>
          <ul id="course-menu">
       	
-	   <button name="courseview" type="submit" value="Course View" class="btn btn-inverse" onclick="window.location.href='TeacherCourseView'"><span>View All Courses</span></button></form></li>
+	   <button name="courseview" type="submit" value="Course View" class="btn btn-inverse" onclick="window.location.href='TeacherCourseView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Courses</span></button></form></li>
              	
           <!--  <li><form action="" method="post"> <input type="hidden"  name="tid" value=""/>
 		   <button name="uploadlecture" type="submit" value=" Assign Leacture " href="AddCourse.jsp" class="btn btn-inverse"><span>Add Courses</span></form></li>   
@@ -109,20 +114,26 @@
 </div>
       </div>
     </div>
+    
+    
+    
+    
+    
+    
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Questions Menu</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><i class="fa fa-question-circle"></i>Questions Menu</a>
         </h4>
       </div>
-      <div id="collapse2" class="panel-collapse collapse">
+      <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
 
     <li class="hasSubmenu">
          <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question</span></a>         
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><span>View All Questions</span></button></form></li>  	
+            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Questions</span></button></form></li>  	
 		<!-- 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
             <button name="quizdownload" type="submit" value="quizdownload" class="btn btn-inverse"><span>Upload Questions</span></button></form></li> 
@@ -151,10 +162,13 @@
        </li>
 
 </div>
+       
+
       </div>
+      
     </div>
-    
-   <li><a  href="index.jsp" class="fa fa-sign-out"><span>Logout</span></a></li>
+    <li class="active" style="margin-left: 18px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+   
   </div>
        
        

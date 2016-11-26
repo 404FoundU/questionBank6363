@@ -4,10 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
+import org.questionBank.data.Course;
 import org.questionBank.data.Person;
 
 /**
@@ -28,12 +31,13 @@ public class TestPerson {
 	 */
 	@Before
 	 public void setUp(){
-	  this.p1 = new Person("bob", "william","user1","pass1");
-	  this.p2 = new Person("sam", "roger","user2","pass2");
-	  this.p3 = new Person("mike", "kiki","user3","pass3");
-	  p1.setId(1);
-	  p2.setId(2);
-	  p3.setId(3);
+		Set<Course> courses = new HashSet<Course>(0);
+		this.p1 = new Person("bob", "william","user1","pass1", courses);
+		this.p2 = new Person("sam", "roger","user2","pass2", courses);
+		this.p3 = new Person("mike", "kiki","user3","pass3", courses);
+		p1.setId(1);
+		p2.setId(2);
+		p3.setId(3);
 	 }
 	 
 	 @Test

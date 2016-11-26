@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 30, 2016 3:13:59 PM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated Nov 20, 2016 10:44:16 AM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="org.questionBank.data.Answer" table="Answer" catalog="questionbank" optimistic-lock="version">
+    <class name="org.questionBank.data.Answer" table="answer" schema="questionbank" catalog="questionbank">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="identity"></generator>
         </id>
-        <property name="questionId" type="java.lang.Integer">
+        <property name="answerText" type="java.lang.String">
+            <column name="answer_text" length="256" />
+        </property>
+        <many-to-one name="question" class="org.questionBank.data.Question" fetch="select">
             <column name="question_id" />
-        </property>
-        <property name="answerText" type="string">
-            <column name="answer_text" length="200" />
-        </property>
+        </many-to-one>
     </class>
 </hibernate-mapping>

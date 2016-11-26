@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence-unit name="pu1" transaction-type="JTA">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>com.mysite.restapi.RestletChildApplication</class>
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>org.questionBank.data.Answer</class>
+    <class>org.questionBank.data.Person</class>
     <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/questionbank" />

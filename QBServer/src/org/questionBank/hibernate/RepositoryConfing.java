@@ -23,6 +23,9 @@ public class RepositoryConfing {
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         entityManagerFactoryBean.setPackagesToScan("org.questionbank");
+//        entityManagerFactoryBean.setPackagesToScan("org.questionbank.data");
+//        entityManagerFactoryBean.setPersistenceUnitName("questionBank");
+//        entityManagerFactoryBean.setPersistenceXmlLocation("META-INF/persistence.xml");
         return entityManagerFactoryBean;
     }
 

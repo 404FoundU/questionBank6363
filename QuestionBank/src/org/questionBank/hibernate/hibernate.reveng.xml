@@ -2,15 +2,14 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-
-	<table-filter match-name="ANSWER" match-schema="SYSTEM">
-	</table-filter>
-	<table-filter match-name="COURSE" match-schema="SYSTEM">
-	</table-filter>
-	<table-filter match-name="PERSON" match-schema="SYSTEM">
-	</table-filter>
-	<table-filter match-name="QUESTION" match-schema="SYSTEM">
-	</table-filter>
-	<table-filter match-name="TEACHES" match-schema="SYSTEM">
-	</table-filter>
+  <!-- <table-filter match-catalog="questionbank" match-name="Person"/>
+  <table-filter match-catalog="questionbank" match-name="Course"/>
+  <table-filter match-catalog="questionbank" match-name="Teaches"/>
+  <table-filter match-catalog="questionbank" match-name="Question"/>
+  <table-filter match-catalog="questionbank" match-name="Answer"/> -->
+  <table-filter match-schema="questionbank" match-name="person"/>
+  <table-filter match-schema="questionbank" match-name="course"/>
+  <table-filter match-schema="questionbank" match-name="teaches"/>
+  <table-filter match-schema="questionbank" match-name="question"/>
+  <table-filter match-schema="questionbank" match-name="answer"/>
 </hibernate-reverse-engineering>

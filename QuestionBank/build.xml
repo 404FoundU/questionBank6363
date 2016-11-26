@@ -108,9 +108,11 @@
 	    <pathelement location="${QBsvrdeploy.dir}" />
 	    <pathelement location="${QBsvrcurrentdir}" />
 	    <pathelement location="${QBsvrclasses.dir}" />
-	    <pathelement location="${QBsvrtestclasses.dir}" />  
-	       
+	    <pathelement location="${QBsvrtestclasses.dir}" />
 	    <fileset dir="${QBsvrlib.dir}">
+	          <include name="**/*.jar"/>
+	    </fileset>
+	    <fileset dir="${QBdist.dir}">
 	          <include name="*.jar"/>
 	    </fileset>
 	</path>
