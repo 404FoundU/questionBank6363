@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.Question;
 import org.questionBank.exception.InvalidQuestionException;
+import org.questionBank.home.CourseHome;
 import org.questionBank.home.QuestionHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,8 @@ public class QuestionDataUtil {
 
 	@Autowired
 	private QuestionHome qh = new QuestionHome();
+	@Autowired
+	private CourseHome ch = new CourseHome();
 	
 	private static String COURSE_ID_ERROR = "Invalid Course Selected.";
 	private static int MIN_CHAPTER_LENGTH = 1;
@@ -55,7 +58,6 @@ public class QuestionDataUtil {
 	public String describeQuestion(Question question){
 		String str = "Question ["+question.getId()+"]:\r\n";
 		str += "- Id ["+question.getId()+"]\r\n";
-//		str += "- Course ID: ["+question.getCourseId()+"]\r\n";
 		String courseName = question.getCourse() == null ? "null" : question.getCourse().getId() + ""; 
 		str += "- Course: ["+courseName+"]\r\n";
 		str += "- Question: ["+question.getQuestion()+"]\r\n";
@@ -74,13 +76,8 @@ public class QuestionDataUtil {
 		return qh.findById(id);
 	}
 	
-	public boolean updateQuestion(Integer id, Course course, String question, String chapter) throws InvalidQuestionException {
+	public boolean updateQuestion(Question q) throws InvalidQuestionException {
 		try{
-			Question q = findQuestion(id);
-//			q.setCourseId(courseId);
-			q.setCourse(course);
-			q.setQuestion(question);
-			q.setChapter(chapter);
 			validateQuestion(q);
 			qh.merge(q);
 			return true;
@@ -97,8 +94,8 @@ public class QuestionDataUtil {
 		
 	}
 	
-	public List<Map<String,Object>> getDataForCourseQuestions(Integer courseId){
-		List<Question> questions = qh.getQuestionsForCourse(courseId);
+	public List<Map<String,Object>> getDataForCourseQuestions(Course course){
+		List<Question> questions = qh.getQuestionsForCourse(course);
 		return getQuestionsData(questions);
 	}
 	
@@ -113,7 +110,6 @@ public class QuestionDataUtil {
 	public Map<String,Object> mapQuestion(Question question){
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("id", question.getId());
-//		map.put("courseId", question.getCourseId());
 		map.put("course", question.getCourse());
 		map.put("chapter", question.getChapter());
 		map.put("question", question.getQuestion());
@@ -126,7 +122,6 @@ public class QuestionDataUtil {
 	
 	private List<String> getQuestionErrors(Question question){
 		List<String> errors = new ArrayList<String>();
-//		if(question.getCourseId() == null)
 		if(question.getCourse() == null)
 			errors.add(COURSE_ID_ERROR);
 		if(question.getChapter() == null || question.getChapter().length() < MIN_CHAPTER_LENGTH)

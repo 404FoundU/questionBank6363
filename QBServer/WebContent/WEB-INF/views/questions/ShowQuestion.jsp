@@ -62,7 +62,7 @@
     													<label><strong>Course ID</strong></label>
     												</div>
      												<div class="form-control-material static required">
-     													<label>${question.courseId}</label>
+     													<label>${question.course.id}</label>
  													</div>
    												</div>
      											<div class="form-group">
@@ -99,7 +99,7 @@
                   				</div>
                   				<div class="panel-header">
                   					<a href="<c:url value="ShowCourse">
-      											<c:param name="id" value="${question.courseId}" />
+      											<c:param name="id" value="${question.course.id}" />
       										</c:url>">Course</a>&nbsp&nbsp|&nbsp
                   					<a href="<c:url value="EditQuestion">
       											<c:param name="id" value="${question.id}" />

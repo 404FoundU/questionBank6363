@@ -1,12 +1,17 @@
 package org.questionBank.home;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.questionBank.data.Course;
 import org.questionBank.data.Question;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +26,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class QuestionHome {
 	private static final Log log = LogFactory.getLog(QuestionHome.class);
-	@PersistenceContext
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
-	
-	public List<Question> getQuestionsForCourse(Integer courseId){
-		TypedQuery<Question> q = entityManager.createQuery("select q from Question q where courseId="+courseId, Question.class);
-		List<Question> results = q.getResultList(); 
-		return results;
+
+	@Transactional
+	public List<Question> getQuestionsForCourse(Course course){
+		TypedQuery<Question> q = entityManager.createQuery("select q from Question q where q.course.id="+course.getId(), Question.class);
+		List<Question> questions = q.getResultList();
+//		Set<Question> results = course.getQuestions();
+//		List<Question> questions = new ArrayList<Question>(results);
+		return questions;
 	}
 
 	@Transactional
