@@ -90,14 +90,6 @@ public class CourseDataUtil {
 		return str;
 	}
 	
-//	public String describeTeaches(Teaches teaches){
-//		TeachesId tid = teaches.getId();
-//		String str = "Teaches :\r\n";
-//		str += "- Person Id: ["+tid.getPersonId()+"]\r\n";
-//		str += "- Course Id: ["+tid.getCourseId()+"]\r\n";
-//		return str;
-//	}
-	
 	public void deleteCourse(Integer id){
 		// TODO: test this
 		Course del = ch.findById(id); 
@@ -107,7 +99,6 @@ public class CourseDataUtil {
 	public Course findCourse(Integer id){
 		// TODO: test this
 		Course course = ch.findById(id);
-//		Set<Question> questions = course.getQuestions();
 		return course;
 	}
 	
@@ -132,7 +123,7 @@ public class CourseDataUtil {
 	
 	public List<Course> getCourses(){
 		// TODO: implement this
-		return new ArrayList<Course>();
+		return ch.getCourses();
 		
 	}
 	
@@ -192,22 +183,4 @@ public class CourseDataUtil {
 			throw new InvalidCourseException(errors);
 		}
 	}
-	
-//	public void validateTeachesId(TeachesId tid) throws InvalidTeachesException {
-//		Integer perId = (Integer) tid.getPersonId();
-//		Integer courseId = (Integer) tid.getCourseId();
-//		List<String> errors = getTeachesIdErrors(perId, courseId);
-//		if(!errors.isEmpty()){
-//			throw new InvalidTeachesException(errors);
-//		}
-//	}
-//	
-//	private List<String> getTeachesIdErrors(Integer perId, Integer courseId){
-//		List<String> errors = new ArrayList<String>();
-//		if(perId == null || perId <= 0)
-//			errors.add(INVALID_PERSON_ID);
-//		if(courseId == null || courseId <= 0)
-//			errors.add(INVALID_COURSE_ID);
-//		return errors;
-//	}
 }

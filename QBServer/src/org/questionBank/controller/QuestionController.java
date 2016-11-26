@@ -12,6 +12,7 @@ import java.util.List;
 import org.questionBank.dao.AnswerDataUtil;
 import org.questionBank.dao.CourseDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -113,29 +114,28 @@ public class QuestionController {
 		catch(InvalidAnswerException ex){
 			mve.addObject("errors", answerDAO.answerErrors(a));
 		}
+		List<Course> courses = courseDAO.getCourses();
 		mve.addObject("question",q);
 		mve.addObject("answer",a);
+		mve.addObject("courses", courses);
 		return mve;
 	}
 
 	@RequestMapping(value="/UpdateQuestion",method=RequestMethod.POST)
-	public ModelAndView updateQuestion(@RequestParam Integer id, @RequestParam(required=false) Integer courseId, 
-			@RequestParam(required=false) String question, @RequestParam(required=false) String chapter, @RequestParam(required=false) Integer answerId, @RequestParam(required=false) String answerText){
+	public ModelAndView updateQuestion(@ModelAttribute("question") Question question, @RequestParam(required=false) Integer answerId, @RequestParam(required=false) String answerText){
 		ModelAndView mve =  null;
 		try {
-			Course course = courseDAO.findCourse(courseId);
-			questionDAO.updateQuestion(id, course, question, chapter);
+			questionDAO.updateQuestion(question);
 			answerDAO.updateAnswer(answerId, answerText);
-			Question newQuestion = questionDAO.findQuestion(id);
 			Answer newAnswer = answerDAO.findAnswer(answerId);
-			mve=new ModelAndView("redirect:ShowQuestion?id="+id);
-			mve.addObject("question", newQuestion);
+			mve=new ModelAndView("redirect:ShowQuestion?id="+question.getId());
+			mve.addObject("question", question);
 			mve.addObject("answer", newAnswer);
 		} catch (InvalidQuestionException e) {
-			mve=new ModelAndView("redirect:EditQuestion?id="+id+"&answerId="+answerId);
+			mve=new ModelAndView("redirect:EditQuestion?id="+question.getId()+"&answerId="+answerId);
 		}
 		catch (InvalidAnswerException ex) {
-			mve=new ModelAndView("redirect:EditQuestion?id="+id+"&answerId="+answerId);
+			mve=new ModelAndView("redirect:EditQuestion?id="+question.getId()+"&answerId="+answerId);
 		}
 		return mve;
 	}
