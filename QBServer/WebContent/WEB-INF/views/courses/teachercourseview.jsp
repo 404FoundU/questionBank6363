@@ -8,10 +8,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     	<!-- <meta charset="UTF-8"> -->
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    	<link href="TeacherDashboardFiles/all.css" rel="stylesheet">
+
+	 	<link href="TeacherDashboardFiles/app.css" rel="stylesheet">
+    	
   	
 		<title>Courses</title>
 	</head>
@@ -40,6 +40,7 @@
               				<div class="item col-xs-12 col-lg-6">
               				<div class="panel-header">
                     				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherAddCourse" />" >Add Course</a>
+                    						      														&nbsp
                     				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/teacherdashboard.jsp" />" >Dashboard</a>
                     		</div>
                     		<p>&nbsp;</p>
