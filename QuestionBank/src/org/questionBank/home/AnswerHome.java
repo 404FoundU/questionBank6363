@@ -97,7 +97,7 @@ public class AnswerHome {
     public List<Answer> findByQuestionId(Integer questionId) {
 		
     	log.debug("getting Answer with Question Id: " + questionId);
-		String str= "select a from Answer a where questionId=" +questionId; 
+		String str= "select a from Answer a where a.question.id=" +questionId; 
     	TypedQuery<Answer> q = entityManager.createQuery(str,Answer.class);
 		List<Answer> res = q.getResultList();
 		return res;

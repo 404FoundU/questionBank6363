@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.Question;
 import org.questionBank.exception.InvalidQuestionException;
+import org.questionBank.home.CourseHome;
 import org.questionBank.home.QuestionHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,8 @@ public class QuestionDataUtil {
 
 	@Autowired
 	private QuestionHome qh = new QuestionHome();
+	@Autowired
+	private CourseHome ch = new CourseHome();
 	
 	private static String COURSE_ID_ERROR = "Invalid Course Selected.";
 	private static int MIN_CHAPTER_LENGTH = 1;
@@ -97,8 +101,9 @@ public class QuestionDataUtil {
 		
 	}
 	
-	public List<Map<String,Object>> getDataForCourseQuestions(Integer courseId){
-		List<Question> questions = qh.getQuestionsForCourse(courseId);
+	public List<Map<String,Object>> getDataForCourseQuestions(Course course){
+//		Set<Question> results = course.getQuestions();
+		List<Question> questions = qh.getQuestionsForCourse(course);
 		return getQuestionsData(questions);
 	}
 	

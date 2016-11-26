@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
+import org.questionBank.data.Question;
 import org.questionBank.exception.InvalidCourseException;
 import org.questionBank.home.CourseHome;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,7 +106,9 @@ public class CourseDataUtil {
 	
 	public Course findCourse(Integer id){
 		// TODO: test this
-		return ch.findById(id);
+		Course course = ch.findById(id);
+//		Set<Question> questions = course.getQuestions();
+		return course;
 	}
 	
 	public boolean updateCourse(Integer id, String courseName, String courseNumber, String deptName, 

@@ -2,14 +2,17 @@ package org.questionBank.home;
 // Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.questionBank.data.Course;
+import org.questionBank.data.Question;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +29,7 @@ public class CourseHome {
 
 	private static final Log log = LogFactory.getLog(CourseHome.class);
 
-	@PersistenceContext
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 
 	public List<Course> getCourses(){
@@ -85,6 +88,7 @@ public class CourseHome {
 		log.debug("getting Course instance with id: " + id);
 		try {
 			Course instance = entityManager.find(Course.class, id);
+			instance.setQuestions(instance.getQuestions());
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

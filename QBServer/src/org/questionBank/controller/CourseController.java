@@ -2,6 +2,7 @@ package org.questionBank.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.QuestionDataUtil;
 import org.questionBank.data.Answer;
 import org.questionBank.data.Course;
+import org.questionBank.data.Question;
 import org.questionBank.dao.AnswerDataUtil;
 import org.questionBank.exception.InvalidCourseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,8 +106,7 @@ public class CourseController {
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/ShowCourse");
 		Course c = courseDAO.findCourse(id);
-		
-		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c.getId());
+		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c);
 		for(Map<String,Object> question : questions)
 		{
 			Object qid = question.get("id");
@@ -129,7 +130,6 @@ public class CourseController {
 				}
 			}
 		}
-		
 		
 		mve.addObject("course",c);
 		mve.addObject("questions",questions);

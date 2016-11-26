@@ -60,7 +60,7 @@
    												<input type="hidden" name="answerId" value="${answer.id}">
    												<div class="form-group">
    													<div class="form-control-material static required">
-      													<input type="text" class="form-control" name="courseId" id="courseId" maxlength="50" placeholder="Course" value="${question.courseId}" required >
+      													<input type="text" class="form-control" name="courseId" id="courseId" maxlength="50" placeholder="Course" value="${question.course.id}" required >
    													</div>
    												</div>
      											<div class="form-group">
@@ -89,7 +89,7 @@
                   				</div>
                   				<div class="panel-header">
                   					<a href="<c:url value="ShowCourse">
-      											<c:param name="id" value="${question.courseId}" />
+      											<c:param name="id" value="${question.course.id}" />
       										</c:url>">Course</a>&nbsp&nbsp|&nbsp
                   					<a href="<c:url value="ShowQuestion">
       											<c:param name="id" value="${question.id}" />
