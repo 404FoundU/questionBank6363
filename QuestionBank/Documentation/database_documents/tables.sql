@@ -15,20 +15,10 @@ CREATE TABLE `person`(
   primary key (`id`)
 ) ENGINE=InnoDB;
 
-<<<<<<< HEAD
-
-create table `course`(
-  `id`   MEDIUMINT NOT NULL AUTO_INCREMENT,
-  `course_name`     varchar(64),
-  `course_number`	  varchar(8),
-  `dept_name`       varchar(8),
-  `credit`          int,
-=======
 CREATE TABLE `department`(
   `id` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `name` varchar(50),
   `abbreviation` varchar(10),
->>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
   primary key (`id`)
 ) ENGINE=InnoDB;
 

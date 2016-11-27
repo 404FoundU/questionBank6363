@@ -86,7 +86,7 @@
         				
         				
         				<div class="page-section">
-              				<h1 class="text-display-1">Questions</h1>
+              				<h1 class="text-display-1">Questions and Answers</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
@@ -94,7 +94,7 @@
                 		 		   <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
 													href="<c:url value="/CourseAddQuestion">
 															<c:param name="courseId" value="${course.id}" />
-														  </c:url>" >Add Question</a>
+														  </c:url>" >Add Question and Answers</a>
 														  <p>&nbsp;</p>
                 		  <div class="panel panel-default paper-shadow" data-z="10">
                 		   <div class="panel-heading">
@@ -105,10 +105,6 @@
     										
 
 											<div class="form-group">
-												<div>
-													<label><strong>Add Questions and Answers to this course</strong></label>
-												</div>
-												
 												
 												
                 				<!-- COURSE QUESTIONS -->

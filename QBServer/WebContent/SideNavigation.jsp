@@ -121,14 +121,6 @@
 </div>
       </div>
     </div>
-<<<<<<< HEAD
-    
-    
-    
-    
-    
-=======
->>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -142,36 +134,8 @@
          <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question and Answer</span></a>         
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<<<<<<< HEAD
             <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Question and Answers</span></button></form></li>  	
-		<!-- 
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizdownload" type="submit" value="quizdownload" class="btn btn-inverse"><span>Upload Questions</span></button></form></li> 
-		
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizhistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Download Questions</span></button></form></li>  	
- 		  </ul>
-        </li>
-        
-        <li class="hasSubmenu">
-         <a href="#forum-menu"><i class="fa fa-file-text-o"></i><span>Answers</span></a>
-          <ul id="forum-menu">
-           <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="chosecourseforquiz" type="submit" value="chosecourseforquiz" class="btn btn-inverse"><span>View Answers</span></button></form></li>  	
-		
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizdownload" type="submit" value="quizdownload" class="btn btn-inverse"><span>Upload Answers</span></button></form></li> 
-		
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="quizhistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Download Answers</span></button></form></li>  	
- 		  </ul>
-        </li>
-        -->
-        
-=======
-            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Questions</span></button></form></li>  	
->>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
-       </ul>
+		</ul>
        </li>
 </div>
       </div>
@@ -197,14 +161,9 @@
 </div>
 -->    
       
-    </div>
-<<<<<<< HEAD
-    
-    <li class="active" style="margin-left: 18px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
-   
-=======
+    </div>    
+
     <li class="active" style="margin-left: 18px; font-size: 16px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
->>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
   </div>
       </div>
     </div>

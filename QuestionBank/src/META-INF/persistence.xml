@@ -10,6 +10,7 @@
 		<class>org.questionBank.data.Question</class>
 		<class>org.questionBank.data.Person</class>
 		<class>org.questionBank.data.Course</class>
+		<class>org.questionBank.data.Department</class>
 		<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
 		
 		<properties>

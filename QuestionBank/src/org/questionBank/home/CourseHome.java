@@ -94,17 +94,5 @@ public class CourseHome {
 		}
 	}
 	
-	@Transactional
-	public Course findByIdSelect(Question que) {
-		log.debug("getting Course instance with id: " + que.getId());
-		try {
-			Course instance = entityManager.find(Course.class, que.getId());
-			instance.setQuestions(instance.getQuestions());
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
+	
 }

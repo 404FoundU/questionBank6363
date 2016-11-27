@@ -55,12 +55,7 @@
      </div>
 	</div>
    </div>
-			
-<<<<<<< HEAD
 		
-=======
-    <!-- Footer -->
->>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
     <footer class="footer">
       <strong>QBMS</strong>  &copy; Copyright 2016
     </footer>

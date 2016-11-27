@@ -102,17 +102,7 @@ public class CourseDataUtil {
 		return course;
 	}
 	
-<<<<<<< HEAD
-	public Course findCourseBySelect(Question que){
-		Course course = ch.findByIdSelect(que);
-		return course;
-	}
-	public boolean updateCourse(Integer id, String courseName, String courseNumber, String deptName, 
-								Integer credit) throws InvalidCourseException {
-		// TODO: implement this
-=======
 	public boolean updateCourse(Course course) throws InvalidCourseException {
->>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
 		try{
 			validateCourse(course);
 			ch.merge(course);
