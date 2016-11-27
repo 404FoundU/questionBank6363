@@ -16,7 +16,7 @@
   <body>
    <div class="container">
     <div class="info">
-     <h1>QBMS</h1><span>Question Bank Management System</span> 
+     <a href="index.jsp" style= "text-decoration: none !important; color:white;"><h1>QBMS</h1><span>Question Bank Management System</span></a> 
     </div>
    </div>
    
