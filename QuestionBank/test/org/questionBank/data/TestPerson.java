@@ -32,9 +32,9 @@ public class TestPerson {
 	@Before
 	 public void setUp(){
 		Set<Course> courses = new HashSet<Course>(0);
-		this.p1 = new Person("bob", "william","user1","pass1", courses);
-		this.p2 = new Person("sam", "roger","user2","pass2", courses);
-		this.p3 = new Person("mike", "kiki","user3","pass3", courses);
+		this.p1 = new Person("bob", "william","user1","pass1", true, courses);
+		this.p2 = new Person("sam", "roger","user2","pass2", false, courses);
+		this.p3 = new Person("mike", "kiki","user3","pass3", false, courses);
 		p1.setId(1);
 		p2.setId(2);
 		p3.setId(3);

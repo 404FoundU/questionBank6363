@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="../../../SideNavigation.jsp"/>
 
 <html>
@@ -55,7 +56,8 @@
   													<c:out value="* ${error}" /><br />
   												</c:forEach>
   											</span>
-   											<form action="UpdateCourse" method="post">
+   											<%-- <form action="UpdateCourse" method="post"> --%>
+   											<form:form action="UpdateCourse" modelAttribute="course" method="post">
    												<input type="hidden" name="id" value="${course.id}">
     											<div class="form-group">
      												<div class="form-control-material">
@@ -64,7 +66,10 @@
     											</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}">
+													<form:select path="department.id">
+      													<form:option value="-" label="--Select Department"/>
+      													<form:options items="${departments}" itemValue="id" itemLabel="abbreviation"/>
+            										</form:select>
    												</div>
    
    												<div class="form-group form-control-material static required">
@@ -76,7 +81,8 @@
    												</div>
  
    												<button name="submit" type="submit">Update Course</button>
-  											</form>
+  											<%-- </form> --%>
+  											</form:form>
  										</div>
                   					</div>
                   				</div>

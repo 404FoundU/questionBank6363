@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Nov 20, 2016 10:43:21 AM by Hibernate Tools 5.2.0.Beta1
+// Generated Nov 26, 2016 1:15:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,16 +26,23 @@ public class Person implements java.io.Serializable {
 	private String lastName;
 	private String userName;
 	private String password;
+	private boolean isAdmin;
 	private Set<Course> courses = new HashSet<Course>(0);
 
 	public Person() {
 	}
 
-	public Person(String firstName, String lastName, String userName, String password, Set<Course> courses) {
+	public Person(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public Person(String firstName, String lastName, String userName, String password, boolean isAdmin,
+			Set<Course> courses) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+		this.isAdmin = isAdmin;
 		this.courses = courses;
 	}
 
@@ -85,6 +92,15 @@ public class Person implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Column(name = "is_admin", nullable = false)
+	public boolean isIsAdmin() {
+		return this.isAdmin;
+	}
+
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY)

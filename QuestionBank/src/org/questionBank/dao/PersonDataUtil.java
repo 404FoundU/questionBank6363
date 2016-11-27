@@ -10,6 +10,7 @@ import org.questionBank.exception.UserAlreadyExistException;
 import org.questionBank.home.PersonHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public class PersonDataUtil {
 
@@ -39,6 +40,12 @@ public class PersonDataUtil {
 		}else{
 			throw new InvalidCredentialException("invalid password");
 		}
+	}
+	
+	public Person findPerson(Integer id){
+		// TODO: test this
+		Person person = ph.findById(id);
+		return person;
 	}
 	
 	public Person findUserByUserName(String userName) throws InvalidCredentialException {

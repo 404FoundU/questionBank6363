@@ -2,19 +2,22 @@ package org.questionBank.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.questionBank.dao.CourseDataUtil;
+import org.questionBank.dao.DepartmentDataUtil;
+import org.questionBank.dao.PersonDataUtil;
 import org.questionBank.dao.QuestionDataUtil;
 import org.questionBank.data.Answer;
 import org.questionBank.data.Course;
-import org.questionBank.data.Question;
+import org.questionBank.data.Department;
+import org.questionBank.data.Person;
 import org.questionBank.dao.AnswerDataUtil;
 import org.questionBank.exception.InvalidCourseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,13 +26,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class CourseController {
-	
+
+	@Autowired
+	PersonDataUtil personDAO;
 	@Autowired
 	CourseDataUtil courseDAO;
 	@Autowired
 	QuestionDataUtil questionDAO;
 	@Autowired
 	AnswerDataUtil answerDAO;
+	@Autowired
+	DepartmentDataUtil departmentDAO;
 
 	// List
 	@RequestMapping(value="/TeacherCourseView",method=RequestMethod.GET)
@@ -54,7 +61,7 @@ public class CourseController {
 	public ModelAndView listAllCourses(){
 		ModelAndView mve =  null;
 		List<Map<String,Object>> courses = courseDAO.getDataForAllCourses();
-		mve = new ModelAndView("views/courses/admincourseview");
+		mve = new ModelAndView("views/courses/teachercourseview");
 		mve.addObject("courses", courses);
 		return mve;
 	}
@@ -62,40 +69,47 @@ public class CourseController {
 	// Create
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.GET)
 	public ModelAndView addCoursesView(@RequestParam(required=false) String courseName, @RequestParam(required=false) String courseNumber,
-			 @RequestParam(required=false) String deptName, @RequestParam(required=false) Integer credit){
+			 @RequestParam(required=false) Department dept, @RequestParam(required=false) Integer credit){
 		ModelAndView mve =  null;
 		Course c = null;
-		if(courseName != null || courseNumber != null || deptName != null || credit != null){
-			c = courseDAO.populateCourse(courseName, courseNumber, deptName, credit);
+		boolean newCourse = true;
+		if(courseName != null || courseNumber != null || dept != null || credit != null){
+			c = courseDAO.populateCourse(courseName, courseNumber, dept, credit);
+			newCourse = false;
+		}else{
+			c = new Course();
 		}
+		List<Department> departments = departmentDAO.getDepartments();
 		mve = new ModelAndView("views/courses/AddCourse");
-		if(c != null){
-			mve.addObject("course", c);
+		mve.addObject("course", c);
+		mve.addObject("departments",departments);
+		if(!newCourse)
 			mve.addObject("errors", courseDAO.courseErrors(c));
-		}
 		return mve;
 	}
 
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.POST)
-	public ModelAndView createCourse(HttpServletRequest request, @RequestParam String courseName, @RequestParam String courseNumber,
-									 @RequestParam String deptName, @RequestParam Integer credit){
+	public ModelAndView createCourse(HttpServletRequest request, @ModelAttribute("course") Course course){
 		ModelAndView mve =  null;
 		try {
 			HttpSession s = request.getSession();
 			Object uid = s.getAttribute("userId");
 			Course newCourse;
-//			if(uid != null){
-//				Integer userId = (Integer) uid;
-//				newCourse = courseDAO.createCourseForTeacher(userId, courseName, courseNumber, deptName, credit);
-//			}else{
-				newCourse = courseDAO.createCourse(courseName, courseNumber, deptName, credit);
-//			}
+			if(uid != null){
+				Integer userId = (Integer) uid;
+				Person p = personDAO.findPerson(userId);
+				if(p.isIsAdmin()){
+					newCourse = courseDAO.createCourse(course);
+				}else{
+					newCourse = courseDAO.createCourseForTeacher(userId, course);
+				}
+			}else{
+				newCourse = courseDAO.createCourse(course);
+			}
 			mve=new ModelAndView("redirect:ShowCourse?id="+newCourse.getId());
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {
-			mve= refreshTeacherAddCourse(courseName, courseNumber, deptName, credit);
-//		} catch (InvalidTeachesException e){
-//			mve= refreshTeacherAddCourse(courseName, courseNumber, deptName, credit);
+			mve= refreshTeacherAddCourse(course);
 		}
 		return mve;
 	}
@@ -142,22 +156,23 @@ public class CourseController {
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/EditCourse");
 		Course c = courseDAO.findCourse(id);
+		List<Department> departments = departmentDAO.getDepartments();
 		try{
 			courseDAO.validateCourse(c);
 		}catch(InvalidCourseException ex){
 			mve.addObject("errors", courseDAO.courseErrors(c));
 		}
 		mve.addObject("course",c);
+		mve.addObject("departments", departments);
 		return mve;
 	}
 
 	@RequestMapping(value="/UpdateCourse",method=RequestMethod.POST)
-	public ModelAndView updateCourse(@RequestParam Integer id, @RequestParam String courseName, 
-									 @RequestParam String courseNumber,@RequestParam String deptName, 
-									 @RequestParam Integer credit){
+	public ModelAndView updateCourse(@ModelAttribute("course") Course course){
 		ModelAndView mve =  null;
+		Integer id = course.getId();
 		try {
-			courseDAO.updateCourse(id, courseName, courseNumber, deptName, credit);
+			courseDAO.updateCourse(course);
 			Course newCourse = courseDAO.findCourse(id);
 			mve=new ModelAndView("redirect:ShowCourse?id="+id);
 			mve.addObject("course", newCourse);
@@ -167,12 +182,9 @@ public class CourseController {
 		return mve;
 	}
 	
-	private ModelAndView refreshTeacherAddCourse(String courseName, String courseNumber, String deptName, Integer credit){
+	private ModelAndView refreshTeacherAddCourse(Course course){
 		ModelAndView mve=new ModelAndView("redirect:TeacherAddCourse");
-		mve.addObject("courseName", courseName);
-		mve.addObject("courseNumber", courseNumber);
-		mve.addObject("deptName", deptName);
-		mve.addObject("credit", credit);
+		mve.addObject("course", course);
 		return mve;
 	}
 	

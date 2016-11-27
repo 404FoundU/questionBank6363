@@ -56,7 +56,7 @@
     												<label><strong>Course Dept/Number</strong></label>
    												</div>
    												<div class="form-group form-control-material static required">
-     												<label>${course.deptName}-${course.courseNumber}</label>
+     												<label>${course.department.abbreviation}-${course.courseNumber}</label>
    												</div>
    											</div>
    

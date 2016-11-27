@@ -23,6 +23,9 @@ import org.questionBank.data.Question;
 @RunWith(JUnit4.class)
 public class TestAnswer {
 
+	//Departments
+	private Department d1;
+	private Department d2;
 	// Questions
 	private Question q1;
 	private Question q2;
@@ -36,13 +39,22 @@ public class TestAnswer {
 	private Answer a2;
 	private Answer a3;
 	
+	private void createDepartments(){
+		// Create Departments
+		Set<Course> courses = new HashSet<Course>(10);
+		this.d1 = new Department("Computer Science", "CSCI", courses);
+		this.d2 = new Department("Mathematics", "MATH", courses);
+		d1.setId(1);
+		d2.setId(2);
+	}
+	
 	private void createCourses(){
 		// Create Courses
 		Set<Person> people = new HashSet<Person>(10);
 		Set<Question> questions = new HashSet<Question>(10);
-		this.c1 = new Course("Calculus", "100","math",3, people, questions);
-		this.c2 = new Course("Agile", "6363","csci",2, people, questions);
-		this.c3 = new Course("DataBase", "5225","csci",1, people, questions);
+		this.c1 = new Course(d2, "Calculus", "100",3, people, questions);
+		this.c2 = new Course(d1, "Agile", "6363",2, people, questions);
+		this.c3 = new Course(d1, "DataBase", "5225",1, people, questions);
 		c1.setId(1);
 		c2.setId(2);
 		c3.setId(3);
@@ -65,6 +77,7 @@ public class TestAnswer {
 	 */
 	@Before
 	 public void setUp(){
+		createDepartments();
 		createCourses();
 		createQuestions();
 		this.a1 = new Answer(q1, "answer1");

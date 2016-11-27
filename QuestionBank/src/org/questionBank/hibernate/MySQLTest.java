@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.questionBank.data.Course;
+import org.questionBank.data.Department;
 
 public class MySQLTest {
 
@@ -18,20 +18,16 @@ public class MySQLTest {
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		
-		Course course = new Course();
-		String courseNumber = "6363";
-		String courseName = "Agile Software Engineering";
-		String deptName = "CSCI";
-		Integer credit = 3;
-		course.setCourseName(courseName);
-		course.setCourseNumber(courseNumber);
-		course.setDeptName(deptName);
-		course.setCredit(credit);
+		Department dept = new Department();
+		String compSciName = "Computer Science";
+		String compSciAbbr = "CSCI";
+		dept.setAbbreviation(compSciAbbr);
+		dept.setName(compSciName);
 		
-		log.info("Creating Course");
+		log.info("Creating Department");
 
 		session.beginTransaction();
-		session.save(course);
+		session.save(dept);
 		session.getTransaction().commit();
 	}
 

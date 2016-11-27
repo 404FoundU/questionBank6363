@@ -21,10 +21,23 @@ import org.questionBank.data.Question;
 
 @RunWith(JUnit4.class)
 public class TestCourse {
-	
+
+	//Departments
+	private Department d1;
+	private Department d2;
+	//Courses
 	private Course c1;
 	private Course c2;
 	private Course c3;
+	
+	private void createDepartments(){
+		// Create Departments
+		Set<Course> courses = new HashSet<Course>(10);
+		this.d1 = new Department("Computer Science", "CSCI", courses);
+		this.d2 = new Department("Mathematics", "MATH", courses);
+		d1.setId(1);
+		d2.setId(2);
+	}
 	
 	/**
 	 * Create 3 Course instance
@@ -32,11 +45,12 @@ public class TestCourse {
 	 */
 	@Before
 	 public void setUp(){
+		createDepartments();
 		Set<Person> people = new HashSet<Person>(10);
 		Set<Question> questions = new HashSet<Question>(10);
-		this.c1 = new Course("Calculus", "100","math",3, people, questions);
-		this.c2 = new Course("Agile", "6363","csci",2, people, questions);
-		this.c3 = new Course("DataBase", "5225","csci",1, people, questions);
+		this.c1 = new Course(d2, "Calculus", "100",3, people, questions);
+		this.c2 = new Course(d1, "Agile", "6363",2, people, questions);
+		this.c3 = new Course(d1, "DataBase", "5225",1, people, questions);
 		c1.setId(1);
 		c2.setId(2);
 		c3.setId(3);
@@ -68,10 +82,10 @@ public class TestCourse {
 	 }
 	 
 	 @Test
-	 public void getDeptName(){
-		 assertEquals("math",c1.getDeptName());
-		 assertEquals("csci", c2.getDeptName());
-		 assertEquals("csci", c3.getDeptName());
+	 public void getDepartment(){
+		 assertEquals(d2,c1.getDepartment());
+		 assertEquals(d1, c2.getDepartment());
+		 assertEquals(d1, c3.getDepartment());
 		 
 	 }
 	 

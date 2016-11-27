@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 20, 2016 10:44:16 AM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated Nov 26, 2016 1:36:25 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="org.questionBank.data.Course" table="course" schema="questionbank" catalog="questionbank">
         <id name="id" type="java.lang.Integer">
@@ -17,9 +17,9 @@
         <property name="credit" type="java.lang.Integer">
             <column name="credit" />
         </property>
-        <property name="deptName" type="java.lang.String">
-            <column name="dept_name" length="8" />
-        </property>
+        <many-to-one name="department" class="org.questionBank.data.Department" fetch="select">
+            <column name="department_id" />
+        </many-to-one>
         <set name="persons" table="teaches" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="course_id" not-null="true" />

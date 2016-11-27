@@ -45,7 +45,11 @@ public class PersonController {
 			session.setAttribute("userId", p.getId());
 			session.setAttribute("firstName", p.getFirstName());
 			session.setAttribute("lastName", p.getLastName());
-			modelAndView=new ModelAndView("redirect:teacherdashboard.jsp");
+			if(p.isIsAdmin()){
+				modelAndView=new ModelAndView("redirect:admindashboard.jsp");
+			}else{
+				modelAndView=new ModelAndView("redirect:teacherdashboard.jsp");
+			}
 		} catch (InvalidCredentialException e) {
 			modelAndView=new ModelAndView("redirect:teacherlogin.jsp");
 			modelAndView.addObject("message", e.getMessage());
@@ -57,7 +61,6 @@ public class PersonController {
 	public ModelAndView teachersignout(HttpServletRequest request){
 		ModelAndView modelAndView =null; 
 		try {
-			
 			request.getSession().invalidate();
 			modelAndView=new ModelAndView("redirect:teacherlogin.jsp");
 		} catch (Exception e) {

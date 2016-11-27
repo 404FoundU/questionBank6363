@@ -64,7 +64,7 @@ public class PersonHome {
 		}
 	}
 	@Transactional
-	public Person findById(String id) {
+	public Person findById(Integer id) {
 		log.debug("getting Person instance with id: " + id);
 		try {
 			Person instance = transactionManager.find(Person.class, id);

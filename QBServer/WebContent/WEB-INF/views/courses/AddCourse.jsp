@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="../../../SideNavigation.jsp"/>
 
 <html>
@@ -55,7 +56,8 @@
   												</c:forEach>
   											</span>
 
-   											<form action="TeacherAddCourse" method="post">
+   											<%-- <form action="TeacherAddCourse" method="post"> --%>
+   											<form:form action="TeacherAddCourse" modelAttribute="course" method="post">
     											<div class="form-group">
      												<div class="form-control-material static required">
       													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" value="${course.courseName}" required >
@@ -63,7 +65,11 @@
     											</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}" required>
+													<form:select path="department.id">
+      													<form:option value="-" label="--Select Department"/>
+      													<form:options items="${departments}" itemValue="id" itemLabel="abbreviation"/>
+            										</form:select>
+    												<%-- <input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}" required> --%>
    												</div>
    
    												<div class="form-group form-control-material static required">
@@ -76,7 +82,8 @@
  
    												<button name="submit" type="submit">Create</button>
   												<p class="message"></p>
-  											</form>
+  											<%-- </form> --%>
+  											</form:form>
  										</div>
                   					</div>
                   				</div>

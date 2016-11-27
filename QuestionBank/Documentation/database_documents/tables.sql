@@ -3,23 +3,34 @@ drop table if exists `question`;
 drop table if exists `teaches`;
 drop table if exists `person`;
 drop table if exists `course`;
+drop table if exists `department`;
 
 CREATE TABLE `person`(
   `id` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50),
   `last_name` varchar(50),
   `user_name` varchar(20),
-  password varchar(20),
+  `password` varchar(20),
+  `is_admin` boolean not null default 0,
+  primary key (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `department`(
+  `id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `name` varchar(50),
+  `abbreviation` varchar(10),
   primary key (`id`)
 ) ENGINE=InnoDB;
 
 create table `course`(
-  `id`   MEDIUMINT NOT NULL AUTO_INCREMENT,
-  `course_name`     varchar(64),
-  `course_number`	  varchar(8),
-  `dept_name`       varchar(8),
-  `credit`          int,
-  primary key (`id`)
+	`id`   MEDIUMINT NOT NULL AUTO_INCREMENT,
+	`course_name`     varchar(64),
+	`course_number`	  varchar(8),
+	`department_id` MEDIUMINT,
+	`credit`          int,
+	primary key (`id`),
+	constraint `fk_course_department_id` foreign key (`department_id`) 
+		references `department`(`id`)
 ) ENGINE=InnoDB;
 
 create table `teaches`(
