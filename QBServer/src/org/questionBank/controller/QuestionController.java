@@ -34,24 +34,38 @@ public class QuestionController {
 	public ModelAndView addQuestionView(@RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
 										@RequestParam(required=false) String chapter){
 		ModelAndView mve =  null;
-		Course course = courseDAO.findCourse(courseId);
+		Course course = null;
+		if(courseId!=null)
+		{
+	    	course = courseDAO.findCourse(courseId);
+		}
+		
 		Question q = questionDAO.populateQuestion(course, question, chapter);
 		mve = new ModelAndView("views/questions/AddQuestion");
 		mve.addObject("question", q);
 		if(question != null || chapter != null){
 			mve.addObject("errors", questionDAO.questionErrors(q));
 		}
+		List<Course> courses = courseDAO.getCourses();
+		mve.addObject("courses", courses);
 		return mve;
 	}
 
 		
 	@RequestMapping(value="/CourseAddQuestion",method=RequestMethod.POST)
-	public ModelAndView createQuestion(@RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
+	public ModelAndView createQuestion(@ModelAttribute("question") Question que, @RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
 										@RequestParam(required=false) String chapter,@RequestParam(required=false) String answerText){
 		ModelAndView mve =  null;
 		try {
-			Course course = courseDAO.findCourse(courseId);
-			Question newQuestion = questionDAO.createQuestion(course, question, chapter);
+			//Course course = null;
+			//if(courseId!=null)
+			//{
+			//course = courseDAO.findCourse(courseId); 
+			//}
+			//else
+			//{
+			//Course course = courseDAO.findCourse(que.getId());	
+			Question newQuestion = questionDAO.createQuestion(que);
 			Answer newAnswer = answerDAO.createAnswer(newQuestion,answerText);
 			mve=new ModelAndView("redirect:ShowQuestion?id="+newQuestion.getId());
 			mve.addObject("question", newQuestion);

@@ -45,14 +45,14 @@ public class QuestionDataUtil {
 		return q;
 	}
 
-	public Question createQuestion(Course course, String question, String chapter) throws InvalidQuestionException {
-		Question q = populateQuestion(course, question, chapter);
-		validateQuestion(q);
+	public Question createQuestion(Question que) throws InvalidQuestionException {
+		//Question q = populateQuestion(course, question, chapter);
+		validateQuestion(que);
 		// Save Course to DB
 		log.info("Creating Course");
-		log.debug(describeQuestion(q));
-		qh.persist(q);
-		return q;
+		log.debug(describeQuestion(que));
+		qh.persist(que);
+		return que;
 	}
 	
 	public String describeQuestion(Question question){

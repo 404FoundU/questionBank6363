@@ -102,6 +102,10 @@ public class CourseDataUtil {
 		return course;
 	}
 	
+	public Course findCourseBySelect(Question que){
+		Course course = ch.findByIdSelect(que);
+		return course;
+	}
 	public boolean updateCourse(Integer id, String courseName, String courseNumber, String deptName, 
 								Integer credit) throws InvalidCourseException {
 		// TODO: implement this
