@@ -75,17 +75,18 @@
 													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="${course.credit}" >
    												</div>
  
-   												<button name="submit" type="submit">Update Course</button>
+   												<button class="btn btn-success" name="submit" type="submit">Update Course</button>
   											</form>
  										</div>
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
-                  					<a href="<c:url value="ShowCourse">
+                  					<a class="btn btn-success paper-shadow relative " href="<c:url value="/TeacherCourseView" />" >List Course</a>&nbsp
+                  					<a class="btn btn-success paper-shadow relative " href="<c:url value="ShowCourse">
       											<c:param name="id" value="${course.id}" />
-      										</c:url>">Show</a>
+      										</c:url>">Show Course</a>
                     			</div>
+                    			&nbsp
                   			</div>
         				</div>
         			</div>
@@ -94,4 +95,7 @@
 		</div>
 
 	</body>
+	<footer class="footer">
+      <strong>QBMS</strong>  © Copyright 2016
+    </footer>
 </html>
