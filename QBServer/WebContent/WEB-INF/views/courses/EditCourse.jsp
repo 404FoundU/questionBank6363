@@ -81,10 +81,10 @@
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a class="btn btn-success paper-shadow relative " href="<c:url value="/TeacherCourseView" />" >List Course</a>&nbsp
+                  					<a class="btn btn-success paper-shadow relative " href="<c:url value="/TeacherCourseView" />" >List Courses</a>&nbsp
                   					<a class="btn btn-success paper-shadow relative " href="<c:url value="ShowCourse">
       											<c:param name="id" value="${course.id}" />
-      										</c:url>">Show Course</a>
+      										</c:url>">Show Courses</a>
                     			</div>
                     			&nbsp
                   			</div>

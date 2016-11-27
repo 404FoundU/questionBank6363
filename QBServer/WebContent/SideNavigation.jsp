@@ -58,8 +58,15 @@
        <!--<ul class="nav navbar-nav"> </ul> -->
        
        <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
-        <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary"><%=session.getAttribute("name")%></span></a></li>
-        <li><a href="index.jsp">Logout</a></li>
+        <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary" style ="font-size: 16px;"><%=session.getAttribute("name")%></span></a></li>
+        &nbsp<li><a  style= "padding-right: 62px;" href="index.jsp"><i class="fa fa-fw fa-sign-out">Logout</i>&nbsp</a></li>
+
+
+
+
+
+
+
        </ul>
 
      </div>
@@ -134,7 +141,7 @@
       </div>
       
     </div>
-    <li class="active" style="margin-left: 18px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+    <li class="active" style="margin-left: 18px; font-size: 16px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
   </div>
       </div>
     </div>
