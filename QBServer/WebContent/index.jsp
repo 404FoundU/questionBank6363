@@ -34,7 +34,7 @@
 	 <div class="collapse navbar-collapse" id="myNavbar">
 	  <ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 	   <li class="active"><a href="index.jsp">Home</a></li>
-	   <li><a href="AboutTeam.jsp">Contact Team 'C'</a></li>
+	   <li ><a href="AboutTeam.jsp">Contact </a></li>
 	  </ul>
 	 </div>
     </div>
@@ -52,7 +52,7 @@
 	  <p class="big">Question Bank Management System</p>
 	   <!--   <a href="adminlogin.jsp" class="btn btn-banner">Admin Sign In<i class="fa fa-send"></i></a> -->
 	  <a href="teacherlogin.jsp" class="btn btn-banner">Sign In<i class="fa fa-send"></i></a>
-      <a href="teachersignup.jsp" class="btn btn-banner">Sign Up<i class="fa fa-send"></i></a>
+      <a href="teachersignup.jsp" class="btn btn-banner">Sign Up<i class="fa fa-user-plus"></i></a>
 	 </div>
 	</div>
    </div>
