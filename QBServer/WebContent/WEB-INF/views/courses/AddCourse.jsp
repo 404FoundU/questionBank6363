@@ -18,6 +18,8 @@
     	<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
 		<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>-->
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
      	<!-- <link rel="stylesheet" href="AdminFiles/stylesss.css"> -->
 		
@@ -80,16 +82,14 @@
 													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  value="${course.credit}" required >
    												</div>
  
-   												<button name="submit" type="submit">Create</button>
+   												<button class="btn btn-success" name="submit" type="submit">Create</button>
+   												<a href="<c:url value="/TeacherCourseView" />" class="btn btn-success" role="button">Cancel</a>
   												<p class="message"></p>
   											<%-- </form> --%>
   											</form:form>
  										</div>
                   					</div>
                   				</div>
-                  				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >Cancel</a>
-                    			</div>
                   			</div>
         				</div>
         			</div>
@@ -98,4 +98,7 @@
 		</div>
 
 	</body>
+	<footer class="footer">
+      <strong>QBMS</strong>  © Copyright 2016
+    </footer>
 </html>

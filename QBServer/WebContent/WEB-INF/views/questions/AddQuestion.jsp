@@ -76,7 +76,13 @@
     		 </div>
    			</div>
    											
-   			<button name="submit" type="submit">Create</button>
+   			<button class="btn btn-success paper-shadow relative" name="submit" type="submit">Create</button>
+   			&nbsp
+   			<a class="btn btn-success paper-shadow relative" href="<c:url value="ShowCourse" >
+          <c:param name="id" value="${question.course.id}"/>
+          </c:url>" >Cancel
+         </a>
+         
   			<p class="message"> </p>
   	       </form>
  		  </div>
@@ -84,10 +90,7 @@
         </div>
         
         <div class="panel-header">
-         <a href="<c:url value="ShowCourse" >
-          <c:param name="id" value="${question.course.id}"/>
-          </c:url>" >Cancel
-         </a>
+         
         </div>
        </div>
       </div>

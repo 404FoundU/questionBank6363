@@ -1,7 +1,9 @@
 QuestionBank/build/
 QuestionBank/dist/
+QuestionBank/.classpath
 QBServer/build/
 QBServer/dist/
+QBServer/.classpath
 RemoteSystemsTempFiles/
 .recommenders/
 **/.DS_Store

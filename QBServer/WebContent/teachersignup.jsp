@@ -10,6 +10,7 @@
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="TeacherFiles/stylesss.css">
+    
   </head>
 
   <body>
@@ -70,7 +71,7 @@
 	</select>               
    </div>
  
-   <button name="submit" type="submit">create</button>
+<button name="submit" type="submit">Create <i class="fa fa-user"></i></button>
    <p class="message">Already registered? <a href="teacherlogin.jsp">Sign In</a></p>
   
   </form>
