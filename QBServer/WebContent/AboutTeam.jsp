@@ -32,8 +32,8 @@
 	  
 	 <div class="collapse navbar-collapse" id="myNavbar">
 	  <ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
-	   <li class="active"><a href="index.jsp">Home</a></li>
-	   <li><a href="AboutTeam.jsp">Contact Team 'C'</a></li>
+	   <li ><a href="index.jsp">Home</a></li>
+	   <li class="active"><a href="AboutTeam.jsp">Contact </a></li>
 	  </ul>
 	 </div>
     </div>
@@ -46,10 +46,10 @@
 	<div class="container">
 	 <div class="row">
 	  <div class="jumbotron white">
-	   <h1 class="bold">Team Charlie</span></h1>
+	   <h1 class="bold"><span>Team Charlie</span></h1>
 	   <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/chris.jpeg" alt="Christian" width="85" height="85"><strong>Christian Amadeo Levi</strong><br>504-452-6940<br><a href="mailto:calevi@my.uno.edu">calevi@my.uno.edu</a>
+                     <p><img src="images/chris.jpeg" alt="Christian" width="85" height="85"><br /><strong>Christian Amadeo Levi</strong><br>504-452-6940<br><a href="mailto:calevi@my.uno.edu">calevi@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Technical Lead, ABC Company</p>
@@ -57,7 +57,7 @@
        </div>
        <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/Raj.jpg" alt="Rajkiran" width="85" height="85"><strong>Raj Kiran Reddy Gunna</strong><br>580-665-7777<br><a href="mailto:rgunna@my.uno.edu">rgunna@my.uno.edu</a>
+                     <p><img src="images/Raj.jpg" alt="Rajkiran" width="85" height="85"><br /><strong>Raj Kiran Reddy Gunna</strong><br>580-665-7777<br><a href="mailto:rgunna@my.uno.edu">rgunna@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Graduate Professional Assistant, Hotel, Restaurant, Tourism Adm, UNO.</p>
@@ -65,7 +65,7 @@
        </div>
        <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/sefak.jpeg" alt="Sefak" width="85" height="85"><strong>Sefak Kahriman</strong><br>504-434-9997<br><a href="mailto:skahrima@my.uno.edu">skahrima@my.uno.edu</a>
+                     <p><img src="images/sefak.jpeg" alt="Sefak" width="85" height="85"><br /><strong>Sefak Kahriman</strong><br>504-434-9997<br><a href="mailto:skahrima@my.uno.edu">skahrima@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Software Developer, XYZ Company</p>
@@ -73,15 +73,15 @@
        </div>
               <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/Jo.jpg" alt="Jyothi" width="85" height="85"><strong>Shiva Jyothi Angala</strong><br>504-541-7721<br><a href="mailto:skahrima@my.uno.edu">sangala@my.uno.edu</a>
+                     <p><img src="images/Jo.jpg" alt="Jyothi" width="85" height="85"><br /><strong>Shiva Jyothi Angala</strong><br>504-541-7721<br><a href="mailto:skahrima@my.uno.edu">sangala@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
-                     <p>Graduate Professional Assistant - MANGCollege of LA, Educ & Hum Dev, UNO.</p>
+                     <p>Graduate Professional Assistant - MANGCollege of LA, Educ &amp; Hum Dev, UNO.</p>
                   </div>
        </div>
               <div class="FSColContainer">
                   <div class="FSfirstCol">
-                     <p><img src="images/Unni.jpg" alt="Unni" width="85" height="85"><strong>Unnikrishnan Radhakrishna Pillai</strong><br>504-450-8052<br><a href="mailto:uradhakr@my.uno.edu">uradhakr@my.uno.edu</a>
+                     <p><img src="images/Unni.jpg" alt="Unni" width="85" height="85"><br /><strong>Unnikrishnan Radhakrishna Pillai</strong><br>504-450-8052<br><a href="mailto:uradhakr@my.uno.edu">uradhakr@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
                      <p>Graduate Professional Assistant - MANG, University Marketing, UNO.</p>

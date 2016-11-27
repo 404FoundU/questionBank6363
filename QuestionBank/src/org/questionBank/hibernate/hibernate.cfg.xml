@@ -16,6 +16,7 @@
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.validator.apply_to_ddl">false</property>
   <mapping class="org.questionBank.data.Person"/>
+  <mapping class="org.questionBank.data.Department"/>
   <mapping class="org.questionBank.data.Course"/>
   <mapping class="org.questionBank.data.Question"/>
   <mapping class="org.questionBank.data.Answer"/>

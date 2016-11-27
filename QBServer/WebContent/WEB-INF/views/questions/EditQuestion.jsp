@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
 <jsp:include page="../../../SideNavigation.jsp"/>
 
 <html>
@@ -96,7 +97,7 @@
                   				<div class="panel-header">
                   					<a href="<c:url value="ShowCourse">
       											<c:param name="id" value="${question.course.id}" />
-      										</c:url>">Course</a>&nbsp&nbsp|&nbsp
+      										</c:url>">Course</a>&nbsp;&nbsp;|&nbsp;
                   					<a href="<c:url value="ShowQuestion">
       											<c:param name="id" value="${question.id}" />
       										</c:url>">Show</a>

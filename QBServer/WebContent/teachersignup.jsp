@@ -10,12 +10,13 @@
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="TeacherFiles/stylesss.css">
+    
   </head>
 
   <body>
    <div class="container">
     <div class="info">
-     <h1>QBMS</h1><span>Question Bank Management System</span> 
+     <a href="index.jsp" style= "text-decoration: none !important; color:white;"><h1>QBMS</h1><span>Question Bank Management System</span></a> 
     </div>
    </div>
    
@@ -27,7 +28,7 @@
    </div>
 
    <form action="TeacherSignup" method="post">
-    <div class="form-group" method="post">
+    <div class="form-group" >
      <div class="form-control-material">
       <input class="form-control" id="username" name="username" type="text" required maxlength="60" placeholder="Enter Username">
      </div>
@@ -70,7 +71,7 @@
 	</select>               
    </div>
  
-   <button name="submit" type="submit">create</button>
+<button name="submit" type="submit">Create <i class="fa fa-user"></i></button>
    <p class="message">Already registered? <a href="teacherlogin.jsp">Sign In</a></p>
   
   </form>

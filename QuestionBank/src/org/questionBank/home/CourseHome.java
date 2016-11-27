@@ -2,7 +2,6 @@ package org.questionBank.home;
 // Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,13 +11,12 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.questionBank.data.Course;
-import org.questionBank.data.Question;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Home object for domain model class Course.
- * @see org.questionBank.dataOLD.Course
+ * @see org.questionBank.data.Course
  * @author Hibernate Tools
  */
 
@@ -39,11 +37,9 @@ public class CourseHome {
 	}
 	
 	public List<Course> getCoursesForPersonId(Integer userId){
-		return getCourses();
-//		TypedQuery<Course> q = entityManager.createQuery("select c from Course c where c.", Course.class);
-//		entityManager.createQuery("SELECT c FROM Customer c WHERE c.login.username = :username");
-//	    q.setParameter("username", username);
-//	    return (Customer) q.getSingleResult();
+		TypedQuery<Course> q = entityManager.createQuery("select c from Course c join c.persons p where p.id = :userId", Course.class);
+	    q.setParameter("userId", userId);
+	    return q.getResultList();
 	}
 	
 	@Transactional
@@ -88,6 +84,7 @@ public class CourseHome {
 		log.debug("getting Course instance with id: " + id);
 		try {
 			Course instance = entityManager.find(Course.class, id);
+			instance.setDepartment(instance.getDepartment());
 			instance.setQuestions(instance.getQuestions());
 			log.debug("get successful");
 			return instance;

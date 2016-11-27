@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="../../../SideNavigation.jsp"/>
 
 <html>
@@ -55,7 +56,8 @@
   													<c:out value="* ${error}" /><br />
   												</c:forEach>
   											</span>
-   											<form action="UpdateCourse" method="post">
+   											<%-- <form action="UpdateCourse" method="post"> --%>
+   											<form:form action="UpdateCourse" modelAttribute="course" method="post">
    												<input type="hidden" name="id" value="${course.id}">
     											<div class="form-group">
      												<div class="form-control-material">
@@ -64,7 +66,10 @@
     											</div>
    
    												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}">
+													<form:select path="department.id">
+      													<form:option value="-" label="--Select Department"/>
+      													<form:options items="${departments}" itemValue="id" itemLabel="abbreviation"/>
+            										</form:select>
    												</div>
    
    												<div class="form-group form-control-material static required">
@@ -74,17 +79,18 @@
    												<div class="form-group form-control-material static required">
 													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="${course.credit}" >
    												</div>
- 
+
    												<button name="submit" type="submit">Update Course</button>
-  											</form>
+  											<%-- </form> --%>
+  											</form:form>
  										</div>
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
-                  					<a href="<c:url value="ShowCourse">
+                  					<a class="btn btn-success paper-shadow relative " href="<c:url value="/TeacherCourseView" />" >List Courses</a>&nbsp;
+                  					<a class="btn btn-success paper-shadow relative " href="<c:url value="ShowCourse">
       											<c:param name="id" value="${course.id}" />
-      										</c:url>">Show</a>
+      										</c:url>">Show Courses</a>
                     			</div>
                   			</div>
         				</div>
@@ -94,4 +100,7 @@
 		</div>
 
 	</body>
+	<footer class="footer">
+      <strong>QBMS</strong>  © Copyright 2016
+    </footer>
 </html>

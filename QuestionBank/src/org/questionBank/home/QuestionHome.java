@@ -1,8 +1,6 @@
 package org.questionBank.home;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class QuestionHome {
+	
 	private static final Log log = LogFactory.getLog(QuestionHome.class);
 	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
@@ -33,8 +32,6 @@ public class QuestionHome {
 	public List<Question> getQuestionsForCourse(Course course){
 		TypedQuery<Question> q = entityManager.createQuery("select q from Question q where q.course.id="+course.getId(), Question.class);
 		List<Question> questions = q.getResultList();
-//		Set<Question> results = course.getQuestions();
-//		List<Question> questions = new ArrayList<Question>(results);
 		return questions;
 	}
 

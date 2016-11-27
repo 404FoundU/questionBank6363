@@ -11,14 +11,7 @@
   		<link href="TeacherDashboardFiles/all.css" rel="stylesheet">
 
 	 	<link href="TeacherDashboardFiles/app.css" rel="stylesheet">
-    
-<!--     	<link rel="stylesheet" href="AdminFiles/reset.css">
-
-    	<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-		<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>-->
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
-     	<!-- <link rel="stylesheet" href="AdminFiles/stylesss.css"> -->
 		
 		<title>Edit Course</title>
 	</head>
@@ -81,7 +74,7 @@
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
+                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp;&nbsp;|&nbsp;
                   					<a href="<c:url value="ShowCourse">
       											<c:param name="id" value="${course.id}" />
       										</c:url>">Show</a>

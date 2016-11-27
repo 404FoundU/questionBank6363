@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.Question;
 import org.questionBank.exception.InvalidQuestionException;
-import org.questionBank.home.CourseHome;
 import org.questionBank.home.QuestionHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,8 +23,6 @@ public class QuestionDataUtil {
 
 	@Autowired
 	private QuestionHome qh = new QuestionHome();
-	@Autowired
-	private CourseHome ch = new CourseHome();
 	
 	private static String COURSE_ID_ERROR = "Invalid Course Selected.";
 	private static int MIN_CHAPTER_LENGTH = 1;

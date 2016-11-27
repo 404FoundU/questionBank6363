@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.logging.Log;
@@ -27,7 +28,7 @@ public class PersonHome {
 
 	private static final Log log = LogFactory.getLog(PersonHome.class);
 
-	@PersistenceContext
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager transactionManager;
 	@Transactional
 	public void persist(Person transientInstance) {
@@ -64,7 +65,7 @@ public class PersonHome {
 		}
 	}
 	@Transactional
-	public Person findById(String id) {
+	public Person findById(Integer id) {
 		log.debug("getting Person instance with id: " + id);
 		try {
 			Person instance = transactionManager.find(Person.class, id);

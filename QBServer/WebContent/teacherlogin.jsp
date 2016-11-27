@@ -19,7 +19,7 @@
   
   <div class="container">
    <div class="info">
-    <h1>QBMS</h1><span>Question Bank Management System</span> 
+     <a href="index.jsp" style= "text-decoration: none !important; color:white;"><h1>QBMS</h1><span>Question Bank Management System</span></a> 
    </div>
   </div>
 
@@ -35,7 +35,7 @@
     
    <form action="teacherlogin" method="post">
     
-    <div class="form-group" method="post">
+    <div class="form-group">
      <div class="form-control-material">
       <input class="form-control" id="username" type="text" name="username" required placeholder="Username">
      </div>

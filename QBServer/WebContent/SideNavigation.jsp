@@ -58,8 +58,15 @@
        <!--<ul class="nav navbar-nav"> </ul> -->
        
        <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
-        <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary"><%=session.getAttribute("name")%></span></a></li>
-        <li><a href="index.jsp">Logout</a></li>
+        <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary" style ="font-size: 16px;"><%=session.getAttribute("name")%></span></a></li>
+        &nbsp<li><a  style= "padding-right: 62px;" href="index.jsp"><i class="fa fa-fw fa-sign-out">Logout</i>&nbsp</a></li>
+
+
+
+
+
+
+
        </ul>
 
      </div>
@@ -114,11 +121,14 @@
 </div>
       </div>
     </div>
+<<<<<<< HEAD
     
     
     
     
     
+=======
+>>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -132,6 +142,7 @@
          <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question and Answer</span></a>         
 		  <ul id="quiz-menu"> 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
+<<<<<<< HEAD
             <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Question and Answers</span></button></form></li>  	
 		<!-- 
 		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
@@ -157,12 +168,12 @@
         </li>
         -->
         
+=======
+            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Questions</span></button></form></li>  	
+>>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
        </ul>
        </li>
-
 </div>
-       
-
       </div>
 <!--     
 <div class="panel panel-default" style="margin-bottom:-5px;">
@@ -187,67 +198,16 @@
 -->    
       
     </div>
+<<<<<<< HEAD
     
     <li class="active" style="margin-left: 18px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
    
+=======
+    <li class="active" style="margin-left: 18px; font-size: 16px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+>>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
   </div>
-       
-       
-       
-       
-       
-    
       </div>
     </div>
-          <!-- 
-    <li class="hasSubmenu">
-            <a href="#student-menu"><i class="fa fa-user"></i><span>Students</span></a>
-            <ul id="student-menu">
-          <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="studentview" type="submit" value=" student View " class="btn btn-inverse"><span>Students View</span></button></form></li>          			  
-       </ul>
-          </li>
-          -->
-          
-          
-            <!--
-		    <li class="hasSubmenu">
-            <a href="#assignment-menu"><i class="md md-assignment"></i><span>Assignment</span></a>         
-			<ul id="assignment-menu">
-		<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="assignmentchosecourse" type="submit" value="chosecourseforquiz" class="btn btn-inverse"><span>Upload Assignment</span></button></form></li>  	
-			<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="assignmenthistory" type="submit" value="quizhistory" class="btn btn-inverse"><span>Assignment History</span></button></form></li>  				
-			 </ul>
-          </li>
-		  <li class="hasSubmenu">
-            <a href="#activity-menu"><i class="fa fa-bar-chart-o"></i><span>Student Activities</span></a>
-            <ul id="activity-menu">
-		
-              <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="LA" type="submit" value="lectureActivity" class="btn btn-inverse"><span>Lecture Activities</span></button></form> </li>      
-  <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="CA" type="submit" value="courseactivity" class="btn btn-inverse"><span>Course Activities</span></button></form> </li>      
-<li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="CG" type="submit" value="coursegraph" class="btn btn-inverse"><span>Course Graph</span></button></form> </li>      
-            </ul>
-          </li> 
-
-		
-              <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-<button name="formhome" type="submit" value="form" class="btn btn-inverse"><span>Forum Home</span></button></form> </li>      
-  
-            </ul>
-          </li>
-          <li class="hasSubmenu">
-            <a href="#account-menu"><i class="fa fa-user"></i><span>Account</span></a>
-            <ul id="account-menu">
-           <li><form action="" method="post">
-<button name="editprofile" type="submit" value="editprofile" class="btn btn-inverse"><span>Edit Profile</span></button></form></li>
-             
-            </ul>
-          </li>
-		    
-		    -->
+         
 		    
           

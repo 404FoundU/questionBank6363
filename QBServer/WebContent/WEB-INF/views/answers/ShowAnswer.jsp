@@ -95,7 +95,7 @@
       													<td>
       														<a href="<c:url value="/ShowQuestion">
       																	<c:param name="id" value="${item.id}" />
-      																</c:url>">Show</a>&nbsp&nbsp|&nbsp
+      																</c:url>">Show</a>&nbsp;&nbsp;|&nbsp;
       														<a href="<c:url value="/EditQuestion"> 
       																	<c:param name="id" value="${item.id}" />
       																</c:url>">Edit</a>
@@ -111,7 +111,7 @@
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp&nbsp|&nbsp
+                  					<a href="<c:url value="/TeacherCourseView" />" >List</a>&nbsp;&nbsp;|&nbsp;
                   					<a href="<c:url value="EditCourse">
       											<c:param name="id" value="${course.id}" />
       										</c:url>">Edit</a>

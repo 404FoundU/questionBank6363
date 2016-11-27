@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Nov 20, 2016 10:43:21 AM by Hibernate Tools 5.2.0.Beta1
+// Generated Nov 26, 2016 1:15:48 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

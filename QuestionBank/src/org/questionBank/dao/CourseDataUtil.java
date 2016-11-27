@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
-import org.questionBank.data.Question;
+import org.questionBank.data.Department;
+import org.questionBank.data.Person;
 import org.questionBank.exception.InvalidCourseException;
 import org.questionBank.home.CourseHome;
+import org.questionBank.home.PersonHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class CourseDataUtil {
@@ -24,12 +26,11 @@ public class CourseDataUtil {
 
 	@Autowired
 	private CourseHome ch = new CourseHome();
+	@Autowired
+	private PersonHome ph = new PersonHome();
 	
 	// Validation
-	private static int MIN_DEPT_NAME_LENGTH = 3;
-	private static int MAX_DEPT_NAME_LENGTH = 8;
-	private static String MIN_DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
-	private static String MAX_DEPT_NAME_ERROR = "Course Department Name value must be at most 8 characters long.";
+	private static String INVALID_DEPARTMENT_ERROR = "No valid Department selected.";
 	private static Integer MIN_CREDIT = 0;
 	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
@@ -40,28 +41,17 @@ public class CourseDataUtil {
 	private static int MIN_COURSE_NUMBER_LENGTH = 3;
 	private static int MAX_COURSE_NUMBER_LENGTH = 4;
 	private static String COURSE_NUMBER_ERROR = "Course Number value must be 3 or 4 digits long";
-	private static String INVALID_PERSON_ID = "Invalid Person Id given";
-	private static String INVALID_COURSE_ID = "Invalid Person Id given";
 	
-	public Course populateCourse(String courseName, String courseNumber, String deptName, Integer credit){
+	public Course populateCourse(String courseName, String courseNumber, Department dept, Integer credit){
 		Course course = new Course();
 		course.setCourseNumber(courseNumber);
 		course.setCourseName(courseName);
-		course.setDeptName(deptName);
+		course.setDepartment(dept);
 		course.setCredit(credit);
 		return course;
 	}
-
-//	public Teaches assignTeacherToCourse(Integer userId, Integer courseId) throws InvalidTeachesException {
-//		TeachesId tid = new TeachesId(userId, courseId);
-//		validateTeachesId(tid);
-//		Teaches teaches = new Teaches();
-//		teaches.setId(tid);
-//		return teaches;
-//	}
 	
-	public Course createCourse(String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException {
-		Course course = populateCourse(courseName, courseNumber, deptName, credit);
+	public Course createCourse(Course course) throws InvalidCourseException {
 		validateCourse(course);
 		// Save Course to DB
 		log.info("Creating Course");
@@ -69,23 +59,33 @@ public class CourseDataUtil {
 		ch.persist(course);
 		return course;
 	}
-//	
-//	public Course createCourseForTeacher(Integer userId, String courseName, String courseNumber, String deptName, Integer credit) throws InvalidCourseException, InvalidTeachesException {
-//		Course course = createCourse(courseName, courseNumber, deptName, credit);
-//		Teaches teaches = assignTeacherToCourse(userId, course.getId());
-//		// Save Teaches join to DB
-//		log.info("Creating Teaches Association");
-//		log.debug(describeTeaches(teaches));
-//		th.persist(teaches);
-//		return course;
-//	}
+	
+	@Transactional
+	public Course createCourseForTeacher(Integer userId, Course course) throws InvalidCourseException {
+		List<String> err = new ArrayList<String>();
+		// Save Teaches join to DB
+		log.info("Creating Teaches Association");
+		Person p = ph.findById(userId);
+		if(userId == null){
+			err.add("No Valid User ID given");
+			throw new InvalidCourseException(err);
+		}
+		if(p == null){
+			err.add("No Valid User for ID["+userId+"]");
+			throw new InvalidCourseException(err);
+		}
+		course.getPersons().add(p);
+		Course newCourse = createCourse(course);
+		return newCourse;
+	}
 	
 	public String describeCourse(Course course){
 		String str = "Course ["+course.getCourseName()+"]:\r\n";
 		str += "- Id ["+course.getId()+"]\r\n";
 		str += "- Name: ["+course.getCourseName()+"]\r\n";
 		str += "- Number: ["+course.getCourseNumber()+"]\r\n";
-		str += "- Department: ["+course.getDeptName()+"]\r\n";
+		String deptName = course.getDepartment() == null ? "" : course.getDepartment().getName();
+		str += "- Department: ["+deptName+"]\r\n";
 		str += "- Credit: ["+course.getCredit()+"]\r\n";
 		return str;
 	}
@@ -102,6 +102,7 @@ public class CourseDataUtil {
 		return course;
 	}
 	
+<<<<<<< HEAD
 	public Course findCourseBySelect(Question que){
 		Course course = ch.findByIdSelect(que);
 		return course;
@@ -109,12 +110,10 @@ public class CourseDataUtil {
 	public boolean updateCourse(Integer id, String courseName, String courseNumber, String deptName, 
 								Integer credit) throws InvalidCourseException {
 		// TODO: implement this
+=======
+	public boolean updateCourse(Course course) throws InvalidCourseException {
+>>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
 		try{
-			Course course = findCourse(id);
-			course.setCourseName(courseName);
-			course.setCourseNumber(courseNumber);
-			course.setDeptName(deptName);
-			course.setCredit(credit);
 			validateCourse(course);
 			ch.merge(course);
 			return true;
@@ -154,7 +153,7 @@ public class CourseDataUtil {
 		map.put("id", course.getId());
 		map.put("courseNumber", course.getCourseNumber());
 		map.put("courseName", course.getCourseName());
-		map.put("deptName", course.getDeptName());
+		map.put("dept", course.getDepartment());
 		map.put("credit", course.getCredit());
 		return map;
 	}
@@ -165,10 +164,8 @@ public class CourseDataUtil {
 	
 	private List<String> getCourseErrors(Course course){
 		List<String> errors = new ArrayList<String>();
-		if(course.getDeptName() == null || course.getDeptName().length() < MIN_DEPT_NAME_LENGTH)
-			errors.add(MIN_DEPT_NAME_ERROR);
-		if(course.getDeptName().length() > MAX_DEPT_NAME_LENGTH)
-			errors.add(MAX_DEPT_NAME_ERROR);
+		if(course.getDepartment() == null)
+			errors.add(INVALID_DEPARTMENT_ERROR);
 		if(course.getCourseName() == null || course.getCourseName().length() < MIN_COURSE_NAME_LENGTH)
 			errors.add(MIN_COURSE_NAME_ERROR);
 		if(course.getCourseName().length() > MAX_COURSE_NAME_LENGTH)

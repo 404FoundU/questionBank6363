@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="SideNavigation.jsp"/> 
 <html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
  <head>
@@ -37,26 +37,30 @@
          </div>
         </div>
           
-          <div class="item col-xs-12 col-lg-6">
-           <div class="panel panel-default paper-shadow" data-z="0.5">
-            <div class="panel-heading">
-             <h4 class="text-headline margin-none">All Questions</h4>
-             <p class="text-subhead text-light">Upload questions </p>
-            </div>
-            <div class="panel-footer text-right">
-             <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Questions</a>
-            </div>
-           </div>
+        <div class="item col-xs-12 col-lg-6">
+         <div class="panel panel-default paper-shadow" data-z="0.5">
+          <div class="panel-heading">
+           <h4 class="text-headline margin-none">All Questions</h4>
+           <p class="text-subhead text-light">Upload questions </p>
           </div>
-          
-        
+          <div class="panel-footer text-right">
+           <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Questions</a>
+          </div>
          </div>
         </div>
+          
+        
        </div>
-	  </div>
+      </div>
      </div>
+	</div>
+   </div>
 			
+<<<<<<< HEAD
 		
+=======
+    <!-- Footer -->
+>>>>>>> 8d9ba5f835b16ab72d2faf3febb5b0b53276ec34
     <footer class="footer">
       <strong>QBMS</strong>  &copy; Copyright 2016
     </footer>
