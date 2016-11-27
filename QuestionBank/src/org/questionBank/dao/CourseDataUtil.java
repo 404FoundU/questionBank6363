@@ -30,10 +30,7 @@ public class CourseDataUtil {
 	private PersonHome ph = new PersonHome();
 	
 	// Validation
-	private static int MIN_DEPT_NAME_LENGTH = 3;
-	private static int MAX_DEPT_NAME_LENGTH = 8;
-	private static String MIN_DEPT_NAME_ERROR = "Course Department Name value must be at least 3 characters long.";
-	private static String MAX_DEPT_NAME_ERROR = "Course Department Name value must be at most 8 characters long.";
+	private static String INVALID_DEPARTMENT_ERROR = "No valid Department selected.";
 	private static Integer MIN_CREDIT = 0;
 	private static Integer MAX_CREDIT = 5;
 	private static String CREDIT_ERROR = "Course Credit value must be between 0.0 and 5.0.";
@@ -44,8 +41,6 @@ public class CourseDataUtil {
 	private static int MIN_COURSE_NUMBER_LENGTH = 3;
 	private static int MAX_COURSE_NUMBER_LENGTH = 4;
 	private static String COURSE_NUMBER_ERROR = "Course Number value must be 3 or 4 digits long";
-	private static String INVALID_PERSON_ID = "Invalid Person Id given";
-	private static String INVALID_COURSE_ID = "Invalid Person Id given";
 	
 	public Course populateCourse(String courseName, String courseNumber, Department dept, Integer credit){
 		Course course = new Course();
@@ -55,16 +50,7 @@ public class CourseDataUtil {
 		course.setCredit(credit);
 		return course;
 	}
-
-//	public Teaches assignTeacherToCourse(Integer userId, Integer courseId) throws InvalidTeachesException {
-//		TeachesId tid = new TeachesId(userId, courseId);
-//		validateTeachesId(tid);
-//		Teaches teaches = new Teaches();
-//		teaches.setId(tid);
-//		return teaches;
-//	}
 	
-//	public Course createCourse(String courseName, String courseNumber, Department dept, Integer credit) throws InvalidCourseException {
 	public Course createCourse(Course course) throws InvalidCourseException {
 		validateCourse(course);
 		// Save Course to DB
@@ -75,7 +61,6 @@ public class CourseDataUtil {
 	}
 	
 	@Transactional
-//	public Course createCourseForTeacher(Integer userId, String courseName, String courseNumber, Department dept, Integer credit) throws InvalidCourseException {
 	public Course createCourseForTeacher(Integer userId, Course course) throws InvalidCourseException {
 		List<String> err = new ArrayList<String>();
 		// Save Teaches join to DB
@@ -117,10 +102,7 @@ public class CourseDataUtil {
 		return course;
 	}
 	
-//	public boolean updateCourse(Integer id, String courseName, String courseNumber, Department dept, 
-//								Integer credit) throws InvalidCourseException {
 	public boolean updateCourse(Course course) throws InvalidCourseException {
-		// TODO: implement this
 		try{
 			validateCourse(course);
 			ch.merge(course);
@@ -172,10 +154,8 @@ public class CourseDataUtil {
 	
 	private List<String> getCourseErrors(Course course){
 		List<String> errors = new ArrayList<String>();
-//		if(course.getDeptName() == null || course.getDeptName().length() < MIN_DEPT_NAME_LENGTH)
-//			errors.add(MIN_DEPT_NAME_ERROR);
-//		if(course.getDeptName().length() > MAX_DEPT_NAME_LENGTH)
-//			errors.add(MAX_DEPT_NAME_ERROR);
+		if(course.getDepartment() == null)
+			errors.add(INVALID_DEPARTMENT_ERROR);
 		if(course.getCourseName() == null || course.getCourseName().length() < MIN_COURSE_NAME_LENGTH)
 			errors.add(MIN_COURSE_NAME_ERROR);
 		if(course.getCourseName().length() > MAX_COURSE_NAME_LENGTH)

@@ -71,7 +71,7 @@
       													<td>
       														<a href="<c:url value="/ShowCourse">
       																	<c:param name="id" value="${item.id}" />
-      																</c:url>">Show</a>&nbsp&nbsp|&nbsp
+      																</c:url>">Show</a>&nbsp;&nbsp;|&nbsp;
       														<a href="<c:url value="/EditCourse"> 
       																	<c:param name="id" value="${item.id}" />
       																</c:url>">Edit</a>

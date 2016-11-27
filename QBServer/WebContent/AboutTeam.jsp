@@ -46,7 +46,7 @@
 	<div class="container">
 	 <div class="row">
 	  <div class="jumbotron white">
-	   <h1 class="bold">Team Charlie</span></h1>
+	   <h1 class="bold"><span>Team Charlie</span></h1>
 	   <div class="FSColContainer">
                   <div class="FSfirstCol">
                      <p><img src="images/chris.jpeg" alt="Christian" width="85" height="85"><br /><strong>Christian Amadeo Levi</strong><br>504-452-6940<br><a href="mailto:calevi@my.uno.edu">calevi@my.uno.edu</a>
@@ -76,7 +76,7 @@
                      <p><img src="images/Jo.jpg" alt="Jyothi" width="85" height="85"><br /><strong>Shiva Jyothi Angala</strong><br>504-541-7721<br><a href="mailto:skahrima@my.uno.edu">sangala@my.uno.edu</a>
                   </div>
                   <div class="FSthirdCol">
-                     <p>Graduate Professional Assistant - MANGCollege of LA, Educ & Hum Dev, UNO.</p>
+                     <p>Graduate Professional Assistant - MANGCollege of LA, Educ &amp; Hum Dev, UNO.</p>
                   </div>
        </div>
               <div class="FSColContainer">

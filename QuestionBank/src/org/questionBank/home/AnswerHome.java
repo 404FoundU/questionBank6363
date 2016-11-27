@@ -1,9 +1,9 @@
 package org.questionBank.home;
 // Generated Oct 9, 2016 11:50:10 PM by Hibernate Tools 5.2.0.Beta1
 import java.util.List;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.logging.Log;
@@ -11,12 +11,6 @@ import org.apache.commons.logging.LogFactory;
 import org.questionBank.data.Answer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Home object for domain model class Answer.
@@ -29,7 +23,7 @@ public class AnswerHome {
 
 	private static final Log log = LogFactory.getLog(AnswerHome.class);
 
-	@PersistenceContext
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 	
     public List<Answer> getAnswersForQuestion(Integer questionId){

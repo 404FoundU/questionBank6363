@@ -6,7 +6,6 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<!-- <meta charset="UTF-8"> -->
     
   		<link href="TeacherDashboardFiles/all.css" rel="stylesheet">
 
@@ -73,7 +72,7 @@
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="/TeacherCourseView" />" >List Courses </a>&nbsp
+                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="/TeacherCourseView" />" >List Courses </a>&nbsp;
                   					<a class="btn btn-success paper-shadow relative" href="<c:url value="EditCourse">
       											<c:param name="id" value="${course.id}" />
       										</c:url>">Edit Courses</a>
@@ -96,7 +95,7 @@
 													href="<c:url value="/CourseAddQuestion">
 															<c:param name="courseId" value="${course.id}" />
 														  </c:url>" >Add Question</a>
-														  <p>&nbsp</p>
+														  <p>&nbsp;</p>
                 		  <div class="panel panel-default paper-shadow" data-z="10">
                 		   <div class="panel-heading">
                 		   
@@ -130,7 +129,7 @@
       													<td>
       														<a href="<c:url value="/ShowQuestion">
       																	<c:param name="id" value="${question.id}" />
-      																</c:url>">Show</a>&nbsp&nbsp|&nbsp
+      																</c:url>">Show</a>&nbsp;&nbsp;|&nbsp;
       														<a href="<c:url value="/EditQuestion"> 
       																	<c:param name="id" value="${question.id}" />
       																	<c:param name="answerId" value="${question.answerId}"/>  

@@ -77,7 +77,7 @@
    			</div>
    											
    			<button class="btn btn-success paper-shadow relative" name="submit" type="submit">Create</button>
-   			&nbsp
+   			&nbsp;
    			<a class="btn btn-success paper-shadow relative" href="<c:url value="ShowCourse" >
           <c:param name="id" value="${question.course.id}"/>
           </c:url>" >Cancel

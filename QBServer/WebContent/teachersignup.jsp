@@ -28,7 +28,7 @@
    </div>
 
    <form action="TeacherSignup" method="post">
-    <div class="form-group" method="post">
+    <div class="form-group" >
      <div class="form-control-material">
       <input class="form-control" id="username" name="username" type="text" required maxlength="60" placeholder="Enter Username">
      </div>

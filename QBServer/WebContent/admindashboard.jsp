@@ -132,7 +132,6 @@
                       <div class="media-body">
 						<a href="app-instructor-course-edit-course.html" class="text-subhead list-group-link"></a>
                       </div>
-     
                   </ul>
 
                   <div class="panel-footer text-right">
@@ -162,40 +161,38 @@
                   </div>
                 </div>
               </div>
-                
-
-        </div>
+        	</div>
+        	
 			<div class="row" data-toggle="isotope">
 				<div class="item col-xs-12 col-lg-6">
-                <div class="panel panel-default paper-shadow" data-z="0.5">
-                  <div class="panel-heading">
-                    <h4 class="text-headline margin-none">All Departments</h4>
-                    <p class="text-subhead text-light">Uploded Departments</p>
-                  </div>
+                	<div class="panel panel-default paper-shadow" data-z="0.5">
+                  		<div class="panel-heading">
+                    		<h4 class="text-headline margin-none">All Departments</h4>
+                    		<p class="text-subhead text-light">Uploded Departments</p>
+                  		</div>
 
-                  <ul class="list-group">
-                    <li class="list-group-item media v-middle">
-                      <div class="media-body">
-						<a href="app-instructor-course-edit-course.html" class="text-subhead list-group-link"></a>
-                      </div>
-     
-                  </ul>
+                  		<ul class="list-group">
+                    		<li class="list-group-item media v-middle">
+                      			<div class="media-body">
+									<a href="app-instructor-course-edit-course.html" class="text-subhead list-group-link"></a>
+                      			</div>
+                  		</ul>
 
-                  <div class="panel-footer text-right">
-	           		<a  data-animated href="<c:url value="/DepartmentsView" />"class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > View Departments</a>
-                  </div>
-                </div>
-              </div>
+                  		<div class="panel-footer text-right">
+	           				<a  data-animated href="<c:url value="/DepartmentsView" />"class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated > View Departments</a>
+                  		</div>
+                	</div>
+              	</div>
 			</div>
-        <!-- /st-content-inner -->
-
-      </div>
-      <!-- /st-content -->
-
+        	<!-- /st-content-inner -->
+		</div>
+      	</div>
+      	<!-- /st-content -->
+	</div>
     </div>
     <!-- /st-pusher -->
-    
-    
+    </div>
+    </body>
 <!-- Footer -->
     <footer class="footer">
       <strong>QBMS</strong>  &copy; Copyright 2016
