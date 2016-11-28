@@ -49,19 +49,16 @@
 	    								<thead>
 	    										    <tr>
 														<th>Course</th>
-														<th>Question</th>
-														<th>Answer</th>
-														<th></th>
 													</tr>
 	    								</thead>
 	    								<tbody>
 		   									<c:forEach items="${courses}" var="item">
 		    												<tr>
 		      													<td><c:out value="${item.courseName}" /></td>
-		      													<td><c:out value="${item.question.questionText}" /></td>
+		      												<!-- 	<td><c:out value="${item.question.questionText}" /></td>
 		      													<td><c:out value="${item.question.answer.answerText}" /></td>
-		      													<td>
-		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/EditQuestion"><c:param name="id" value="${item.question.id}" /></c:url>">Edit</a>
+		      												-->	<td>
+		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ViewQuestion"><c:param name="id" value="${item.question.id}" /></c:url>">Show Question and Answers</a>
 		      													</td>
 		    												</tr>
 		  									</c:forEach>
