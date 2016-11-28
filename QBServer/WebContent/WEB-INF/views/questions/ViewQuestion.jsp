@@ -13,7 +13,7 @@
     
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 		
-		<title>Show Course</title>
+		<title>View Question and Answer</title>
 	</head>
 	<body>  
 			
@@ -32,12 +32,10 @@
 		</div>
 	
             			<div class="page-section">
-              				<h1 class="text-display-1">Course</h1>
+              				<h1 class="text-display-1">Course: <c:out value="${course.courseName}" /></h1>
             			</div>
             			
-            			 				
-        				
-        				
+            			 			
         				
         				
         				<div class="page-section">
@@ -46,18 +44,26 @@
             			
             			<div class="row" data-toggle="isotope">
                 		 <div class="item col-xs-30 col-lg-15">
-                		 		   <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
+                		 		<div class="panel-header">
+                    			 <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
 													href="<c:url value="/CourseAddQuestion">
 															<c:param name="courseId" value="${course.id}" />
 														  </c:url>" >Add Question and Answers</a>
-														  <p>&nbsp;</p>
-                		  <div class="panel panel-default paper-shadow" data-z="10">
+														 		      														
+                    				&nbsp;
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherQuestionView" />" >View Other Questions</a>
+                    				&nbsp;
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/teacherdashboard.jsp" />" >Dashboard</a>
+                    		        &nbsp;
+                    		</div>
+                    		<p>&nbsp;</p>
+                  		<div class="panel panel-default paper-shadow" data-z="10">
                 		   <div class="panel-heading">
                 		   
                 
 										<div class="form">
 
-    										
+    										    
 
 											<div class="form-group">
 												
@@ -101,12 +107,7 @@
         				</div>
         				
         				
-        				
-        				
-        				
-        				
-        				
-        				
+        			     				
         				
         				
         				
