@@ -116,6 +116,41 @@ public class QuestionController {
 		return mve;
 	}
 	
+	@RequestMapping(value="/ViewQuestion",method=RequestMethod.GET)
+	public ModelAndView viewQuestion(@RequestParam("id") int id){
+		ModelAndView mve = null;
+		mve = new ModelAndView("views/questions/ViewQuestion");
+		Course c = courseDAO.findCourse(id);
+		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c);
+		for(Map<String,Object> question : questions)
+		{
+			Object qid = question.get("id");
+			if(qid != null && (qid instanceof Integer) )
+			{
+				int questionId = (Integer)qid;
+				List<Answer> answers = answerDAO.findAnswersByQuestionId(questionId);
+				if(answers.isEmpty())
+				{
+					question.put("answer", "");
+				}
+				else if(answers.size() > 1)
+				{ 
+					question.put("answer", "Multiple Answers");
+				}
+				else
+				{ 
+					Answer a = answers.get(0);
+					question.put("answer", a.getAnswerText());
+					question.put("answerId", a.getId());
+				}
+			}
+		}
+		
+		mve.addObject("course",c);
+		mve.addObject("questions",questions);
+		return mve;
+	}
+	
 	@RequestMapping(value="/TeacherQuestionView",method=RequestMethod.GET)
 		public ModelAndView listCourses(HttpServletRequest request){
 			ModelAndView mve =  null;

@@ -61,6 +61,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<!-- Course View Mappings -->
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/ViewQuestion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/TeacherCourseView</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

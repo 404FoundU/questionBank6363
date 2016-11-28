@@ -44,7 +44,7 @@
            <p class="text-subhead text-light">Upload questions </p>
           </div>
           <div class="panel-footer text-right">
-           <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherCourseView" />" >View Questions</a>
+           <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherQuestionView" />" >View Questions</a>
           </div>
          </div>
         </div>
