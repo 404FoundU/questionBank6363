@@ -91,6 +91,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<!-- Question View Mappings -->
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/TeacherQuestionView</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/CourseAddQuestion</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
