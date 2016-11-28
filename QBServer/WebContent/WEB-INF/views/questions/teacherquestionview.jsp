@@ -58,7 +58,7 @@
 		      												<!-- 	<td><c:out value="${item.question.questionText}" /></td>
 		      													<td><c:out value="${item.question.answer.answerText}" /></td>
 		      												-->	<td>
-		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ViewQuestion"><c:param name="id" value="${item.question.id}" /></c:url>">Show Question and Answers</a>
+		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ViewQuestion"><c:param name="id" value="${item.id}" /></c:url>">Show Question and Answers</a>
 		      													</td>
 		    												</tr>
 		  									</c:forEach>
