@@ -8,6 +8,10 @@ import org.questionBank.exception.InvalidAnswerException;
 import org.questionBank.exception.InvalidQuestionException;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.questionBank.dao.AnswerDataUtil;
 import org.questionBank.dao.CourseDataUtil;
@@ -112,6 +116,61 @@ public class QuestionController {
 		return mve;
 	}
 	
+	@RequestMapping(value="/TeacherQuestionView",method=RequestMethod.GET)
+		public ModelAndView listCourses(HttpServletRequest request){
+			ModelAndView mve =  null;
+			HttpSession s = request.getSession();
+			Object uid = s.getAttribute("userId");
+			if(uid != null){
+				Integer userId = (Integer) uid;
+				List<Map<String,Object>> courses = courseDAO.getDataForTeacherCourses(userId);
+				mve = new ModelAndView("views/questions/teacherquestionview");
+				/*Question q = questionDAO.findQuestion(courses.get(0)));
+				List<Answer> answers = answerDAO.findAnswersByQuestionId(q.getId());
+				Answer a = null;
+				if(answers.isEmpty())
+				{
+					a = new Answer();
+				}
+				else
+				{
+					a = answers.get(0);
+				}
+				
+				mve.addObject("question",q);
+				mve.addObject("answer",a); 
+				mve.addObject("errors", questionDAO.questionErrors(q)); */
+				mve.addObject("courses", courses);
+				return mve;
+			}else{
+				mve = new ModelAndView("index");
+				mve.addObject("message", "Invalid User ID for Session");
+				return mve;
+			}
+		}
+		
+	   // @RequestMapping(value="/TeacherQuestionView",method=RequestMethod.GET)
+		//public ModelAndView viewQuestions(@RequestParam("courseId") int id){
+			//ModelAndView mve = null;
+			//mve = new ModelAndView("views/questions/teacherquestionview");
+			//Question q = questionDAO.findQuestion(id);
+			//List<Answer> answers = answerDAO.findAnswersByQuestionId(q.getId());
+			//Answer a = null;
+			//if(answers.isEmpty())
+			//{
+				//a = new Answer();
+			//}
+			//else
+			//{
+				//a = answers.get(0);
+			//}
+			
+			//mve.addObject("question",q);
+			//mve.addObject("answer",a); 
+			//mve.addObject("errors", questionDAO.questionErrors(q));
+			//return mve;
+		//}
+		
 	// Edit
 	@RequestMapping(value="/EditQuestion",method=RequestMethod.GET)
 	public ModelAndView editQuestion(@RequestParam("id") int id,@RequestParam("answerId") int answerId){
