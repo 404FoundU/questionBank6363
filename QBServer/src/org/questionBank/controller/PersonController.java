@@ -49,7 +49,7 @@ public class PersonController {
 			session.setAttribute("userId", p.getId());
 			session.setAttribute("firstName", p.getFirstName());
 			session.setAttribute("lastName", p.getLastName());
-			if(p.isIsAdmin()){
+			if(p.isAdmin()){
 				modelAndView=new ModelAndView("redirect:admindashboard.jsp");
 			}else{
 				modelAndView=new ModelAndView("redirect:teacherdashboard.jsp");

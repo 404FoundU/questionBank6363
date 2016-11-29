@@ -98,7 +98,7 @@ public class CourseController {
 			if(uid != null){
 				Integer userId = (Integer) uid;
 				Person p = personDAO.findPerson(userId);
-				if(p.isIsAdmin()){
+				if(p.isAdmin()){
 					newCourse = courseDAO.createCourse(course);
 				}else{
 					newCourse = courseDAO.createCourseForTeacher(userId, course);

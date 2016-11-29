@@ -11,7 +11,7 @@ CREATE TABLE `person`(
   `last_name` varchar(50),
   `user_name` varchar(20),
   `password` varchar(20),
-  `is_admin` boolean not null default 0,
+  `admin` boolean not null default 0,
   primary key (`id`)
 ) ENGINE=InnoDB;
 

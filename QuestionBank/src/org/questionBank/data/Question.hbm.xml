@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 28, 2016 8:08:35 PM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated Nov 28, 2016 9:16:02 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="org.questionBank.data.Question" table="question" schema="questionbank" catalog="questionbank">
         <id name="id" type="java.lang.Integer">
