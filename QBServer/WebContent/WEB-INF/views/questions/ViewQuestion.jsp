@@ -13,7 +13,7 @@
     
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 		
-		<title>Show Course</title>
+		<title>View Question and Answer</title>
 	</head>
 	<body>  
 			
@@ -32,57 +32,10 @@
 		</div>
 	
             			<div class="page-section">
-              				<h1 class="text-display-1">Course</h1>
+              				<h1 class="text-display-1">Course: <c:out value="${course.courseName}" /></h1>
             			</div>
             			
-            			<div class="row" data-toggle="isotope">
-                		 <div class="item col-xs-30 col-lg-15">
-                		  <div class="panel panel-default paper-shadow" data-z="10">
-                		   <div class="panel-heading">
-										<div class="form">
-
-    										<div class="form-group">
-    											<div>
-    												<label><strong>Course Name</strong></label>
-    											</div>
-     											<div class="form-control-material static required">
-     												<label>${course.courseName}</label>
- 												</div>
-    										</div>
-   
-   											<div class="form-group">
-   												<div>
-    												<label><strong>Course Dept/Number</strong></label>
-   												</div>
-   												<div class="form-group form-control-material static required">
-     												<label>${course.department.abbreviation}-${course.courseNumber}</label>
-   												</div>
-   											</div>
-   
-   											<div class="form-group">
-   												<div>
-    												<label><strong>Credits</strong></label>
-   												</div>
-   												<div class="form-control-material static required">
-     												<label>${course.credit}</label>
-     											</div>
-   											</div>
-
-														</div>
-                  					</div>
-                  				</div>
-                  				<div class="panel-header">
-                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="/TeacherCourseView" />" >List Courses </a>&nbsp;
-                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="EditCourse">
-      											<c:param name="id" value="${course.id}" />
-      										</c:url>">Edit Courses</a>
-                    			</div>
-                  			</div>
-        				</div>
-        				
-        				
-        				
-        				
+            			 			
         				
         				
         				<div class="page-section">
@@ -91,18 +44,26 @@
             			
             			<div class="row" data-toggle="isotope">
                 		 <div class="item col-xs-30 col-lg-15">
-                		 		   <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
+                		 		<div class="panel-header">
+                    			 <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
 													href="<c:url value="/CourseAddQuestion">
 															<c:param name="courseId" value="${course.id}" />
 														  </c:url>" >Add Question and Answers</a>
-														  <p>&nbsp;</p>
-                		  <div class="panel panel-default paper-shadow" data-z="10">
+														 		      														
+                    				&nbsp;
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherQuestionView" />" >View Other Questions</a>
+                    				&nbsp;
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/teacherdashboard.jsp" />" >Dashboard</a>
+                    		        &nbsp;
+                    		</div>
+                    		<p>&nbsp;</p>
+                  		<div class="panel panel-default paper-shadow" data-z="10">
                 		   <div class="panel-heading">
                 		   
                 
 										<div class="form">
 
-    										
+    										    
 
 											<div class="form-group">
 												
@@ -146,12 +107,7 @@
         				</div>
         				
         				
-        				
-        				
-        				
-        				
-        				
-        				
+        			     				
         				
         				
         				

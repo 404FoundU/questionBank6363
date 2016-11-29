@@ -124,23 +124,46 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><i class="fa fa-question-circle"></i>Questions Menu</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><i class="fa fa-question-circle"></i>Question/Answer Menu</a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
 
     <li class="hasSubmenu">
-         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question</span></a>         
+         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question and Answer</span></a>         
 		  <ul id="quiz-menu"> 
-		   <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/>
-            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='ShowQuestion'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Questions</span></button></form></li>  	
-       </ul>
+		   <!-- <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/> -->
+		   
+            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='TeacherQuestionView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Question and Answers</span></button></form></li>  	
+		</ul>
        </li>
 </div>
       </div>
+<!--     
+<div class="panel panel-default" style="margin-bottom:-5px;">
+ <div class="panel-heading">
+  <h4 class="panel-title">
+   <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><i class="fa fa-file-o"></i>Question Paper Menu</a>
+  </h4>
+ </div>	
+ 
+ <div id="collapse4" class="panel-collapse collapse ">
+  <div class="panel-body">
+   <li class="hasSubmenu"> 
+    
+    <a href="<c:url value="/TeacherAddCourse" />" ><i class="fa fa-book"></i><span>Build QuestionPaper</span></a>
+    <ul id="course-menu">
+     <button name="courseview" type="submit" value="Course View" class="btn btn-inverse" onclick="window.location.href='TeacherCourseView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">Print Question Paper</span></button></form></li>
+    </ul>
+   </li>
+  </div>
+ </div>
+</div>
+-->    
       
-    </div>
+    </div>    
+
     <li class="active" style="margin-left: 18px; font-size: 16px;"> <a href="index.jsp"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
   </div>
       </div>
