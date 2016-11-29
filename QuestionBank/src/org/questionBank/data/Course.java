@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Nov 26, 2016 1:15:48 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Nov 28, 2016 8:05:25 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -75,7 +75,7 @@ public class Course implements java.io.Serializable {
 		this.courseName = courseName;
 	}
 
-	@Column(name = "course_number", length = 8)
+	@Column(name = "course_number", length = 12)
 	public String getCourseNumber() {
 		return this.courseNumber;
 	}

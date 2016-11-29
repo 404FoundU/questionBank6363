@@ -25,7 +25,7 @@ CREATE TABLE `department`(
 create table `course`(
 	`id`   MEDIUMINT NOT NULL AUTO_INCREMENT,
 	`course_name`     varchar(64),
-	`course_number`	  varchar(8),
+	`course_number`	  varchar(12),
 	`department_id` MEDIUMINT,
 	`credit`          int,
 	primary key (`id`),
