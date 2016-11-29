@@ -51,7 +51,7 @@ public class CourseController {
 			mve.addObject("courses", courses);
 			return mve;
 		}else{
-			mve = new ModelAndView("index");
+			mve = new ModelAndView("redirect:teacherlogin.jsp");
 			mve.addObject("message", "Invalid User ID for Session");
 			return mve;
 		}
