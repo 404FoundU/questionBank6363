@@ -100,6 +100,7 @@ public class CourseDataUtil {
 	public Course findCourse(Integer id){
 		// TODO: test this
 		Course course = ch.findById(id);
+		course.getDepartment();
 		return course;
 	}
 	
