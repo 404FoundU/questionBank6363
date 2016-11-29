@@ -38,7 +38,7 @@ public class DepartmentController {
 		if(uid != null){
 			Integer userId = (Integer) uid;
 			Person p = personDAO.findPerson(userId);
-			boolean isAdmin = p.isIsAdmin();
+			boolean isAdmin = p.isAdmin();
 			mve.addObject("isAdmin", isAdmin);
 			return mve;
 		}else{

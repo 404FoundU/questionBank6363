@@ -1,5 +1,5 @@
 package org.questionBank.data;
-// Generated Nov 26, 2016 1:15:48 PM by Hibernate Tools 5.2.0.Beta1
+// Generated Nov 28, 2016 9:15:21 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;

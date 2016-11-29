@@ -25,8 +25,12 @@ public class PersonController {
 	public ModelAndView createPerson(HttpServletRequest request,@RequestParam("username") String userName,@RequestParam String password,@RequestParam("firstname") String firstName,@RequestParam String rpassword,@RequestParam("lastname") String lastName){
 		ModelAndView modelAndView =  null;
 		try {
-			personDataUtil.createPerson(userName, password, firstName, rpassword, lastName);
-			request.getSession().setAttribute("name", userName);
+			Person p = personDataUtil.createPerson(userName, password, firstName, rpassword, lastName);
+			HttpSession session = request.getSession();
+			session.setAttribute("name", p.getUserName());
+			session.setAttribute("userId", p.getId());
+			session.setAttribute("firstName", p.getFirstName());
+			session.setAttribute("lastName", p.getLastName());
 			modelAndView=new ModelAndView("redirect:teacherdashboard.jsp");
 		} catch (InvalidCredentialException | UserAlreadyExistException e) {
 			modelAndView=new ModelAndView("redirect:teachersignup.jsp");
@@ -45,7 +49,7 @@ public class PersonController {
 			session.setAttribute("userId", p.getId());
 			session.setAttribute("firstName", p.getFirstName());
 			session.setAttribute("lastName", p.getLastName());
-			if(p.isIsAdmin()){
+			if(p.isAdmin()){
 				modelAndView=new ModelAndView("redirect:admindashboard.jsp");
 			}else{
 				modelAndView=new ModelAndView("redirect:teacherdashboard.jsp");

@@ -39,8 +39,9 @@ public class CourseDataUtil {
 	private static String MIN_COURSE_NAME_ERROR = "Course Name value must be at least 2 characters long.";
 	private static String MAX_COURSE_NAME_ERROR = "Course Name value must be at most 64 characters long.";
 	private static int MIN_COURSE_NUMBER_LENGTH = 3;
-	private static int MAX_COURSE_NUMBER_LENGTH = 4;
-	private static String COURSE_NUMBER_ERROR = "Course Number value must be 3 or 4 digits long";
+	private static int MAX_COURSE_NUMBER_LENGTH = 12;
+	private static String COURSE_NUMBER_ERROR = "Course Number value must between "+MIN_COURSE_NUMBER_LENGTH+
+												" and "+MAX_COURSE_NUMBER_LENGTH+" digits long";
 	
 	public Course populateCourse(String courseName, String courseNumber, Department dept, Integer credit){
 		Course course = new Course();
@@ -99,6 +100,7 @@ public class CourseDataUtil {
 	public Course findCourse(Integer id){
 		// TODO: test this
 		Course course = ch.findById(id);
+		course.getDepartment();
 		return course;
 	}
 	

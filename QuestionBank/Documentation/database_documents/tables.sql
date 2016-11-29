@@ -11,7 +11,7 @@ CREATE TABLE `person`(
   `last_name` varchar(50),
   `user_name` varchar(20),
   `password` varchar(20),
-  `is_admin` boolean not null default 0,
+  `admin` boolean not null default 0,
   primary key (`id`)
 ) ENGINE=InnoDB;
 
@@ -25,7 +25,7 @@ CREATE TABLE `department`(
 create table `course`(
 	`id`   MEDIUMINT NOT NULL AUTO_INCREMENT,
 	`course_name`     varchar(64),
-	`course_number`	  varchar(8),
+	`course_number`	  varchar(12),
 	`department_id` MEDIUMINT,
 	`credit`          int,
 	primary key (`id`),

@@ -5,5 +5,5 @@ delete from Person;
 --	private String userName;
 --	private String password;
 
-INSERT INTO Person (first_name, last_name, user_name, password, is_admin) 
+INSERT INTO Person (first_name, last_name, user_name, password, admin) 
 	VALUES ('Question','Bank','qbank','11111',1);
