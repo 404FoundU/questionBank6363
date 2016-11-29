@@ -120,13 +120,18 @@ public class CourseDataUtil {
 		
 	}
 	
+	public List<Course> getCoursesForTeacher(Integer userId){
+		List<Course> courses = ch.getCoursesForPersonId(userId);
+		return courses;
+	}
+	
 	public List<Map<String,Object>> getDataForAllCourses(){
 		List<Course> courses = ch.getCourses();
 		return getCoursesData(courses);
 	}
 	
 	public List<Map<String, Object>> getDataForTeacherCourses(Integer userId){
-		List<Course> courses = ch.getCoursesForPersonId(userId);
+		List<Course> courses = getCoursesForTeacher(userId);
 		return getCoursesData(courses);
 	}
 	
