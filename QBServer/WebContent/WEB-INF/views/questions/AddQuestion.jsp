@@ -63,7 +63,7 @@
    			 <div class="form-control-material static required">
 			  <form:select path="course.id">
       		   <form:option value="-" label="--Select Course"/>
-      		   <form:options items="${courses}" itemValue="id" itemLabel="courseName"/>
+      		   <form:options items="${courses}" var="item" value="${item.courseName}" itemValue="id" itemLabel="courseName"/>
               </form:select>
    			</div>
      	   </div>
