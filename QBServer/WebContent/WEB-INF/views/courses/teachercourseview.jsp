@@ -59,8 +59,8 @@
 		   									<c:forEach items="${courses}" var="item">
 		    												<tr>
 		      													<td><c:out value="${item.courseName}" /></td>
-		      													<td><c:out value="${item.dept.abbreviation}-${item.courseNumber}" /></td>
-		      													<td><c:out value="${item.dept.name}" /></td>
+		      													<td><c:out value="${item.deptabbreviation}-${item.courseNumber}" /></td>
+		      													<td><c:out value="${item.deptname}" /></td>
 		      													<td><c:out value="${item.credit}" /></td>
 		      													<td>
 		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ShowCourse"> <c:param name="id" value="${item.id}" /></c:url>">Show</a>
