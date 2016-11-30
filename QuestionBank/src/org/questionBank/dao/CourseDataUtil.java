@@ -150,7 +150,9 @@ public class CourseDataUtil {
 		map.put("id", course.getId());
 		map.put("courseNumber", course.getCourseNumber());
 		map.put("courseName", course.getCourseName());
-		map.put("dept", course.getDepartment());
+		Department dept = course.getDepartment();
+		map.put("deptname", dept.getName());
+		map.put("deptabbreviation", dept.getAbbreviation());
 		map.put("credit", course.getCredit());
 		return map;
 	}
