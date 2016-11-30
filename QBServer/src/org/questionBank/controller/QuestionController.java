@@ -49,9 +49,14 @@ public class QuestionController {
 		{
 			Integer userId = (Integer) uid;
 			Person p = personDAO.findPerson(userId);
-			List<Course> courses = p.isIsAdmin() ? courseDAO.getCourses() : courseDAO.getCoursesForTeacher(userId);
+			List<Course> courses = p.isAdmin() ? courseDAO.getCourses() : courseDAO.getCoursesForTeacher(userId);
 			mve = new ModelAndView("views/questions/AddQuestion");
 			mve.addObject("courses", courses);
+			if(courseId != null)
+			{
+				course = courseDAO.findCourse(courseId);
+			}
+			
 			Question q = questionDAO.populateQuestion(course, question, chapter);
 			mve.addObject("question", q);
 			if(question != null || chapter != null){
@@ -67,25 +72,6 @@ public class QuestionController {
 		return mve;
 	}
 
-	/*
-	 @RequestMapping(value="/TeacherCourseView",method=RequestMethod.GET)
-	public ModelAndView listCourses(HttpServletRequest request){
-		ModelAndView mve =  null;
-		HttpSession s = request.getSession();
-		Object uid = s.getAttribute("userId");
-		if(uid != null){
-			Integer userId = (Integer) uid;
-			List<Map<String,Object>> courses = courseDAO.getDataForTeacherCourses(userId);
-			mve = new ModelAndView("views/courses/teachercourseview");
-			mve.addObject("courses", courses);
-			return mve;
-		}else{
-			mve = new ModelAndView("index");
-			mve.addObject("message", "Invalid User ID for Session");
-			return mve;
-		}
-	}
-	 */
 		
 	@RequestMapping(value="/CourseAddQuestion",method=RequestMethod.POST)
 	public ModelAndView createQuestion(@ModelAttribute("question") Question que, @RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
