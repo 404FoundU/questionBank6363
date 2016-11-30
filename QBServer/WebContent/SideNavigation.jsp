@@ -108,7 +108,7 @@
          <a href="<c:url value="/TeacherAddCourse" />" ><i class="fa fa-book"></i><span>Add Course</span></a>
          <ul id="course-menu">
       	
-	   <button name="courseview" type="submit" value="Course View" class="btn btn-inverse" onclick="window.location.href='TeacherCourseView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Courses</span></button></form></li>
+	   <button style=" margin-top: 7px; margin-bottom: -7px;" name="courseview" type="submit" value="Course View" class="btn btn-inverse" onclick="window.location.href='TeacherCourseView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Courses</span></button></form></li>
              	
           <!--  <li><form action="" method="post"> <input type="hidden"  name="tid" value=""/>
 		   <button name="uploadlecture" type="submit" value=" Assign Leacture " href="AddCourse.jsp" class="btn btn-inverse"><span>Add Courses</span></form></li>   
@@ -124,18 +124,18 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><i class="fa fa-question-circle"></i>Question/Answer Menu</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><i class="fa fa-question-circle"></i>Q&A Menu</a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
 
     <li class="hasSubmenu">
-         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question and Answer</span></a>         
+         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Q&A</span></a>         
 		  <ul id="quiz-menu"> 
 		   <!-- <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/> -->
 		   
-            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='TeacherQuestionView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Question and Answers</span></button></form></li>  	
+            <button style=" margin-top: 7px; margin-bottom: -7px;" name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='TeacherQuestionView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Q&A</span></button></form></li>  	
 		</ul>
        </li>
 </div>
