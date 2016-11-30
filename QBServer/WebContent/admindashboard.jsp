@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <jsp:include page="SideNavigation.jsp"/>  --%>
+<jsp:include page="AdminSideNavigation.jsp"/>  
 
 <html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
 
@@ -36,11 +36,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="navbar-brand navbar-brand-primary navbar-brand-logo navbar-nav-padding-left ">
-            <a class="svg" href="index.jsp">
-              <img style="margin-top:7px;" alt="" src="AdminDashboardFiles/logo.png" >
-            </a>
-          </div>
+          <div class="navbar-brand navbar-brand-primary navbar-brand-logo navbar-nav-padding-left"> Team Charlie  
+      </div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,19 +47,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
              <!--Amin -->
-             <li >
-              <a >
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="badge badge-primary">Admin</span>
-              </a>
-            
-            </li>
             <!-- // Admin -->
             <!-- User -->
             <li class="dropdown">
-            
-                <li><a href="adminlogin.jsp">Logout</a></li>
-              </ul>
+             <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary" style ="font-size: 16px;">Admin</span></a></li>
+        &nbsp     
+<li><a  style= "padding-right: 62px;" href="index.jsp"><i class="fa fa-fw fa-sign-out">Logout</i>&nbsp</a></li>              </ul>
             </li>
           </ul>
         </div>
@@ -71,29 +61,17 @@
       </div>
     </div>
 	
-	<!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <div class="sidebar left sidebar-size-3 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu" data-type="collapse">
-      <div data-scrollable>
-
-        <div class="sidebar-block">
-          <div class="profile">
-            <a href="#">
-              <img src="admin.jpg" alt="people" class="img-circle width-80" />
-            </a>
-            <h4 class="text-display-1 margin-none"><?php echo $login_session; ?></h4>
-          </div>
-        </div>
-		
-        <ul class="sidebar-menu">
-          <li class="active"><form action="" method="post"> <button name="subview" type="submit" value=" Coure View " class="btn btn-inverse" ><i class="fa fa-home"></i><span>Dashboard</span></button></form></li>
-          <li><form action="" method="post"><button name="teacher_request" type="submit" value=" Create Course " class="btn btn-inverse"><i class="fa  fa-group"></i><span>Teacher Request</span></button></form></li>
-          <li><form action="" method="post"><button name="teacher_view" type="submit" value=" Teacher View " class="btn btn-inverse"><i class="fa fa-user"></i><span>Teacher View</span></button></form></li>
-          <li><form action="" method="post"><button name="create_course" type="submit" value=" Create Course " class="btn btn-inverse"><i class="fa fa-pencil-square"></i><span>Create Course</span></button></form></li>
-          <li><form action="" method="post"><button name="assign_teacher" type="submit" value=" Assign Teacher " class="btn btn-inverse"><i class="fa fa-university"></i><span>Assign Teacher</span></button></form></li>
-		  <li><form action="" method="post" ><button name="logout" type="submit" value="logout" class="btn btn-inverse"><i class="fa fa-sign-out"></i><span>Logout</span></button></form></li>
-        </ul>
-      </div>
-    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
     <!-- sidebar effects OUTSIDE of st-pusher: -->
     <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
