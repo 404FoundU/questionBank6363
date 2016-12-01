@@ -65,23 +65,6 @@
      <input class="form-control" id="password2" name="rpassword" type="password" required maxlength="13" placeholder="Confirm Password">
     </div>
    </div>
-	
-   <div class="form-group">
-    <div class="form-control-material">
-     <input class="form-control" id="contact" name="contact" type="number" required placeholder="Enter Contact" maxlength="11">
-    </div>
-  </div>
-
-  
-   <div class="form-group">
-    <select id="gender" name="gender" style="/* width: 100%; *//* margin-bottom: 10px; *//* color: #A9A9A9; *//* background-color: #F2F2F2; *//* padding-top: 17px; */outline: 0;      background: #f2f2f2;      width: 100%;      border: 0;      margin: 0 0 15px;      padding: 15px;      border-top-left-radius: 3px;      border-top-right-radius: 3px;      border-bottom-left-radius: 3px;      border-bottom-right-radius: 3px;      box-sizing: border-box;      font-size: 14px;color: darkgrey;" data-toggle="select2">
-     <optgroup label="Gender Type">
-       <option value="Male">Male</option>
-       <option value="Female">Female</option>
-	   <option value="Other">Other</option>                  
-     </optgroup>
-	</select>               
-   </div>
  
 <button name="submit" type="submit">Create <i class="fa fa-user"></i></button>
    <p class="message">Already registered? <a href="teacherlogin.jsp">Sign In</a></p>
