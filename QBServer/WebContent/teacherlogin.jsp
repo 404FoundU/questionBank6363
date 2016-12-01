@@ -29,9 +29,7 @@
     <img src="TeacherFiles/54.png" onclick="window.location.href='index.jsp'"/>
    </div>
     
-   <div > 
-    <h3 style="margin-bottom: 10px;margin-top: -20px;color: #2DBE60;">Teacher</h3>
-   </div>
+   
     
    <form action="teacherlogin" method="post">
     
