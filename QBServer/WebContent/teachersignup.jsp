@@ -14,6 +14,18 @@
   </head>
 
   <body>
+  
+  <%
+  String message=request.getParameter("message");
+  if (message != null &&! message.trim().equals(""))
+{  
+  %>
+  <script type="text/javascript">
+    alert('<%= message %>');
+</script>
+
+<% } %>
+
    <div class="container">
     <div class="info">
      <a href="index.jsp" style= "text-decoration: none !important; color:white;"><h1>QBMS</h1><span>Question Bank Management System</span></a> 

@@ -27,7 +27,7 @@ public class PersonDataUtil {
 		if(username.equals("admin")&&password.equals("admin")){
 			return true;
 		}else{
-			throw new InvalidCredentialException("invalid username or password");
+			throw new InvalidCredentialException("Invalid Username/Password");
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class PersonDataUtil {
 		if(person.getPassword().equals(password)){
 			return person;
 		}else{
-			throw new InvalidCredentialException("invalid password");
+			throw new InvalidCredentialException("Invalid Password");
 		}
 	}
 	
@@ -51,10 +51,10 @@ public class PersonDataUtil {
 	public Person findUserByUserName(String userName) throws InvalidCredentialException {
 		List<Person> people = ph.findUsersByUserName(userName);
 		if(people==null || people.isEmpty()){
-			throw new InvalidCredentialException("invalid username");
+			throw new InvalidCredentialException("Invalid Username");
 		}
 		if(people.size() > 1){
-			throw new InvalidCredentialException("multiple users found");
+			throw new InvalidCredentialException("Multiple Users Found");
 		}
 		Person person  = people.get(0);
 		return person;
@@ -62,19 +62,19 @@ public class PersonDataUtil {
 	
 	private void validateUserCredential(String username, String password)  throws InvalidCredentialException{
 		if(username==null||username.equals(""))
-			throw new InvalidCredentialException("username empty");
+			throw new InvalidCredentialException("Username Empty");
 		if(password==null||password.equals(""))
-			throw new InvalidCredentialException("password empty");
+			throw new InvalidCredentialException("Password Empty");
 	}
 	private void validateUserCredential(String username, String password, String rpassword)  throws InvalidCredentialException{
 		if(username==null||username.equals(""))
-			throw new InvalidCredentialException("username empty");
+			throw new InvalidCredentialException("Username Empty");
 		if(password==null||password.equals(""))
-			throw new InvalidCredentialException("password empty");
+			throw new InvalidCredentialException("Password Empty");
 		if(rpassword==null||rpassword.equals(""))
-			throw new InvalidCredentialException("repeat password empty");
+			throw new InvalidCredentialException("Repeat Password Empty");
 		if(!password.equals(rpassword))
-			throw new InvalidCredentialException("password not matching");
+			throw new InvalidCredentialException("Password Not Matching");
 	}
 	public Person createPerson( String userName, String password, String firstName, String rpassword, String lastName) throws InvalidCredentialException, UserAlreadyExistException {
 		Person person=null;
