@@ -64,9 +64,7 @@ public class QuestionController {
 			}
 		}
 		else{
-			mve = new ModelAndView("redirect:/teacherlogin");
-			mve.addObject("message", "Invalid User ID for Session");
-			return mve;
+			return rejectInvalidUser(null);
 		}		
 		
 		return mve;
@@ -74,90 +72,109 @@ public class QuestionController {
 
 		
 	@RequestMapping(value="/CourseAddQuestion",method=RequestMethod.POST)
-	public ModelAndView createQuestion(@ModelAttribute("question") Question que, @RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
+	public ModelAndView createQuestion(HttpServletRequest request, @ModelAttribute("question") Question que, @RequestParam(required=false) Integer courseId, @RequestParam(required=false) String question,
 										@RequestParam(required=false) String chapter,@RequestParam(required=false) String answerText){
-		ModelAndView mve =  null;
-		try {
-			Question newQuestion = questionDAO.createQuestion(que);
-			Answer newAnswer = answerDAO.createAnswer(newQuestion,answerText);
-			mve=new ModelAndView("redirect:ShowQuestion?id="+newQuestion.getId());
-			mve.addObject("question", newQuestion);
-			mve.addObject("answer",newAnswer);
-		} 
-		catch (InvalidQuestionException qe) {
-			mve=new ModelAndView("redirect:TeacherAddCourse");
-			mve.addObject("courseId", courseId);
-			mve.addObject("question", question);
-			mve.addObject("chapter", chapter);
-			mve.addObject("answerText", answerText);
+		ModelAndView mve = null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			try {
+				Question newQuestion = questionDAO.createQuestion(que);
+				Answer newAnswer = answerDAO.createAnswer(newQuestion,answerText);
+				mve=new ModelAndView("redirect:ShowQuestion?id="+newQuestion.getId());
+				mve.addObject("question", newQuestion);
+				mve.addObject("answer",newAnswer);
+			} 
+			catch (InvalidQuestionException qe) {
+				mve=new ModelAndView("redirect:TeacherAddCourse");
+				mve.addObject("courseId", courseId);
+				mve.addObject("question", question);
+				mve.addObject("chapter", chapter);
+				mve.addObject("answerText", answerText);
+			}
+			catch (InvalidAnswerException ae) {
+				mve=new ModelAndView("redirect:TeacherAddCourse");
+				mve.addObject("courseId", courseId);
+				mve.addObject("question", question);
+				mve.addObject("chapter", chapter);
+				mve.addObject("answerText", answerText);		
+			}
+			return mve;
+		}else{
+			return rejectInvalidUser(null);
 		}
-		catch (InvalidAnswerException ae) {
-			mve=new ModelAndView("redirect:TeacherAddCourse");
-			mve.addObject("courseId", courseId);
-			mve.addObject("question", question);
-			mve.addObject("chapter", chapter);
-			mve.addObject("answerText", answerText);		}
-		return mve;
 	}
 
 	
 	
 	// Show
 	@RequestMapping(value="/ShowQuestion",method=RequestMethod.GET)
-	public ModelAndView showQuestion(@RequestParam("id") int id){
+	public ModelAndView showQuestion(HttpServletRequest request, @RequestParam("id") int id){
 		ModelAndView mve = null;
-		mve = new ModelAndView("views/questions/ShowQuestion");
-		Question q = questionDAO.findQuestion(id);
-		List<Answer> answers = answerDAO.findAnswersByQuestionId(q.getId());
-		Answer a = null;
-		if(answers.isEmpty())
-		{
-			a = new Answer();
-		}
-		else
-		{
-			a = answers.get(0);
-		}
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			mve = new ModelAndView("views/questions/ShowQuestion");
+			Question q = questionDAO.findQuestion(id);
+			List<Answer> answers = answerDAO.findAnswersByQuestionId(q.getId());
+			Answer a = null;
+			if(answers.isEmpty())
+			{
+				a = new Answer();
+			}
+			else
+			{
+				a = answers.get(0);
+			}
 		
-		mve.addObject("question",q);
-		mve.addObject("answer",a);
-		mve.addObject("errors", questionDAO.questionErrors(q));
-		return mve;
+			mve.addObject("question",q);
+			mve.addObject("answer",a);
+			mve.addObject("errors", questionDAO.questionErrors(q));
+			return mve;
+		}else{
+			return rejectInvalidUser(null);
+		}
 	}
 	
 	@RequestMapping(value="/ViewQuestion",method=RequestMethod.GET)
-	public ModelAndView viewQuestion(@RequestParam("id") int id){
+	public ModelAndView viewQuestion(HttpServletRequest request, @RequestParam("id") int id){
 		ModelAndView mve = null;
-		mve = new ModelAndView("views/questions/ViewQuestion");
-		Course c = courseDAO.findCourse(id);
-		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c);
-		for(Map<String,Object> question : questions)
-		{
-			Object qid = question.get("id");
-			if(qid != null && (qid instanceof Integer) )
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			mve = new ModelAndView("views/questions/ViewQuestion");
+			Course c = courseDAO.findCourse(id);
+			List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c);
+			for(Map<String,Object> question : questions)
 			{
-				int questionId = (Integer)qid;
-				List<Answer> answers = answerDAO.findAnswersByQuestionId(questionId);
-				if(answers.isEmpty())
+				Object qid = question.get("id");
+				if(qid != null && (qid instanceof Integer) )
 				{
-					question.put("answer", "");
-				}
-				else if(answers.size() > 1)
-				{ 
-					question.put("answer", "Multiple Answers");
-				}
-				else
-				{ 
-					Answer a = answers.get(0);
-					question.put("answer", a.getAnswerText());
-					question.put("answerId", a.getId());
+					int questionId = (Integer)qid;
+					List<Answer> answers = answerDAO.findAnswersByQuestionId(questionId);
+					if(answers.isEmpty())
+					{
+						question.put("answer", "");
+					}
+					else if(answers.size() > 1)
+					{ 
+						question.put("answer", "Multiple Answers");
+					}
+					else
+					{ 
+						Answer a = answers.get(0);
+						question.put("answer", a.getAnswerText());
+						question.put("answerId", a.getId());
+					}
 				}
 			}
-		}
 		
-		mve.addObject("course",c);
-		mve.addObject("questions",questions);
-		return mve;
+			mve.addObject("course",c);
+			mve.addObject("questions",questions);
+			return mve;
+		}else{
+			return rejectInvalidUser(null);
+		}
 	}
 	
 	@RequestMapping(value="/TeacherQuestionView",method=RequestMethod.GET)
@@ -172,9 +189,7 @@ public class QuestionController {
 				mve.addObject("courses", courses);
 				return mve;
 			}else{
-				mve = new ModelAndView("index");
-				mve.addObject("message", "Invalid User ID for Session");
-				return mve;
+				return rejectInvalidUser(null);
 			}
 		}
 		
@@ -182,43 +197,66 @@ public class QuestionController {
 		
 	// Edit
 	@RequestMapping(value="/EditQuestion",method=RequestMethod.GET)
-	public ModelAndView editQuestion(@RequestParam("id") int id,@RequestParam("answerId") int answerId){
-		ModelAndView mve = null;
-		mve = new ModelAndView("views/questions/EditQuestion");
-		Question q = questionDAO.findQuestion(id);
-		Answer a = answerDAO.findAnswer(answerId);
-		try{
-			questionDAO.validateQuestion(q);
-			answerDAO.validateAnswer(a);
-		}catch(InvalidQuestionException ex){
-			mve.addObject("errors", questionDAO.questionErrors(q));
+	public ModelAndView editQuestion(HttpServletRequest request, @RequestParam("id") int id,@RequestParam("answerId") int answerId){
+		ModelAndView mve =  null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			mve = new ModelAndView("views/questions/EditQuestion");
+			Question q = questionDAO.findQuestion(id);
+			Answer a = answerDAO.findAnswer(answerId);
+			try{
+				questionDAO.validateQuestion(q);
+				answerDAO.validateAnswer(a);
+			}catch(InvalidQuestionException ex){
+				mve.addObject("errors", questionDAO.questionErrors(q));
+			}
+			catch(InvalidAnswerException ex){
+				mve.addObject("errors", answerDAO.answerErrors(a));
+			}
+			List<Course> courses = courseDAO.getCourses();
+			mve.addObject("question",q);
+			mve.addObject("answer",a);
+			mve.addObject("courses", courses);
+			return mve;
+		}else{
+			return rejectInvalidUser(null);
 		}
-		catch(InvalidAnswerException ex){
-			mve.addObject("errors", answerDAO.answerErrors(a));
-		}
-		List<Course> courses = courseDAO.getCourses();
-		mve.addObject("question",q);
-		mve.addObject("answer",a);
-		mve.addObject("courses", courses);
-		return mve;
 	}
 
 	@RequestMapping(value="/UpdateQuestion",method=RequestMethod.POST)
-	public ModelAndView updateQuestion(@ModelAttribute("question") Question question, @RequestParam(required=false) Integer answerId, @RequestParam(required=false) String answerText){
+	public ModelAndView updateQuestion(HttpServletRequest request, @ModelAttribute("question") Question question, @RequestParam(required=false) Integer answerId, @RequestParam(required=false) String answerText){
 		ModelAndView mve =  null;
-		try {
-			questionDAO.updateQuestion(question);
-			answerDAO.updateAnswer(answerId, answerText);
-			Answer newAnswer = answerDAO.findAnswer(answerId);
-			mve=new ModelAndView("redirect:ShowQuestion?id="+question.getId());
-			mve.addObject("question", question);
-			mve.addObject("answer", newAnswer);
-		} catch (InvalidQuestionException e) {
-			mve=new ModelAndView("redirect:EditQuestion?id="+question.getId()+"&answerId="+answerId);
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			try {
+				questionDAO.updateQuestion(question);
+				answerDAO.updateAnswer(answerId, answerText);
+				Answer newAnswer = answerDAO.findAnswer(answerId);
+				mve=new ModelAndView("redirect:ShowQuestion?id="+question.getId());
+				mve.addObject("question", question);
+				mve.addObject("answer", newAnswer);
+			} catch (InvalidQuestionException e) {
+				mve=new ModelAndView("redirect:EditQuestion?id="+question.getId()+"&answerId="+answerId);
+			}
+			catch (InvalidAnswerException ex) {
+				mve=new ModelAndView("redirect:EditQuestion?id="+question.getId()+"&answerId="+answerId);
+			}
+			return mve;
+		}else{
+			return rejectInvalidUser(null);
 		}
-		catch (InvalidAnswerException ex) {
-			mve=new ModelAndView("redirect:EditQuestion?id="+question.getId()+"&answerId="+answerId);
-		}
+	}
+	
+	// Helper
+	private ModelAndView rejectInvalidUser(Integer uid){
+		ModelAndView mve = new ModelAndView();
+		mve = new ModelAndView("redirect:teacherlogin.jsp");
+		if(uid == null)
+			mve.addObject("message", "Invalid User ID for Session");
+		else
+			mve.addObject("message", "Invalid User ID ["+uid+"] for Session");
 		return mve;
 	}
 
