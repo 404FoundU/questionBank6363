@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../../../SideNavigation.jsp"/>
+<c:choose>
+	<c:when test="${isAdmin}">
+		<jsp:include page="../../../AdminSideNavigation.jsp"/>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../../../SideNavigation.jsp"/>
+	</c:otherwise>
+</c:choose>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +16,7 @@
     
   	<link href="TeacherDashboardFiles/all.css" rel="stylesheet">
 	<link href="TeacherDashboardFiles/app.css" rel="stylesheet">
-<title>Departments</title>
+<title>Users</title>
 </head>
 <body>
 	<!-- content push wrapper -->
@@ -27,7 +34,7 @@
 					</div>
 	
             		<div class="page-section">
-              			<h1 class="text-display-1">Departments</h1>
+              			<h1 class="text-display-1">Users</h1>
 					</div>
             			
             		<div class="row" data-toggle="isotope">
@@ -38,21 +45,22 @@
                     			</div>
                 				
                 				<div class="panel-heading">
-                    				<!-- <h4 class="text-headline margin-none">All Courses</h4> -->
                     				<div class="table-list-content">
 										<table width="100%">
 											<tr>
-												<th>Name</th>
-												<th>Abbreviation</th>
+												<th>First Name</th>
+												<th>Last Name</th>
+												<th>User Name</th>
 												<th></th>
 											</tr>
-  											<c:forEach items="${departments}" var="item">
+  											<c:forEach items="${users}" var="item">
     											<tr>
-      												<td><c:out value="${item.name}" /></td>
-      												<td><c:out value="${item.abbreviation}" /></td>
+      												<td><c:out value="${item.firstName}" /></td>
+      												<td><c:out value="${item.lastName}" /></td>
+      												<td><c:out value="${item.userName}" /></td>
       												<td>
       													<a href="
-      														<c:url value="/ShowDepartment">
+      														<c:url value="/ShowUser">
       															<c:param name="id" value="${item.id}" />
       														</c:url>"
       													>
@@ -60,7 +68,7 @@
       													</a>
       													&nbsp;&nbsp;|&nbsp;
       													<a href="
-      														<c:url value="/EditDepartment"> 
+      														<c:url value="/EditUser"> 
       															<c:param name="id" value="${item.id}" />
       														</c:url>"
       													>

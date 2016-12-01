@@ -120,7 +120,6 @@ public class CourseDataUtil {
 	}
 	
 	public List<Course> getCourses(){
-		// TODO: implement this
 		return ch.getCourses();
 		
 	}
