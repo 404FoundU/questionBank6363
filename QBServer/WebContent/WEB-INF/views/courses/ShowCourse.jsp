@@ -24,21 +24,20 @@
         		<!-- extra div for emulating position:fixed of the menu -->
         		<div class="st-content-inner padding-none">
           			<div class="container-fluid">
-        <div class="container">
-  			<div class="info">
-  
-	    		<h1>QBMS</h1><span>Question Bank Management System</span> 
-  			</div>
-		</div>
+        				<div class="container">
+  							<div class="info">
+	    						<h1>QBMS</h1><span>Question Bank Management System</span> 
+  							</div>
+						</div>
 	
             			<div class="page-section">
               				<h1 class="text-display-1">Course</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
-                		 <div class="item col-xs-30 col-lg-15">
-                		  <div class="panel panel-default paper-shadow" data-z="10">
-                		   <div class="panel-heading">
+                		 	<div class="item col-xs-30 col-lg-15">
+                		  		<div class="panel panel-default paper-shadow" data-z="10">
+                		   			<div class="panel-heading">
 										<div class="form">
 
     										<div class="form-group">
@@ -73,14 +72,15 @@
                   				</div>
                   				<div class="panel-header">
                   					<a class="btn btn-success paper-shadow relative" href="<c:url value="/TeacherCourseView" />" >List Courses </a>&nbsp;
-                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="EditCourse">
+                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="/EditCourse">
       											<c:param name="id" value="${course.id}" />
-      										</c:url>">Edit Courses</a>
-      										  		 		   <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
-													href="<c:url value="/CourseAddQuestion">
-															<c:param name="courseId" value="${course.id}" />
-														  </c:url>" >Add Question and Answers</a>
-														  <p>&nbsp;</p>
+      										</c:url>">Edit Course</a>&nbsp;
+      								<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/CourseAddQuestion">
+												<c:param name="courseId" value="${course.id}" />
+											</c:url>" >Add Question and Answers</a>&nbsp;
+      								<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/PrintCourseQuestionsView">
+												<c:param name="courseId" value="${course.id}" />
+											</c:url>" >Create Question PDF</a>&nbsp;
                 
                     			</div>
                   			</div>

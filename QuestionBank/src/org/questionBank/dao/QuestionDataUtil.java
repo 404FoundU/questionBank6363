@@ -91,8 +91,13 @@ public class QuestionDataUtil {
 		
 	}
 	
-	public List<Map<String,Object>> getDataForCourseQuestions(Course course){
+	public List<Question> getQuestionsForCourse(Course course){
 		List<Question> questions = qh.getQuestionsForCourse(course);
+		return questions;
+	}
+	
+	public List<Map<String,Object>> getDataForCourseQuestions(Course course){
+		List<Question> questions = getQuestionsForCourse(course);
 		return getQuestionsData(questions);
 	}
 	
