@@ -114,4 +114,18 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<url-pattern>/UpdateQuestion/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- PDF View Mappings -->
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/PrintCourseQuestionsView/*</url-pattern>
+	</servlet-mapping> 
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/CreateCourseQuestionSheet/*</url-pattern>
+	</servlet-mapping> 
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/CreateCourseQAndASheet/*</url-pattern>
+	</servlet-mapping> 
+	
 </web-app>
