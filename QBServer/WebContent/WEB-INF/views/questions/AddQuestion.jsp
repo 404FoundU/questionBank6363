@@ -62,8 +62,8 @@
    			<div class="form-group">
    			 <div class="form-control-material static required">
 			  <form:select path="course.id">
-      		   <form:option value="-" label="--Select Course"/>
-      		   <form:options items="${courses}" itemValue="id" itemLabel="courseName"/>
+      		   <form:option value="-" label="--Select Course"/> 
+      		   <form:options items="${courses}" var="item" value="${item.courseName}" itemValue="id" itemLabel="courseName"/>
               </form:select>
    			</div>
      	   </div>
@@ -88,12 +88,16 @@
    											
    			<button class="btn btn-success paper-shadow relative" name="submit" type="submit">Create</button>
    			&nbsp;
-   			<a href="<c:url value="/TeacherCourseView" />" class="btn btn-success" role="button">Cancel</a>
-   		<!-- 	<a class="btn btn-success paper-shadow relative" href="<c:url value="ShowCourse" >
-          <c:param name="id" value="${question.course.id}"/>
-          </c:url>" >Cancel
-         </a> -->
-         
+   		    <a class="btn btn-success paper-shadow relative" href="<c:url value="/ShowCourse" >
+             <c:param name="id" value="${question.course.id}"/>
+             </c:url>" >Cancel
+            </a>
+            
+            <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
+													href="<c:url value="/CourseAddQuestion">
+															<c:param name="courseId" value="${question.course.id}" />
+														  </c:url>" >Add an Other Question and Answers</a>
+														  <p>&nbsp;</p>         
   			<p class="message"> </p>
   	       </form:form>
  		  </div>

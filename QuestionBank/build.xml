@@ -19,11 +19,14 @@
 	<!-- QBServer -->
 	<property name="QBsvr.dir"				value="QBServer" />
 	<property name="QBsvrdeploy.dir"   		value="${QBsvr.dir}/build"/>
-	<property name="QBsvrsrc.dir"		value="${QBsvr.dir}/src" />
+	<property name="QBsvrsrc.dir"			value="${QBsvr.dir}/src" />
 	<property name="QBsvrtestsrc.dir"		value="${QBsvr.dir}/test" />
-	<property name="QBsvrlib.dir"      	  	value="${QBsvr.dir}/WebContent/WEB-INF/lib"/>
+	<property name="QBsvrWebContent.dir"	value="${QBsvr.dir}/WebContent"/>
+	<property name="QBServerWeb.dir"		value="${QBsvrWebContent.dir}/WEB-INF"/>
+	<property name="QBsvrlib.dir"      	  	value="${QBServerWeb.dir}/lib"/>
 	<property name="QBsvrclasses.dir"  	  	value="${QBsvrdeploy.dir}/classes"/>
 	<property name="QBsvrtestclasses.dir"  	value="${QBsvrdeploy.dir}/test-classes"/>
+	<property name="QBServerLib"  			value="qbServer"/>
 	<!--<property name="MainClassName"	  value="Startup" />
 	<property name="package"		  value="org.questionBank.main" />
 	<property name="mainclass" 		  value="${package}.${MainClassName}"/> -->
@@ -139,8 +142,19 @@
 			<classpath refid="QBServer.project.classpath"/>	
 		</javac>
 	</target>
+
+	<!-- Target: jar -->
+	<target depends="compile_qb_svr_src" name="war_qb_svr_src">
+		<war destfile = "${QBsvr.dir}/${QBServerLib}.war" webxml = "${QBServerWeb.dir}/web.xml">
+			<fileset dir = "${QBsvrWebContent.dir}">
+		      <include name = "**/*.*"/>
+		   </fileset>
+	       <lib dir="${QBsvrlib.dir}"/>
+		   <classes dir = "${QBsvrclasses.dir}"/>
+		</war>
+	</target>
 	
 
-    <target name="main" depends="clean_question_bank, run_question_bank_tests, question_bank_jar, clean_qb_svr, compile_qb_svr_src"/><!-- , run"/>-->
+    <target name="main" depends="clean_question_bank, run_question_bank_tests, question_bank_jar, clean_qb_svr, compile_qb_svr_src, war_qb_svr_src"/><!-- , run"/>-->
 	
 </project>

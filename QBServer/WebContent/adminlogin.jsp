@@ -42,9 +42,12 @@
   <form  action="AdminLogin" method="post" >
     <input id="username" type="text" name="username" required placeholder="Username"/>
     <input  id="password" type="password" name="password" required placeholder="Password"/>
-    <button name="submit" type="submit">Login<i class="fa fa-fw fa-unlock-alt"></i></button>
-     <a href="admindashboard.jsp" class="btn btn-banner"> submit <i class="fa fa-send"></i></a>
-  </form>
+    <button name="submit" type="submit">Login<i class="fa fa-fw fa-unlock-alt"></i></button> &nbsp;
+     <p>
+     
+     </p>
+    <p class="message">Not an Admin? <a href="teacherlogin.jsp">Click Here</a></p>
+     </form>
 </div>
 <video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg">
   <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>

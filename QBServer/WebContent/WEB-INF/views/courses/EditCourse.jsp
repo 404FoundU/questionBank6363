@@ -80,7 +80,7 @@
 													<input type="text" class="form-control" name="credit" id="credit" maxlength="1" placeholder="Course Credits" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="${course.credit}" >
    												</div>
 
-   												<button name="submit" type="submit">Update Course</button>
+   												<button class="btn btn-success" name="submit" type="submit">Update Course</button>
   											<%-- </form> --%>
   											</form:form>
  										</div>
@@ -90,7 +90,7 @@
                   					<a class="btn btn-success paper-shadow relative " href="<c:url value="/TeacherCourseView" />" >List Courses</a>&nbsp;
                   					<a class="btn btn-success paper-shadow relative " href="<c:url value="ShowCourse">
       											<c:param name="id" value="${course.id}" />
-      										</c:url>">Show Courses</a>
+      										</c:url>">Show Course</a>
                     			</div>
                   			</div>
         				</div>
