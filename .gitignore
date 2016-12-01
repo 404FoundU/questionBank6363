@@ -12,3 +12,4 @@ QuestionBank/applog.txt
 /.classpath
 .metadata/
 QuestionBank/tmp/
+QBServer/qbServer.war
