@@ -1,11 +1,13 @@
 package org.questionBank.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Person;
 import org.questionBank.exception.InvalidCredentialException;
+import org.questionBank.exception.InvalidUserException;
 import org.questionBank.exception.UserAlreadyExistException;
 import org.questionBank.home.PersonHome;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,19 @@ import org.springframework.stereotype.Repository;
 public class PersonDataUtil {
 
 	private static final Logger log = LogManager.getLogger(PersonDataUtil.class);
+
+	private static int MIN_USER_NAME_LENGTH = 2;
+	private static int MAX_USER_NAME_LENGTH = 20;
+	private static String INVALID_USER_NAME_ERROR = "User Name must be between "+MIN_USER_NAME_LENGTH+" and "+MAX_USER_NAME_LENGTH+" characters long.";
+	private static int MIN_FIRST_NAME_LENGTH = 2;
+	private static int MAX_FIRST_NAME_LENGTH = 50;
+	private static String INVALID_FIRST_NAME_ERROR = "User First Name must be between "+MIN_FIRST_NAME_LENGTH+" and "+MAX_FIRST_NAME_LENGTH+" characters long.";
+	private static int MIN_LAST_NAME_LENGTH = 2;
+	private static int MAX_LAST_NAME_LENGTH = 50;
+	private static String INVALID_LAST_NAME_ERROR = "User Last Name must be between "+MIN_LAST_NAME_LENGTH+" and "+MAX_LAST_NAME_LENGTH+" characters long.";
+	private static int MIN_PASSWORD_LENGTH = 2;
+	private static int MAX_PASSWORD_LENGTH = 50;
+	private static String INVALID_PASSWORD_ERROR = "Password must be between "+MIN_PASSWORD_LENGTH+" and "+MAX_PASSWORD_LENGTH+" characters long.";
 	
 	public PersonDataUtil(){ }
 	
@@ -91,5 +106,49 @@ public class PersonDataUtil {
 		log.info("Creating person");
 		ph.persist(person);
 		return person;
+	}
+
+	public boolean updateUser(Person user) throws InvalidUserException {
+		try{			
+			Person u = ph.findById(user.getId());
+			user.setPassword(u.getPassword());
+			validateUser(user);
+			user.setCourses(u.getCourses());
+			ph.merge(user);
+			return true;
+		}catch(RuntimeException re){
+			List<String> err = new ArrayList<String>();
+			err.add(re.getMessage());
+			throw new InvalidUserException(err);
+		}
+	}
+
+	
+	public List<String> userErrors(Person user) {
+		return getUserErrors(user);
+	}
+	
+	private List<String> getUserErrors(Person user){
+		List<String> errors = new ArrayList<String>();
+		if(user.getUserName() == null || user.getUserName().length() < MIN_USER_NAME_LENGTH || user.getUserName().length() > MAX_USER_NAME_LENGTH)
+			errors.add(INVALID_USER_NAME_ERROR);
+		if(user.getFirstName() == null || user.getFirstName().length() < MIN_FIRST_NAME_LENGTH || user.getFirstName().length() > MAX_FIRST_NAME_LENGTH)
+			errors.add(INVALID_FIRST_NAME_ERROR);
+		if(user.getLastName() == null || user.getLastName().length() < MIN_LAST_NAME_LENGTH || user.getLastName().length() > MAX_LAST_NAME_LENGTH)
+			errors.add(INVALID_LAST_NAME_ERROR);
+		if(user.getPassword() == null || user.getPassword().length() < MIN_PASSWORD_LENGTH || user.getPassword().length() > MAX_PASSWORD_LENGTH)
+			errors.add(INVALID_PASSWORD_ERROR);
+		return errors;
+	}
+	
+	public void validateUser(Person user) throws InvalidUserException {
+		List<String> errors = getUserErrors(user);
+		if(!errors.isEmpty()){
+			throw new InvalidUserException(errors);
+		}
+	}
+	
+	public List<Person> getAllUsers(){
+		return ph.getUsers();
 	}
 }

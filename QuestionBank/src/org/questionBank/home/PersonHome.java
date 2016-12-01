@@ -77,6 +77,12 @@ public class PersonHome {
 		}
 	}
 	
+	public List<Person> getUsers(){
+		TypedQuery<Person> q = transactionManager.createQuery("select u from Person u",Person.class);
+		List<Person> results = q.getResultList();
+		return results;
+	}
+	
 	public List<Person> findUsersByUserName(String userName){
 		String sql = "select p from Person p where userName = :userName";
 		TypedQuery<Person> q = transactionManager.createQuery(sql, Person.class)

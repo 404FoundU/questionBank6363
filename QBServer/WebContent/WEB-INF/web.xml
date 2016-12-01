@@ -19,6 +19,8 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<!-- Login Views Mappings -->
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/AdminLogin</url-pattern>
@@ -34,6 +36,32 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/teachersignout</url-pattern>
+	</servlet-mapping>
+	
+	<!-- User View Mappings -->
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/UsersView</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/AddUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/ShowUser/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/EditUser/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/UpdateUser/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/ResetUserPassword/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Department View Mappings -->
@@ -113,5 +141,19 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/UpdateQuestion/*</url-pattern>
 	</servlet-mapping>
+	
+	<!-- PDF View Mappings -->
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/PrintCourseQuestionsView/*</url-pattern>
+	</servlet-mapping> 
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/CreateCourseQuestionSheet/*</url-pattern>
+	</servlet-mapping> 
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/CreateCourseQAndASheet/*</url-pattern>
+	</servlet-mapping> 
 	
 </web-app>

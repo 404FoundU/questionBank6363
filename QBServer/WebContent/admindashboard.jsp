@@ -12,7 +12,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Welcome</title>
-
   <link href="AdminDashboardFiles/all.css" rel="stylesheet">
 
   
@@ -123,8 +122,8 @@
               <div class="item col-xs-12 col-lg-6">
                 <div class="panel panel-default paper-shadow" data-z="0.5">
                   <div class="panel-heading">
-                    <h4 class="text-headline margin-none">Teachers</h4>
-                    <p class="text-subhead text-light">Recently Added Teachers</p>
+                    <h4 class="text-headline margin-none">Users</h4>
+                    <p class="text-subhead text-light">Recently Added Users</p>
                   </div>
 			
                   <ul class="list-group">
@@ -135,7 +134,7 @@
      			  </ul>
 				  	       
                   <div class="panel-footer text-right">
-                    <a href="teacherview.php" class="btn btn-white paper-shadow relative" data-z="0" data-hover-z="1" data-animated>View all</a>
+                    <a href="<c:url value="/UsersView" />" class="btn btn-white paper-shadow relative" data-z="0" data-hover-z="1" data-animated>View all</a>
                   </div>
                 </div>
               </div>

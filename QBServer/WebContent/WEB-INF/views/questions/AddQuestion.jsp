@@ -88,16 +88,19 @@
    											
    			<button class="btn btn-success paper-shadow relative" name="submit" type="submit">Create</button>
    			&nbsp;
-   		    <a class="btn btn-success paper-shadow relative" href="<c:url value="/ShowCourse" >
-             <c:param name="id" value="${question.course.id}"/>
-             </c:url>" >Cancel
-            </a>
+   			<c:choose>
+   					 <c:when test="${ question.course.id == null}">
+              <a class="btn btn-success paper-shadow relative" href="<c:url value="/teacherdashboard.jsp" />" >Cancel</a>
+             </c:when>
+             <c:otherwise>
+				<a class="btn btn-success paper-shadow relative" href="<c:url value="/ShowCourse" >
+             			<c:param name="id" value="${question.course.id}"/>
+           			</c:url>" >Cancel
+            	</a>
+             </c:otherwise>
+   			</c:choose>
             
-            <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
-													href="<c:url value="/CourseAddQuestion">
-															<c:param name="courseId" value="${question.course.id}" />
-														  </c:url>" >Add an Other Question and Answers</a>
-														  <p>&nbsp;</p>         
+       
   			<p class="message"> </p>
   	       </form:form>
  		  </div>

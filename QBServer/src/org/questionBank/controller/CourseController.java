@@ -154,7 +154,7 @@ public class CourseController {
 	
 	// Edit
 	@RequestMapping(value="/EditCourse",method=RequestMethod.GET)
-	public ModelAndView editCourse(@RequestParam("id") int id){
+	public ModelAndView editCourse(@RequestParam("id") int id, @RequestParam(required=false) String errors){
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/EditCourse");
 		Course c = courseDAO.findCourse(id);
@@ -164,6 +164,8 @@ public class CourseController {
 		}catch(InvalidCourseException ex){
 			mve.addObject("errors", courseDAO.courseErrors(c));
 		}
+		if(errors != null && !errors.trim().isEmpty())
+			mve.addObject("errors", errors);
 		mve.addObject("course",c);
 		mve.addObject("departments", departments);
 		return mve;
@@ -180,6 +182,7 @@ public class CourseController {
 			mve.addObject("course", newCourse);
 		} catch (InvalidCourseException e) {
 			mve=new ModelAndView("redirect:EditCourse?id="+id);
+			mve.addObject("errors", courseDAO.courseErrors(course));
 		}
 		return mve;
 	}

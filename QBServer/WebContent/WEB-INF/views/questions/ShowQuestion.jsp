@@ -93,20 +93,19 @@
                   					</div>
                   				</div>
                   				
-                  				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
-													href="<c:url value="/CourseAddQuestion">
-															<c:param name="courseId" value="${question.course.id}" />
-														  </c:url>" >Add Question and Answers</a>
-														  <p>&nbsp;</p>
-                  				<div class="panel-header">
-                  					<a href="<c:url value="ShowCourse">
+                  					<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="ShowCourse">
       											<c:param name="id" value="${question.course.id}" />
-      										</c:url>">Course</a>&nbsp;&nbsp;|&nbsp;
-                  					<a href="<c:url value="EditQuestion">
+      										</c:url>">Course</a>&nbsp;&nbsp;
+                  					<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="EditQuestion">
       											<c:param name="id" value="${question.id}" />
       											<c:param name="answerId" value="${answer.id}"/>
-      										</c:url>">Edit</a>
-                    			</div>
+      										</c:url>">Edit</a>&nbsp;
+      								<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/CourseAddQuestion">
+												<c:param name="courseId" value="${question.course.id}" />
+											 </c:url>" >Add Question and Answers</a>
+														  <p>&nbsp;</p>
+                  				
+                    			
                   			</div>
         				</div>
         			</div>
