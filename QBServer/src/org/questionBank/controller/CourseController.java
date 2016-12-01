@@ -120,6 +120,8 @@ public class CourseController {
 		ModelAndView mve = null;
 		mve = new ModelAndView("views/courses/ShowCourse");
 		Course c = courseDAO.findCourse(id);
+		Department d = c.getDepartment() == null ? new Department() : departmentDAO.findDepartment(c.getDepartment().getId());
+		c.setDepartment(d);
 		List<Map<String,Object>> questions = questionDAO.getDataForCourseQuestions(c);
 		for(Map<String,Object> question : questions)
 		{

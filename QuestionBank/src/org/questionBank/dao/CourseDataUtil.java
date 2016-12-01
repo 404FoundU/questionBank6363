@@ -101,12 +101,15 @@ public class CourseDataUtil {
 		// TODO: test this
 		Course course = ch.findById(id);
 		course.getDepartment();
+		course.setPersons(course.getPersons());
 		return course;
 	}
 	
 	public boolean updateCourse(Course course) throws InvalidCourseException {
 		try{
 			validateCourse(course);
+			Course c = ch.findById(course.getId());
+			course.setPersons(c.getPersons());
 			ch.merge(course);
 			return true;
 		}catch(RuntimeException re){
