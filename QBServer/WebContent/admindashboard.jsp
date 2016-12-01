@@ -24,41 +24,6 @@
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
 
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-size-large navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-ellipsis-v"></i></a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="navbar-brand navbar-brand-primary navbar-brand-logo navbar-nav-padding-left"> Team Charlie  
-      </div>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-nav">
-          <ul class="nav navbar-nav">
-           
-          </ul>
-          <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
-             <!--Amin -->
-            <!-- // Admin -->
-            <!-- User -->
-            <li class="dropdown">
-             <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary" style ="font-size: 16px;">Admin</span></a></li>
-        &nbsp     
-<li><a  style= "padding-right: 62px;" href="index.jsp"><i class="fa fa-fw fa-sign-out">Logout</i>&nbsp</a></li>              </ul>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-
-      </div>
-    </div>
 	
 	
 	
@@ -123,7 +88,7 @@
                 <div class="panel panel-default paper-shadow" data-z="0.5">
                   <div class="panel-heading">
                     <h4 class="text-headline margin-none">Users</h4>
-                    <p class="text-subhead text-light">Recently Added Users</p>
+                    <p class="text-subhead text-light">Uploaded Users</p>
                   </div>
 			
                   <ul class="list-group">

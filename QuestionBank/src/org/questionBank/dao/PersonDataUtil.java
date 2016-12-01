@@ -76,21 +76,22 @@ public class PersonDataUtil {
 	}
 	
 	private void validateUserCredential(String username, String password)  throws InvalidCredentialException{
-		if(username==null||username.equals(""))
-			throw new InvalidCredentialException("Username Empty");
-		if(password==null||password.equals(""))
-			throw new InvalidCredentialException("Password Empty");
+		if(username==null || username.isEmpty() || username.length() < MIN_USER_NAME_LENGTH || username.length() > MAX_USER_NAME_LENGTH)
+			throw new InvalidCredentialException(INVALID_USER_NAME_ERROR);
+		if(password==null || password.isEmpty() || password.length() < MIN_PASSWORD_LENGTH || password.length() > MAX_PASSWORD_LENGTH)
+			throw new InvalidCredentialException(INVALID_PASSWORD_ERROR);
 	}
 	private void validateUserCredential(String username, String password, String rpassword)  throws InvalidCredentialException{
-		if(username==null||username.equals(""))
-			throw new InvalidCredentialException("Username Empty");
-		if(password==null||password.equals(""))
-			throw new InvalidCredentialException("Password Empty");
-		if(rpassword==null||rpassword.equals(""))
+		if(username==null || username.isEmpty() || username.length() < MIN_USER_NAME_LENGTH || username.length() > MAX_USER_NAME_LENGTH)
+			throw new InvalidCredentialException(INVALID_USER_NAME_ERROR);
+		if(password==null || password.isEmpty() || password.length() < MIN_PASSWORD_LENGTH || password.length() > MAX_PASSWORD_LENGTH)
+			throw new InvalidCredentialException(INVALID_PASSWORD_ERROR);
+		if(rpassword==null || rpassword.isEmpty())
 			throw new InvalidCredentialException("Repeat Password Empty");
 		if(!password.equals(rpassword))
 			throw new InvalidCredentialException("Password Not Matching");
 	}
+	
 	public Person createPerson( String userName, String password, String firstName, String rpassword, String lastName) throws InvalidCredentialException, UserAlreadyExistException {
 		Person person=null;
 		validateUserCredential(userName, password , rpassword);
@@ -106,6 +107,21 @@ public class PersonDataUtil {
 		log.info("Creating person");
 		ph.persist(person);
 		return person;
+	}
+	
+	public Person resetUserPassword(Integer id, String password, String rpassword) throws InvalidCredentialException, InvalidUserException {
+		try{			
+			Person u = ph.findById(id);
+			validateUserCredential(u.getUserName(), password , rpassword);
+			u.setPassword(password);
+			u.setCourses(u.getCourses());
+			Person updatedPerson = ph.merge(u);
+			return updatedPerson;
+		}catch(RuntimeException re){
+			List<String> err = new ArrayList<String>();
+			err.add(re.getMessage());
+			throw new InvalidUserException(err);
+		}
 	}
 
 	public boolean updateUser(Person user) throws InvalidUserException {

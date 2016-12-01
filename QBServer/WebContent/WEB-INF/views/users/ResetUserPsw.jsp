@@ -18,7 +18,7 @@
 	 	<link href="TeacherDashboardFiles/app.css" rel="stylesheet">
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
-		<title>Edit User</title>
+		<title>Reset User Password</title>
 	</head>
 	<body>  
 			
@@ -36,7 +36,7 @@
 						</div>
 	
             			<div class="page-section">
-              				<h1 class="text-display-1">User</h1>
+              				<h1 class="text-display-1">Reset User Password</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">
@@ -52,39 +52,25 @@
   													<c:out value="* ${error}" /><br />
   												</c:forEach>
   											</span>
-   											<form:form action="UpdateUser" modelAttribute="user" method="post">
+   											<%-- <form:form action="ResetUserPsw" modelAttribute="user" method="post"> --%>
+   											<form action="ResetUserPsw" method="post">
    												<input type="hidden" name="id" value="${user.id}">
 
-    											<div class="form-group">
-     												<div class="form-control-material">
-      													<input type="text" class="form-control" name="userName" id="userName" maxlength="20" placeholder="Enter Username" required  value="${user.userName}"/>
- 													</div>
-    											</div>
-   
-   												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "firstName" id="firstName" maxlength="50" placeholder="Enter Firstname" required value="${user.firstName}"/>
+   												<div class="form-group">
+    												<div class="form-control-material static required">
+    													<input class="form-control" id="password" name="password" type="password" required maxlength="13" placeholder="Enter Password">
+    												</div>
    												</div>
    
-   												<div class="form-group form-control-material static required">
-    												<input type="text" class="form-control" name= "lastName" id="lastName" maxlength="50" placeholder="Enter Lastname" required value="${user.lastName}"/>
+   												<div class="form-group">
+    												<div class="form-control-material static required">
+     													<input class="form-control" id="password2" name="rpassword" type="password" required maxlength="13" placeholder="Confirm Password">
+    												</div>
    												</div>
-   												
-   												<c:choose>
-   													<c:when test="${isAdmin}">
-   														<div class="form-group form-control-material static required">
-   															<form:checkbox path="admin" />&nbsp;&nbsp;<strong>Is Administrator?</strong>
-   														</div>
-   													</c:when>
-   													<c:otherwise>
-   														<div class="form-group form-control-material static ">
-   															<form:checkbox path="admin" disabled="true" />&nbsp;<strong>Is Administrator?</strong>
-   														</div>
-   													</c:otherwise>
-   												</c:choose>
 
-   												<button class="btn btn-success" name="submit" type="submit">Update User</button>
-  											<%-- </form> --%>
-  											</form:form>
+   												<button class="btn btn-success" name="submit" type="submit">Reset Password</button>
+  											</form>
+  											<%-- </form:form> --%>
  										</div>
                   					</div>
                   				</div>
@@ -95,9 +81,9 @@
                   					<a class="btn btn-success paper-shadow relative" href="<c:url value="/ShowUser">
       											<c:param name="id" value="${user.id}" />
       										</c:url>">Show User</a>&nbsp;
-      								<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/ResetUserPsw">
-												<c:param name="id" value="${user.id}" />
-											</c:url>" >Reset Password</a>&nbsp;
+      								<%-- <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/ResetUserPsw">
+												<c:param name="userId" value="${user.id}" />
+											</c:url>" >Reset Password</a>&nbsp; --%>
                     			</div>
                   			</div>
         				</div>

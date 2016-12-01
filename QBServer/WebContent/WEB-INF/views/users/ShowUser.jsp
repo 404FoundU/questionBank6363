@@ -88,7 +88,7 @@
       											<c:param name="id" value="${user.id}" />
       										</c:url>">Edit User</a>&nbsp;
       								<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/ResetUserPsw">
-												<c:param name="userId" value="${user.id}" />
+												<c:param name="id" value="${user.id}" />
 											</c:url>" >Reset Password</a>&nbsp;
                 
                     			</div>

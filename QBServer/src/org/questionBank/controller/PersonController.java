@@ -150,6 +150,74 @@ public class PersonController {
 		}
 	}
 	
+	@RequestMapping(value="/ResetUserPsw",method=RequestMethod.GET)
+	public ModelAndView resetUserPswView(HttpServletRequest request, @RequestParam("id") Integer id, @RequestParam(required=false) String errors){
+		ModelAndView mve = null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			if(curUser == null){
+				return rejectInvalidUser(userId);
+			}else if(curUser.isAdmin() || userId.intValue() == id.intValue()){
+				Person user = personDAO.findPerson(id);
+				mve = new ModelAndView("views/users/ResetUserPsw");
+				try{
+					personDAO.validateUser(user);
+				}catch(InvalidUserException ex){
+					mve.addObject("errors", personDAO.userErrors(user));
+				}
+				if(errors != null && !errors.trim().isEmpty())
+					mve.addObject("errors", errors);
+				mve.addObject("isAdmin", curUser.isAdmin());
+				mve.addObject("user", user);
+				return mve;
+			}else{
+				Map<String,Object> props = new HashMap<String,Object>();
+				props.put("isAdmin", curUser.isAdmin());
+				props.put("message", "You do not have proper privileges to edit this User");
+				return rejectPrivileges(props);
+			}
+		}else{
+			return rejectInvalidUser(null);
+		}
+	}
+
+	@RequestMapping(value="/ResetUserPsw",method=RequestMethod.POST)
+	public ModelAndView resetUserPsw(HttpServletRequest request, @RequestParam Integer id,@RequestParam String password, @RequestParam String rpassword){
+		ModelAndView mve = null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			if(curUser == null){
+				return rejectInvalidUser(userId);
+			}else if(curUser.isAdmin() || userId.intValue() == id){
+				try {
+					Person updatedUser = personDAO.resetUserPassword(id, password, rpassword);
+					mve=new ModelAndView("redirect:ShowUser?id="+id);
+					mve.addObject("user", updatedUser);
+				} catch (InvalidCredentialException e) {
+					mve=new ModelAndView("redirect:ResetUserPsw?id="+id);
+					mve.addObject("errors", "Passwords did not match");
+				} catch(InvalidUserException ex){
+					mve=new ModelAndView("redirect:ResetUserPsw?id="+id);
+					mve.addObject("errors", ex.getMessage());
+				}
+				return mve;
+			}else{
+				Map<String,Object> props = new HashMap<String,Object>();
+				props.put("isAdmin", curUser.isAdmin());
+				props.put("message", "You do not have proper privileges to edit this User");
+				return rejectPrivileges(props);
+			}
+		} else {
+			return rejectInvalidUser(null);	
+		}
+	}
+	
 	//Create
 	@RequestMapping(value="TeacherSignup",method=RequestMethod.POST)
 	public ModelAndView createPerson(HttpServletRequest request,@RequestParam("username") String userName,@RequestParam String password,@RequestParam("firstname") String firstName,@RequestParam String rpassword,@RequestParam("lastname") String lastName){

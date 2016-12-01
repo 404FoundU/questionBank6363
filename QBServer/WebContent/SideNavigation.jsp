@@ -58,8 +58,10 @@
        <!--<ul class="nav navbar-nav"> </ul> -->
        
        <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
-        <li><a ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary" style ="font-size: 16px;"><%=session.getAttribute("name")%></span></a></li>
-        &nbsp<li><a  style= "padding-right: 62px;" href="index.jsp"><i class="fa fa-fw fa-sign-out">Logout</i>&nbsp</a></li>
+        <li><a href="<c:url value="/ShowUser">
+					<c:param name="id" value="${sessionScope.userId}" />
+				</c:url>" ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span class="badge badge-primary" style ="font-size: 16px;"><%=session.getAttribute("name")%></span></a></li>
+        &nbsp;<li><a  style= "padding-right: 62px;" href="index.jsp"><i class="fa fa-fw fa-sign-out">Logout</i>&nbsp;</a></li>
 
 
 

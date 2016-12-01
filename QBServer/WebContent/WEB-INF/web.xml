@@ -61,7 +61,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
-		<url-pattern>/ResetUserPassword/*</url-pattern>
+		<url-pattern>/ResetUserPsw/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Department View Mappings -->
