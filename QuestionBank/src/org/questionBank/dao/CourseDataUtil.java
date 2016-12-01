@@ -122,13 +122,18 @@ public class CourseDataUtil {
 		
 	}
 	
+	public List<Course> getCoursesForTeacher(Integer userId){
+		List<Course> courses = ch.getCoursesForPersonId(userId);
+		return courses;
+	}
+	
 	public List<Map<String,Object>> getDataForAllCourses(){
 		List<Course> courses = ch.getCourses();
 		return getCoursesData(courses);
 	}
 	
 	public List<Map<String, Object>> getDataForTeacherCourses(Integer userId){
-		List<Course> courses = ch.getCoursesForPersonId(userId);
+		List<Course> courses = getCoursesForTeacher(userId);
 		return getCoursesData(courses);
 	}
 	
@@ -145,7 +150,9 @@ public class CourseDataUtil {
 		map.put("id", course.getId());
 		map.put("courseNumber", course.getCourseNumber());
 		map.put("courseName", course.getCourseName());
-		map.put("dept", course.getDepartment());
+		Department dept = course.getDepartment();
+		map.put("deptname", dept.getName());
+		map.put("deptabbreviation", dept.getAbbreviation());
 		map.put("credit", course.getCredit());
 		return map;
 	}

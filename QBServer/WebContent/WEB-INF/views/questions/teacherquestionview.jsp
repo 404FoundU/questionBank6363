@@ -49,12 +49,14 @@
 	    								<thead>
 	    										    <tr>
 														<th>Course</th>
+														<th>Course Number</th>
 													</tr>
 	    								</thead>
 	    								<tbody>
 		   									<c:forEach items="${courses}" var="item">
 		    												<tr>
 		      													<td><c:out value="${item.courseName}" /></td>
+		      													<td><c:out value="${item.courseNumber}" /></td>
 		      												<!-- 	<td><c:out value="${item.question.questionText}" /></td>
 		      													<td><c:out value="${item.question.answer.answerText}" /></td>
 		      												-->	<td>

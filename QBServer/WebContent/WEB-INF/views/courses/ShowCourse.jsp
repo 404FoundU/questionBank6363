@@ -76,6 +76,12 @@
                   					<a class="btn btn-success paper-shadow relative" href="<c:url value="EditCourse">
       											<c:param name="id" value="${course.id}" />
       										</c:url>">Edit Courses</a>
+      										  		 		   <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
+													href="<c:url value="/CourseAddQuestion">
+															<c:param name="courseId" value="${course.id}" />
+														  </c:url>" >Add Question and Answers</a>
+														  <p>&nbsp;</p>
+                
                     			</div>
                   			</div>
         				</div>
@@ -91,12 +97,7 @@
             			
             			<div class="row" data-toggle="isotope">
                 		 <div class="item col-xs-30 col-lg-15">
-                		 		   <a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated 
-													href="<c:url value="/CourseAddQuestion">
-															<c:param name="courseId" value="${course.id}" />
-														  </c:url>" >Add Question and Answers</a>
-														  <p>&nbsp;</p>
-                		  <div class="panel panel-default paper-shadow" data-z="10">
+                		 		     <div class="panel panel-default paper-shadow" data-z="10">
                 		   <div class="panel-heading">
                 		   
                 
