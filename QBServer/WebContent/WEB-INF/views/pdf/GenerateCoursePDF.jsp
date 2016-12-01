@@ -48,7 +48,7 @@
    												</div>
    												
    												<div class="form-group form-control-material static">
-    												<input type="text" class="form-control" name= "pdfTitle" id="pdfTitle" placeholder="Title"/>
+    												<input type="text" class="form-control" name= "pdfTitle" id="pdfTitle" placeholder="Handout Title"/>
    												</div>
 
    												<button class="btn btn-success" name="submit" type="submit">Create PDF</button>
