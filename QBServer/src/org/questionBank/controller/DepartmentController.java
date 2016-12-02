@@ -37,9 +37,8 @@ public class DepartmentController {
 			mve = new ModelAndView("views/departments/ListDepartments");
 			mve.addObject("departments",departments);
 			Integer userId = (Integer) uid;
-			Person p = personDAO.findPerson(userId);
-			boolean isAdmin = p.isAdmin();
-			mve.addObject("isAdmin", isAdmin);
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			mve = new ModelAndView("index");
@@ -69,6 +68,9 @@ public class DepartmentController {
 				if(!newDepartment)
 					mve.addObject("errors", departmentDAO.departmentErrors(d));
 			}
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -85,10 +87,16 @@ public class DepartmentController {
 				Department newDepartment = departmentDAO.createDepartment(dept);
 				mve=new ModelAndView("redirect:ShowDepartment?id="+newDepartment.getId());
 				mve.addObject("department", newDepartment);
+				Integer userId = (Integer) uid;
+				Person curUser = personDAO.findPerson(userId);
+				mve.addObject("isAdmin", curUser.isAdmin());
 			} catch (InvalidDepartmentException e) {
 				mve= new ModelAndView("redirect:AddDepartment");
 				mve.addObject("name", dept.getName());
 				mve.addObject("abbreviation", dept.getAbbreviation());
+				Integer userId = (Integer) uid;
+				Person curUser = personDAO.findPerson(userId);
+				mve.addObject("isAdmin", curUser.isAdmin());
 			}
 			return mve;
 		}else{
@@ -105,7 +113,9 @@ public class DepartmentController {
 		if(uid != null){
 			mve = new ModelAndView("views/departments/ShowDepartment");
 			Department d = departmentDAO.findDepartment(id);
-		
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			mve.addObject("department",d);
 			return mve;
 		}else{
@@ -127,6 +137,9 @@ public class DepartmentController {
 			}catch(InvalidDepartmentException ex){
 				mve.addObject("errors", departmentDAO.departmentErrors(d));
 			}
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			mve.addObject("dept",d);
 			return mve;
 		}else{
@@ -144,6 +157,9 @@ public class DepartmentController {
 				departmentDAO.updateDepartment(dept);
 				mve=new ModelAndView("redirect:ShowDepartment?id="+dept.getId());
 				mve.addObject("dept", dept);
+				Integer userId = (Integer) uid;
+				Person curUser = personDAO.findPerson(userId);
+				mve.addObject("isAdmin", curUser.isAdmin());
 			} catch (InvalidDepartmentException e) {
 				mve=new ModelAndView("redirect:EditDepartment?id="+dept.getId());
 			}

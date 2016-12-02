@@ -13,6 +13,7 @@ import org.questionBank.exception.InvalidAnswerException;
 import org.questionBank.home.AnswerHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class AnswerDataUtil {
@@ -30,6 +31,7 @@ public class AnswerDataUtil {
 	private static String MIN_ANSWERTEXT_LENGTH_ERROR = "You must provide an answer.";
 	private static String MAX_ANSWERTEXT_LENGTH_ERROR = "Answer must be at most "+MAX_ANSWERTEXT_LENGTH+" characters long.";
  
+	@Transactional
 	public Answer createAnswer(Question question,String answerText) throws InvalidAnswerException {
 		
 		Answer a = new Answer();

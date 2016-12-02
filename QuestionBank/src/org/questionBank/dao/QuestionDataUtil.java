@@ -25,8 +25,6 @@ public class QuestionDataUtil {
 
 	@Autowired
 	private QuestionHome qh = new QuestionHome();
-	@Autowired
-	private AnswerDataUtil answerDAO = new AnswerDataUtil();
 	
 	private static String COURSE_ID_ERROR = "Invalid Course Selected.";
 	private static int MIN_CHAPTER_LENGTH = 1;
@@ -37,9 +35,6 @@ public class QuestionDataUtil {
 	private static int MAX_QUESTION_LENGTH = 256;
 	private static String MIN_QUESTION_LENGTH_ERROR = "Question must be at least "+MIN_QUESTION_LENGTH+" characters long.";
 	private static String MAX_QUESTION_LENGTH_ERROR = "Question must be at most "+MAX_QUESTION_LENGTH+" characters long.";
-	private static int MIN_ANSWER_LENGTH = 1;
-	private static int MAX_ANSWER_LENGTH = 256;
-	private static String INVALID_ANSWER = "You must provide an Answer to this Question";
 	
 	public Question populateQuestion(Course course, String question, String chapter){
 		Question q = new Question();
@@ -50,14 +45,13 @@ public class QuestionDataUtil {
 	}
 
 	@Transactional
-	public Question createQuestion(Question que, String answer) throws InvalidQuestionException, InvalidAnswerException {
-		//Question q = populateQuestion(course, question, chapter);
-		validateQuestion(que, answer);
+	public Question createQuestion(Question que) throws InvalidQuestionException, InvalidAnswerException {
+//		Question q = populateQuestion(course, question, chapter);
+		validateQuestion(que);
 		// Save Course to DB
 		log.info("Creating Course");
 		log.debug(describeQuestion(que));
 		qh.persist(que);
-		answerDAO.createAnswer(que, answer);
 		return que;
 	}
 	
@@ -79,14 +73,15 @@ public class QuestionDataUtil {
 	
 	public Question findQuestion(Integer id){
 		// TODO: test this
-		return qh.findById(id);
+		Question q = qh.findById(id);
+		q.getCourse();
+		return q;
 	}
 	
-	public boolean updateQuestion(Question q, Integer answerId, String answerText) throws InvalidQuestionException, InvalidAnswerException {
+	public boolean updateQuestion(Question q) throws InvalidQuestionException {
 		try{
-			validateQuestion(q, answerText);
+			validateQuestion(q);
 			qh.merge(q);
-			answerDAO.updateAnswer(answerId, answerText);
 			return true;
 		}catch(RuntimeException re){
 			List<String> err = new ArrayList<String>();
@@ -128,11 +123,11 @@ public class QuestionDataUtil {
 		return map;
 	}
 	
-	public List<String> questionErrors(Question question, String answer) {
-		return getQuestionErrors(question, answer);
+	public List<String> questionErrors(Question question) {
+		return getQuestionErrors(question);
 	}
 	
-	private List<String> getQuestionErrors(Question question, String answer){
+	private List<String> getQuestionErrors(Question question){
 		List<String> errors = new ArrayList<String>();
 		if(question.getCourse() == null)
 			errors.add(COURSE_ID_ERROR);
@@ -144,13 +139,11 @@ public class QuestionDataUtil {
 			errors.add(MIN_QUESTION_LENGTH_ERROR);
 		if(question.getQuestion().length() > MAX_QUESTION_LENGTH)
 			errors.add(MAX_QUESTION_LENGTH_ERROR);
-		if(answer == null || answer.length() < MIN_ANSWER_LENGTH || answer.length() > MAX_ANSWER_LENGTH)
-			errors.add(INVALID_ANSWER);
 		return errors;
 	}
 	
-	public void validateQuestion(Question question, String answer) throws InvalidQuestionException {
-		List<String> errors = getQuestionErrors(question, answer);
+	public void validateQuestion(Question question) throws InvalidQuestionException {
+		List<String> errors = getQuestionErrors(question);
 		if(!errors.isEmpty()){
 			throw new InvalidQuestionException(errors);
 		}

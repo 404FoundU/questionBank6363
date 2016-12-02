@@ -2,7 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<jsp:include page="../../../SideNavigation.jsp"/>
+<c:choose>
+	<c:when test="${isAdmin}">
+		<jsp:include page="../../../AdminSideNavigation.jsp"/>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../../../SideNavigation.jsp"/>
+	</c:otherwise>
+</c:choose>
 
 <html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
 	<head>
