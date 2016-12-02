@@ -9,10 +9,12 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.questionBank.data.Course;
 import org.questionBank.data.Question;
+import org.questionBank.exception.InvalidAnswerException;
 import org.questionBank.exception.InvalidQuestionException;
 import org.questionBank.home.QuestionHome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class QuestionDataUtil {
@@ -23,16 +25,21 @@ public class QuestionDataUtil {
 
 	@Autowired
 	private QuestionHome qh = new QuestionHome();
+	@Autowired
+	private AnswerDataUtil answerDAO = new AnswerDataUtil();
 	
 	private static String COURSE_ID_ERROR = "Invalid Course Selected.";
 	private static int MIN_CHAPTER_LENGTH = 1;
 	private static int MAX_CHAPTER_LENGTH = 7;
 	private static String MIN_CHAPTER_LENGTH_ERROR = "Question Chapter value must be at least "+MIN_CHAPTER_LENGTH+" characters long.";
 	private static String MAX_CHAPTER_LENGTH_ERROR = "Question Chapter value must be at most "+MAX_CHAPTER_LENGTH+" characters long.";
-	private static int MIN_QUESTION_LENGTH = 4;
+	private static int MIN_QUESTION_LENGTH = 1;
 	private static int MAX_QUESTION_LENGTH = 256;
 	private static String MIN_QUESTION_LENGTH_ERROR = "Question must be at least "+MIN_QUESTION_LENGTH+" characters long.";
 	private static String MAX_QUESTION_LENGTH_ERROR = "Question must be at most "+MAX_QUESTION_LENGTH+" characters long.";
+	private static int MIN_ANSWER_LENGTH = 1;
+	private static int MAX_ANSWER_LENGTH = 256;
+	private static String INVALID_ANSWER = "You must provide an Answer to this Question";
 	
 	public Question populateQuestion(Course course, String question, String chapter){
 		Question q = new Question();
@@ -42,13 +49,15 @@ public class QuestionDataUtil {
 		return q;
 	}
 
-	public Question createQuestion(Question que) throws InvalidQuestionException {
+	@Transactional
+	public Question createQuestion(Question que, String answer) throws InvalidQuestionException, InvalidAnswerException {
 		//Question q = populateQuestion(course, question, chapter);
-		validateQuestion(que);
+		validateQuestion(que, answer);
 		// Save Course to DB
 		log.info("Creating Course");
 		log.debug(describeQuestion(que));
 		qh.persist(que);
+		answerDAO.createAnswer(que, answer);
 		return que;
 	}
 	
@@ -73,10 +82,11 @@ public class QuestionDataUtil {
 		return qh.findById(id);
 	}
 	
-	public boolean updateQuestion(Question q) throws InvalidQuestionException {
+	public boolean updateQuestion(Question q, Integer answerId, String answerText) throws InvalidQuestionException, InvalidAnswerException {
 		try{
-			validateQuestion(q);
+			validateQuestion(q, answerText);
 			qh.merge(q);
+			answerDAO.updateAnswer(answerId, answerText);
 			return true;
 		}catch(RuntimeException re){
 			List<String> err = new ArrayList<String>();
@@ -118,11 +128,11 @@ public class QuestionDataUtil {
 		return map;
 	}
 	
-	public List<String> questionErrors(Question question) {
-		return getQuestionErrors(question);
+	public List<String> questionErrors(Question question, String answer) {
+		return getQuestionErrors(question, answer);
 	}
 	
-	private List<String> getQuestionErrors(Question question){
+	private List<String> getQuestionErrors(Question question, String answer){
 		List<String> errors = new ArrayList<String>();
 		if(question.getCourse() == null)
 			errors.add(COURSE_ID_ERROR);
@@ -132,13 +142,15 @@ public class QuestionDataUtil {
 			errors.add(MAX_CHAPTER_LENGTH_ERROR);
 		if(question.getQuestion() == null || question.getQuestion().length() < MIN_QUESTION_LENGTH)
 			errors.add(MIN_QUESTION_LENGTH_ERROR);
-		else if(question.getQuestion().length() > MAX_QUESTION_LENGTH)
+		if(question.getQuestion().length() > MAX_QUESTION_LENGTH)
 			errors.add(MAX_QUESTION_LENGTH_ERROR);
+		if(answer == null || answer.length() < MIN_ANSWER_LENGTH || answer.length() > MAX_ANSWER_LENGTH)
+			errors.add(INVALID_ANSWER);
 		return errors;
 	}
 	
-	public void validateQuestion(Question question) throws InvalidQuestionException {
-		List<String> errors = getQuestionErrors(question);
+	public void validateQuestion(Question question, String answer) throws InvalidQuestionException {
+		List<String> errors = getQuestionErrors(question, answer);
 		if(!errors.isEmpty()){
 			throw new InvalidQuestionException(errors);
 		}
