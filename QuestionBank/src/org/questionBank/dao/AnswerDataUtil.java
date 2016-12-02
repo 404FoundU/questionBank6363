@@ -25,10 +25,6 @@ public class AnswerDataUtil {
 	private AnswerHome ah = new AnswerHome();
 	
  private static String QUESTIONID_ERROR = "Invalid Question Selected.";
-//	private static int MIN_CHAPTER_LENGTH = 1;
-//	private static int MAX_CHAPTER_LENGTH = 7;
-//	private static String MIN_CHAPTER_LENGTH_ERROR = "Question Chapter value must be at least "+MIN_CHAPTER_LENGTH+" characters long.";
-//	private static String MAX_CHAPTER_LENGTH_ERROR = "Question Chapter value must be at most "+MAX_CHAPTER_LENGTH+" characters long.";
 	private static int MIN_ANSWERTEXT_LENGTH = 1;
 	private static int MAX_ANSWERTEXT_LENGTH = 256;
 	private static String MIN_ANSWERTEXT_LENGTH_ERROR = "You must provide an answer.";
