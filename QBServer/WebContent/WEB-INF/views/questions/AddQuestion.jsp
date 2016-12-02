@@ -38,7 +38,7 @@
       </div>
             			
       <div class="row" data-toggle="isotope">
-       <div class="item col-xs-12 col-lg-6">
+       <div class="item col-xs-12 ">
         <div class="panel panel-default paper-shadow" data-z="0.5">
          <div class="panel-heading">
 		  <div class="form">
