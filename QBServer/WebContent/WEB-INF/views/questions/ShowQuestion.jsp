@@ -54,10 +54,10 @@
    											<form action="CourseAddQuestion" method="post">
    												<div class="form-group">
     												<div>
-    													<label><strong>Course ID</strong></label>
+    													<label><strong>Course</strong></label>
     												</div>
      												<div class="form-control-material static required">
-     													<label>${question.course.id}</label>
+     													<label>${question.course.courseName}</label>
  													</div>
    												</div>
      											<div class="form-group">
