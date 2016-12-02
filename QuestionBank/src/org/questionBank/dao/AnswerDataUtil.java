@@ -29,9 +29,9 @@ public class AnswerDataUtil {
 //	private static int MAX_CHAPTER_LENGTH = 7;
 //	private static String MIN_CHAPTER_LENGTH_ERROR = "Question Chapter value must be at least "+MIN_CHAPTER_LENGTH+" characters long.";
 //	private static String MAX_CHAPTER_LENGTH_ERROR = "Question Chapter value must be at most "+MAX_CHAPTER_LENGTH+" characters long.";
-	private static int MIN_ANSWERTEXT_LENGTH = 4;
+	private static int MIN_ANSWERTEXT_LENGTH = 1;
 	private static int MAX_ANSWERTEXT_LENGTH = 256;
-	private static String MIN_ANSWERTEXT_LENGTH_ERROR = "Answer must be at least "+MIN_ANSWERTEXT_LENGTH+" characters long.";
+	private static String MIN_ANSWERTEXT_LENGTH_ERROR = "You must provide an answer.";
 	private static String MAX_ANSWERTEXT_LENGTH_ERROR = "Answer must be at most "+MAX_ANSWERTEXT_LENGTH+" characters long.";
  
 	public Answer createAnswer(Question question,String answerText) throws InvalidAnswerException {
@@ -113,8 +113,17 @@ public void deleteAnswer(Integer id){
 		
 	}
 	
+	public Answer getAnswerForQuestion(Question q){
+		Integer qid = q.getId();
+		List<Answer> answer = ah.findByQuestionId(qid);
+		if(answer.size() != 0)
+			return answer.get(0);
+		else
+			return null;
+	}
+	
 	public List<Map<String,Object>> getDataForQuestionAnswers(Integer questionId){
-		List<Answer> answers = ah.getAnswersForQuestion(questionId);
+		List<Answer> answers = ah.findByQuestionId(questionId);
 		return getAnswersData(answers);
 	}
 	

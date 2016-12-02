@@ -93,78 +93,7 @@
                 
                     			</div>
                   			</div>
-        				</div>
-        				
-        				
-        				
-        				
-        				
-        				
-        				<div class="page-section">
-              				<h1 class="text-display-1">Questions and Answers</h1>
-            			</div>
-            			
-            			<div class="row" data-toggle="isotope">
-                		 <div class="item col-xs-30 col-lg-15">
-                		 		     <div class="panel panel-default paper-shadow" data-z="10">
-                		   <div class="panel-heading">
-                		   
-                
-										<div class="form">
-
-    										
-
-											<div class="form-group">
-												
-												
-                				<!-- COURSE QUESTIONS -->
-                  					<div class="panel-heading">
-                    					<div class="table-list-content">
-											<table width="100%">
-												<tr>
-													<th width="8%">Chapter</th>
-													<th width="23%">Question</th>
-													<th width="23%">Answer</th>
-													<th width="7%"></th>
-												</tr>
-  												<c:forEach items="${questions}" var="question">
-  												<tr>
-      													<td><c:out value="${question.chapter}" /></td>
-      													<td><c:out value="${question.question}" /></td>
-      								 				    <td><c:out value="${question.answer}" /></td> 
-      													<td>
-      														<a href="<c:url value="/ShowQuestion">
-      																	<c:param name="id" value="${question.id}" />
-      																</c:url>">Show</a>&nbsp;&nbsp;|&nbsp;
-      														<a href="<c:url value="/EditQuestion"> 
-      																	<c:param name="id" value="${question.id}" />
-      																	<c:param name="answerId" value="${question.answerId}"/>  
-      																	</c:url>">Edit</a>
-      													</td>
-    												</tr>
-  												</c:forEach>
-											</table>
-                    					</div>
-                  					</div>
-												
-											</div>
- 										</div>
-                  					</div>
-                  				</div>
-                  				
-                  			</div>
-        				</div>
-        				
-        				
-        				
-        				
-        				
-        				
-        				
-        				
-        				
-        				
-        				
+        				</div>	
         			</div>
         		</div>
 			</div>

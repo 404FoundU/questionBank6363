@@ -25,11 +25,13 @@ public class AnswerHome {
 
 	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
-	
-    public List<Answer> getAnswersForQuestion(Integer questionId){
-		TypedQuery<Answer> a = entityManager.createQuery("select a from Answer a where Id="+questionId, Answer.class);
-		List<Answer> results = a.getResultList(); 
-		return results;
+
+    public List<Answer> findByQuestionId(Integer questionId) {
+    	log.debug("getting Answer with Question Id: " + questionId);
+		String str= "select a from Answer a where a.question.id=" +questionId; 
+    	TypedQuery<Answer> q = entityManager.createQuery(str,Answer.class);
+		List<Answer> res = q.getResultList();
+		return res;
 	}
 
 
@@ -87,15 +89,5 @@ public class AnswerHome {
     	
     	
     }
-
-    public List<Answer> findByQuestionId(Integer questionId) {
-		
-    	log.debug("getting Answer with Question Id: " + questionId);
-		String str= "select a from Answer a where a.question.id=" +questionId; 
-    	TypedQuery<Answer> q = entityManager.createQuery(str,Answer.class);
-		List<Answer> res = q.getResultList();
-		return res;
-    	
-	}
 
 }
