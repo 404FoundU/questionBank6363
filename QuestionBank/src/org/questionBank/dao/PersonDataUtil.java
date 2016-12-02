@@ -92,6 +92,25 @@ public class PersonDataUtil {
 			throw new InvalidCredentialException("Password Not Matching");
 	}
 	
+	public Person createUser(String userName, String password, String firstName, String rpassword, 
+			String lastName, boolean admin) throws InvalidCredentialException, UserAlreadyExistException {
+		Person person=null;
+		validateUserCredential(userName, password , rpassword);
+		List<Person> people=ph.findUsersByUserName(userName);
+		if(people != null && !people.isEmpty())
+			throw new UserAlreadyExistException("User name not available");
+		person=new Person();
+		person.setFirstName(firstName);
+		person.setLastName(lastName);
+		person.setPassword(password);
+		person.setUserName(userName);
+		person.setAdmin(admin);
+		// Save Course to DB
+		log.info("Creating person");
+		ph.persist(person);
+		return person;
+	}
+	
 	public Person createPerson( String userName, String password, String firstName, String rpassword, String lastName) throws InvalidCredentialException, UserAlreadyExistException {
 		Person person=null;
 		validateUserCredential(userName, password , rpassword);

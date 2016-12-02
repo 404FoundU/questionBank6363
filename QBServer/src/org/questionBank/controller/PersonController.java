@@ -82,6 +82,81 @@ public class PersonController {
 		}
 	}
 	
+	@RequestMapping(value="/AddUser",method=RequestMethod.GET)
+	public ModelAndView addNewUser(HttpServletRequest request, @RequestParam(required=false) String userName, @RequestParam(required=false) String firstName, 
+			@RequestParam(required=false) String lastName, @RequestParam(required=false) String errors){
+		ModelAndView mve = null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			if(curUser == null){
+				return rejectInvalidUser(userId);
+			}else if(curUser.isAdmin()){
+				Person p = new Person();
+				boolean newPerson = true;
+				if(userName != null || firstName != null || lastName != null){
+					p.setUserName(userName);
+					p.setFirstName(firstName);
+					p.setLastName(lastName);
+					newPerson = false;
+				}
+				mve = new ModelAndView("views/users/AddUser");
+				mve.addObject("user", p);
+				mve.addObject("isAdmin", curUser.isAdmin());
+				if(!newPerson)
+					mve.addObject("errors", errors);
+				return mve;
+			}else{
+				Map<String,Object> props = new HashMap<String,Object>();
+				props.put("isAdmin", curUser.isAdmin());
+				props.put("message", "You do not have proper privileges to view this User");
+				return rejectPrivileges(props);
+			}
+		}else{
+			return rejectInvalidUser(null);
+		}
+	}
+	
+	@RequestMapping(value="/AddUser", method=RequestMethod.POST)
+	public ModelAndView createUser(HttpServletRequest request, @RequestParam("userName") String userName,@RequestParam String password,@RequestParam("firstName") String firstName,@RequestParam String rpassword,
+			@RequestParam("lastName") String lastName){
+		ModelAndView mve = null;
+		HttpSession s = request.getSession();
+		Object uid = s.getAttribute("userId");
+		if(uid != null){
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			if(curUser == null){
+				return rejectInvalidUser(userId);
+			}else if(curUser.isAdmin()){
+				try{
+					Person p = personDAO.createUser(userName, password, firstName, rpassword, lastName, false);
+					mve =new ModelAndView("redirect:ShowUser");
+					mve.addObject("id",p.getId());
+					mve.addObject("isAdmin", curUser.isAdmin());
+					return mve;
+				} catch (InvalidCredentialException | UserAlreadyExistException e) {
+					mve=new ModelAndView("redirect:AddUser");
+					mve.addObject("userName", userName);
+					mve.addObject("firstName", firstName);
+					mve.addObject("lastName", lastName);
+					mve.addObject("errors", e.getMessage());
+					mve.addObject("isAdmin", curUser.isAdmin());
+					return mve;
+				}
+			}else{
+				Map<String,Object> props = new HashMap<String,Object>();
+				props.put("isAdmin", curUser.isAdmin());
+				props.put("message", "You do not have proper privileges to view this User");
+				return rejectPrivileges(props);
+			}
+		}else{
+			return rejectInvalidUser(null);
+		}
+	}
+	
 	// Edit
 	@RequestMapping(value="/EditUser",method=RequestMethod.GET)
 	public ModelAndView editUser(HttpServletRequest request, @RequestParam("id") Integer id, @RequestParam(required=false) String errors){
