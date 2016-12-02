@@ -36,7 +36,7 @@
 						</div>
 	
             			<div class="page-section">
-              				<h1 class="text-display-1">User</h1>
+              				<h1 class="text-display-1">Edit User</h1>
             			</div>
             			
             			<div class="row" data-toggle="isotope">

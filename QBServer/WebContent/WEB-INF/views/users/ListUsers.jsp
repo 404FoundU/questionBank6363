@@ -41,7 +41,7 @@
 	              		<div class="item col-xs-12 col-lg-6">
                   			<div class="panel panel-default paper-shadow" data-z="0.5">
                 				<div class="panel-header text-right">
-                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/AddDepartment" />" >+</a>
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/AddUser" />" >+</a>
                     			</div>
                 				
                 				<div class="panel-heading">

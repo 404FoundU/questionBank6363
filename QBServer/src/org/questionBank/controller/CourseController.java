@@ -73,13 +73,14 @@ public class CourseController {
 	// Create
 	@RequestMapping(value="/TeacherAddCourse",method=RequestMethod.GET)
 	public ModelAndView addCoursesView(HttpServletRequest request, @RequestParam(required=false) String courseName, @RequestParam(required=false) String courseNumber,
-			 @RequestParam(required=false) Department dept, @RequestParam(required=false) Integer credit){
+			 @RequestParam(required=false) Integer credit, @RequestParam(required=false) Integer departmentId){
 		ModelAndView mve = null;
 		HttpSession s = request.getSession();
 		Object uid = s.getAttribute("userId");
 		if(uid != null){
 			Course c = null;
 			boolean newCourse = true;
+			Department dept = departmentId == null ? null : departmentDAO.findDepartment(departmentId);
 			if(courseName != null || courseNumber != null || dept != null || credit != null){
 				c = courseDAO.populateCourse(courseName, courseNumber, dept, credit);
 				newCourse = false;
@@ -217,7 +218,13 @@ public class CourseController {
 	
 	private ModelAndView refreshTeacherAddCourse(Course course){
 		ModelAndView mve=new ModelAndView("redirect:TeacherAddCourse");
-		mve.addObject("course", course);
+		if(course != null){
+			mve.addObject("courseName", course.getCourseName());
+			mve.addObject("courseNumber", course.getCourseNumber());
+			if(course.getDepartment() != null)
+				mve.addObject("departmentId", course.getDepartment().getId());
+			mve.addObject("credit", course.getCredit());
+		}
 		return mve;
 	}
 
