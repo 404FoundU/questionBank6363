@@ -37,37 +37,42 @@
               			<h1 class="text-display-1">Users</h1>
 					</div>
             			
-            		<div class="row" data-toggle="isotope">
-	              		<div class="item col-xs-12 col-lg-6">
-                  			<div class="panel panel-default paper-shadow" data-z="0.5">
-                				<div class="panel-header text-right">
-                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/AddUser" />" >+</a>
-                    			</div>
-                				
-                				<div class="panel-heading">
-                    				<div class="table-list-content">
-										<table width="100%">
-											<tr>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>User Name</th>
-												<th></th>
-											</tr>
-  											<c:forEach items="${users}" var="item">
+            			
+            			
+            				<div class="row" data-toggle="isotope">
+	              				<div class="item col-xs-12 ">
+	              				<div class="panel-header">
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/AddUser" />" >Add User</a>
+                    						      														
+                    		</div>
+	                    		<p>&nbsp;</p>
+	                  				<div class="panel panel-default paper-shadow" data-z="0.5">
+		                				<table class="table table-hover">
+		    								<thead>
+		    										    <tr>
+															<th class=" collg-4 ">First Name</th>
+															<th class=" collg-2 ">Last Name</th>
+															<th class=" collg-2 ">User Name</th>
+															<th class=" collg-2 "></th>
+															<th></th>
+														</tr>
+		    								</thead>
+		    								<tbody>
+			   									<c:forEach items="${users}" var="item">
     											<tr>
       												<td><c:out value="${item.firstName}" /></td>
       												<td><c:out value="${item.lastName}" /></td>
       												<td><c:out value="${item.userName}" /></td>
       												<td>
-      													<a href="
+      													<a class="btn btn-success paper-shadow relative btn-sm" href="
       														<c:url value="/ShowUser">
       															<c:param name="id" value="${item.id}" />
       														</c:url>"
       													>
       														Show
       													</a>
-      													&nbsp;&nbsp;|&nbsp;
-      													<a href="
+      													&nbsp
+      													<a class="btn btn-success paper-shadow relative btn-sm" href="
       														<c:url value="/EditUser"> 
       															<c:param name="id" value="${item.id}" />
       														</c:url>"
@@ -77,22 +82,23 @@
       												</td>
     											</tr>
   											</c:forEach>
-										</table>
-                    				</div>
-                  				</div>
-                  			</div>
-                  			<div class="panel-header">
+		  									</tbody>
+		   							  </table>
+	                  				</div>
+	                  				<div class="panel-header">
                   				<c:choose>
                   					<c:when test="${isAdmin == true}">
-                  						<a href="<c:url value="/admindashboard.jsp" />" >Dashboard</a>
+                  						<a class="btn btn-success paper-shadow relative" href="<c:url value="/admindashboard.jsp" />" >Dashboard</a>
                   					</c:when>
                   					<c:otherwise>
-                  						<a href="<c:url value="/teacherdashboard.jsp" />" >Dashboard</a>
+                  						<a class="btn btn-success paper-shadow relative" href="<c:url value="/teacherdashboard.jsp" />" >Dashboard</a>
                   					</c:otherwise>
                   				</c:choose>
                    			</div>
-                  		</div>
-        			</div>
+	                  			</div>
+	                  			
+	        				</div>
+            		
         		</div>
         	</div>
 		</div>
