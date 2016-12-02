@@ -69,34 +69,44 @@
 												
 												
                 				<!-- COURSE QUESTIONS -->
-                  					<div class="panel-heading">
-                    					<div class="table-list-content">
-											<table width="100%">
-												<tr>
-													<th width="8%">Chapter</th>
-													<th width="23%">Question</th>
-													<th width="23%">Answer</th>
-													<th width="7%"></th>
-												</tr>
-  												<c:forEach items="${questions}" var="question">
-  												<tr>
-      													<td><c:out value="${question.chapter}" /></td>
-      													<td><c:out value="${question.question}" /></td>
-      								 				    <td><c:out value="${question.answer}" /></td> 
-      													<td>
-      														<a href="<c:url value="/ShowQuestion">
-      																	<c:param name="id" value="${question.id}" />
-      																</c:url>">Show</a>&nbsp;&nbsp;|&nbsp;
-      														<a href="<c:url value="/EditQuestion"> 
-      																	<c:param name="id" value="${question.id}" />
-      																	<c:param name="answerId" value="${question.answerId}"/>  
-      																	</c:url>">Edit</a>
-      													</td>
-    												</tr>
-  												</c:forEach>
-											</table>
-                    					</div>
-                  					</div>
+                					<div class="row" data-toggle="isotope">
+	              				<div class="item col-xs-12 ">
+	              				
+	                    		<p>&nbsp;</p>
+	                  				<div class="panel panel-default paper-shadow" data-z="0.5">
+		                				<table class="table table-hover">
+		    								<thead>
+		    										    <tr>
+															<th class=" collg-4 ">Chapter</th>
+															<th class=" collg-2 ">Question</th>
+															<th class=" collg-2 ">Answer</th>
+															<th class=" collg-2 "></th>
+															<th></th>
+														</tr>
+		    								</thead>
+		    								<tbody>
+			   									<c:forEach items="${questions}" var="question">
+	  												<tr>
+	      													<td><c:out value="${question.chapter}" /></td>
+	      													<td><c:out value="${question.question}" /></td>
+	      								 				    <td><c:out value="${question.answer}" /></td> 
+	      													<td>
+	      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ShowQuestion">
+	      																	<c:param name="id" value="${question.id}" />
+	      																</c:url>">Show</a>&nbsp;
+	      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/EditQuestion"> 
+	      																	<c:param name="id" value="${question.id}" />
+	      																	<c:param name="answerId" value="${question.answerId}"/>  
+	      																	</c:url>">Edit</a>
+	      													</td>
+	    												</tr>
+	  												</c:forEach>
+		  									</tbody>
+		   							  </table>
+	                  				</div>
+	                  			</div>
+	        				</div>
+                			
 												
 											</div>
  										</div>
