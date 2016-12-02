@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:choose>
+	<c:when test="${isAdmin}">
+		<jsp:include page="../../../AdminSideNavigation.jsp"/>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../../../SideNavigation.jsp"/>
+	</c:otherwise>
+</c:choose>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -65,8 +73,8 @@
                   					</div>
                   				</div>
                   				<div class="panel-header">
-                  					<a href="<c:url value="DepartmentsView"/>">List</a>&nbsp;&nbsp;|&nbsp;
-                  					<a href="<c:url value="EditDepartment">
+                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="DepartmentsView"/>">List</a>&nbsp;&nbsp;
+                  					<a class="btn btn-success paper-shadow relative" href="<c:url value="EditDepartment">
       											<c:param name="id" value="${department.id}" />
       										</c:url>">Edit</a>
                     			</div>

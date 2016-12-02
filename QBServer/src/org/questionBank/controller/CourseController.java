@@ -49,6 +49,8 @@ public class CourseController {
 			List<Map<String,Object>> courses = courseDAO.getDataForTeacherCourses(userId);
 			mve = new ModelAndView("views/courses/teachercourseview");
 			mve.addObject("courses", courses);
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -64,6 +66,9 @@ public class CourseController {
 			List<Map<String,Object>> courses = courseDAO.getDataForAllCourses();
 			mve = new ModelAndView("views/courses/teachercourseview");
 			mve.addObject("courses", courses);
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -93,6 +98,9 @@ public class CourseController {
 			mve.addObject("departments",departments);
 			if(!newCourse)
 				mve.addObject("errors", courseDAO.courseErrors(c));
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -163,6 +171,9 @@ public class CourseController {
 		
 			mve.addObject("course",c);
 			mve.addObject("questions",questions);
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -188,6 +199,9 @@ public class CourseController {
 				mve.addObject("errors", errors);
 			mve.addObject("course",c);
 			mve.addObject("departments", departments);
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);

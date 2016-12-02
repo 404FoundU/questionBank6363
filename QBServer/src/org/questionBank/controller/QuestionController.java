@@ -18,7 +18,6 @@ import org.questionBank.dao.AnswerDataUtil;
 import org.questionBank.dao.CourseDataUtil;
 import org.questionBank.dao.PersonDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,13 +58,15 @@ public class QuestionController {
 			}
 			
 			Question q = questionDAO.populateQuestion(course, question, chapter);
-			Answer a = new Answer();
-			a.setAnswerText(answerText);
+//			Answer a = new Answer();
+//			a.setAnswerText(answerText);
 			mve.addObject("question", q);
-			mve.addObject("answer", a);
+//			mve.addObject("answer", a);
 			if(question != null || chapter != null || answerText != null){
-				mve.addObject("errors", questionDAO.questionErrors(q,answerText));
+				mve.addObject("errors", questionDAO.questionErrors(q));
 			}
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 		}
 		else{
 			return rejectInvalidUser(null);
@@ -74,23 +75,24 @@ public class QuestionController {
 		return mve;
 	}
 
-	@Transactional
+//	@Transactional
 	@RequestMapping(value="/CourseAddQuestion",method=RequestMethod.POST)
-	public ModelAndView createQuestion(HttpServletRequest request, @ModelAttribute("question") Question que, @RequestParam(required=false) String answerText){
+	public ModelAndView createQuestion(HttpServletRequest request, @ModelAttribute("question") Question que, @RequestParam(required=false) Integer courseId, 
+			@RequestParam(required=false) String question, @RequestParam(required=false) String chapter, @RequestParam(required=false) String answerText){
 		ModelAndView mve = null;
 		HttpSession s = request.getSession();
 		Object uid = s.getAttribute("userId");
 		if(uid != null){
 			try {
-				Question newQuestion = questionDAO.createQuestion(que, answerText);
-				Answer newAnswer = answerDAO.getAnswerForQuestion(newQuestion);
+				Question newQuestion = questionDAO.createQuestion(que);
+				Answer newAnswer = answerDAO.createAnswer(newQuestion,answerText);
 				mve=new ModelAndView("redirect:ShowQuestion?id="+newQuestion.getId());
 				mve.addObject("question", newQuestion);
 				mve.addObject("answer",newAnswer);
 			} 
 			catch (InvalidQuestionException qe) {
 				mve=new ModelAndView("redirect:CourseAddQuestion");
-				Integer courseId = que.getCourse() == null ? null : que.getCourse().getId();
+//				Integer courseId = que.getCourse() == null ? null : que.getCourse().getId();
 				mve.addObject("courseId", courseId);
 				mve.addObject("question", que.getQuestion());
 				mve.addObject("chapter", que.getChapter());
@@ -98,7 +100,7 @@ public class QuestionController {
 			}
 			catch (InvalidAnswerException ae) {
 				mve=new ModelAndView("redirect:CourseAddQuestion");
-				Integer courseId = que.getCourse() == null ? null : que.getCourse().getId();
+//				Integer courseId = que.getCourse() == null ? null : que.getCourse().getId();
 				mve.addObject("courseId", courseId);
 				mve.addObject("question", que.getQuestion());
 				mve.addObject("chapter", que.getChapter());
@@ -131,10 +133,14 @@ public class QuestionController {
 			{
 				a = answers.get(0);
 			}
-		
+			Course c = courseDAO.findCourse(q.getCourse().getId());
+			q.setCourse(c);
 			mve.addObject("question",q);
 			mve.addObject("answer",a);
-			mve.addObject("errors", questionDAO.questionErrors(q, a.getAnswerText()));
+			mve.addObject("errors", questionDAO.questionErrors(q));
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -176,6 +182,9 @@ public class QuestionController {
 		
 			mve.addObject("course",c);
 			mve.addObject("questions",questions);
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -192,6 +201,8 @@ public class QuestionController {
 				List<Map<String,Object>> courses = courseDAO.getDataForTeacherCourses(userId);
 				mve = new ModelAndView("views/questions/teacherquestionview");
 				mve.addObject("courses", courses);
+				Person curUser = personDAO.findPerson(userId);
+				mve.addObject("isAdmin", curUser.isAdmin());
 				return mve;
 			}else{
 				return rejectInvalidUser(null);
@@ -211,14 +222,20 @@ public class QuestionController {
 			Question q = questionDAO.findQuestion(id);
 			Answer a = answerDAO.findAnswer(answerId);
 			try{
-				questionDAO.validateQuestion(q, a.getAnswerText());
+				questionDAO.validateQuestion(q);
+				answerDAO.validateAnswer(a);
 			}catch(InvalidQuestionException ex){
-				mve.addObject("errors", questionDAO.questionErrors(q, a.getAnswerText()));
+				mve.addObject("errors", questionDAO.questionErrors(q));
+			}catch(InvalidAnswerException ex){
+				mve.addObject("errors", answerDAO.answerErrors(a));
 			}
 			List<Course> courses = courseDAO.getCourses();
 			mve.addObject("question",q);
 			mve.addObject("answer",a);
 			mve.addObject("courses", courses);
+			Integer userId = (Integer) uid;
+			Person curUser = personDAO.findPerson(userId);
+			mve.addObject("isAdmin", curUser.isAdmin());
 			return mve;
 		}else{
 			return rejectInvalidUser(null);
@@ -232,7 +249,8 @@ public class QuestionController {
 		Object uid = s.getAttribute("userId");
 		if(uid != null){
 			try {
-				questionDAO.updateQuestion(question, answerId, answerText);
+				questionDAO.updateQuestion(question);
+				answerDAO.updateAnswer(answerId, answerText);
 				Answer newAnswer = answerDAO.findAnswer(answerId);
 				mve=new ModelAndView("redirect:ShowQuestion?id="+question.getId());
 				mve.addObject("question", question);
