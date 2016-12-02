@@ -37,7 +37,7 @@
             			</div>
                     	
             			<div class="row" data-toggle="isotope">
-              				<div class="item col-xs-12 col-lg-6">
+              				<div class="item col-xs-12 ">
               				<div class="panel-header">
                     				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/TeacherAddCourse" />" >Add Course</a>
                     						      														&nbsp;
@@ -48,10 +48,10 @@
 	                				<table class="table table-hover">
 	    								<thead>
 	    										    <tr>
-														<th>Course</th>
-														<th>Number</th>
-														<th>Department</th>
-														<th>Credits</th>
+														<th class=" collg-4 ">Course</th>
+														<th class=" collg-2 ">Number</th>
+														<th class=" collg-2 ">Department</th>
+														<th class=" collg-2 ">Credits</th>
 														<th></th>
 													</tr>
 	    								</thead>

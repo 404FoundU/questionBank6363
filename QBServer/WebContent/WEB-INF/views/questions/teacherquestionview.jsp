@@ -33,13 +33,13 @@
 		</div>
 	
             			<div class="page-section">
-              				<h1 class="text-display-1">Question and Answers</h1>
+              				<h1 class="text-display-1">Question &amp; Answers</h1>
             			</div>
                     	
             			<div class="row" data-toggle="isotope">
-              				<div class="item col-xs-12 col-lg-6">
+              				<div class="item col-xs-12 ">
               				<div class="panel-header">
-                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/CourseAddQuestion" />" >Add Question and Answer</a>
+                    				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/CourseAddQuestion" />" >Add Question &amp; Answer</a>
                     						      														&nbsp;
                     				<a class="btn btn-success paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="<c:url value="/teacherdashboard.jsp" />" >Dashboard</a>
                     		</div>
@@ -48,8 +48,8 @@
 	                				<table class="table table-hover">
 	    								<thead>
 	    										    <tr>
-														<th>Course</th>
-														<th>Course Number</th>
+														<th class=" collg-4 " >Course</th>
+														<th class=" collg-2 ">Course Number</th>
 													</tr>
 	    								</thead>
 	    								<tbody>
@@ -60,7 +60,7 @@
 		      												<!-- 	<td><c:out value="${item.question.questionText}" /></td>
 		      													<td><c:out value="${item.question.answer.answerText}" /></td>
 		      												-->	<td>
-		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ViewQuestion"><c:param name="id" value="${item.id}" /></c:url>">Show Question and Answers</a>
+		      														<a class="btn btn-success paper-shadow relative btn-sm" href="<c:url value="/ViewQuestion"><c:param name="id" value="${item.id}" /></c:url>">Show Question &amp; Answers</a>
 		      													</td>
 		    												</tr>
 		  									</c:forEach>

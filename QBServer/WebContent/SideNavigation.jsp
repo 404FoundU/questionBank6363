@@ -135,11 +135,11 @@
     <li class="hasSubmenu">
 
        
-         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Question/Answer</span></a>         
+         <a href="<c:url value="/CourseAddQuestion"/>"><i class="fa fa-edit"></i><span>Add Q&A</span></a>         
 		  <ul id="quiz-menu"> 
 		   <!-- <li><form action="" method="post"> <input type="hidden"  name="tid" value= ""/> -->
 		   
-            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='TeacherQuestionView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Question/Answers</span></button></form></li>  	
+            <button name="questionview" type="submit" value="Question View" class="btn btn-inverse" onclick="window.location.href='TeacherQuestionView'"><i class="fa fa-list-alt"></i><span style="text-transform: none;">View All Q&A</span></button></form></li>  	
 
 		</ul>
        </li>
