@@ -19,6 +19,10 @@
   		<link href="TeacherDashboardFiles/all.css" rel="stylesheet">
 
 	 	<link href="TeacherDashboardFiles/app.css" rel="stylesheet">
+	 	
+	 	  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 <!--     	<link rel="stylesheet" href="AdminFiles/reset.css">
 
@@ -72,11 +76,10 @@
       													<input type="text" class="form-control" name="courseName" id="courseName" maxlength="50" placeholder="Course Name" value="${course.courseName}" required >
  													</div>
     											</div>
-   
-   												<div class="form-group form-control-material static required">
-													<form:select path="department.id">
-      													<form:option value="-" label="--Select Department"/>
-      													<form:options items="${departments}" itemValue="id" itemLabel="abbreviation"/>
+   												<div  style="width: 30%;" >
+													<form:select class="form-group form-control static btn-success " path="department.id">
+      													<form:option  value="-" label="Select Department"/>
+      													<form:options  items="${departments}" itemValue="id" itemLabel="abbreviation"/>
             										</form:select>
     												<%-- <input type="text" class="form-control" name="deptName" id="deptName"  maxlength="20" placeholder="Course Department" value="${course.deptName}" required> --%>
    												</div>

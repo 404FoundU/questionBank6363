@@ -66,13 +66,16 @@
    			 </div>
    			</div> -->
    			
-   			<div class="form-group">
-   			 <div class="form-control-material static required">
-			  <form:select path="course.id">
-      		   <form:option value="-" label="--Select Course"/> 
+   			
+   			
+   			
+   			<div style="width: 35%;">
+   			 &nbsp;
+			  <form:select class="form-group form-control static btn-success " path="course.id">
+      		   <form:option value="-" label="Select Course"/> 
       		   <form:options items="${courses}" var="item" value="${item.courseName}" itemValue="id" itemLabel="courseName"/>
               </form:select>
-   			</div>
+   			
      	   </div>
      		
      		<div class="form-group">
